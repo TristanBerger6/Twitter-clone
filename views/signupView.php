@@ -22,7 +22,7 @@
                        echo $name;
                      } ?>" />
         <label for="username">Pseudo :</label>
-        <input type="text" placeholder="Votre username" id="username" name="username" value="<?php if (
+        <input type="text" placeholder="Votre pseudo" id="username" name="username" value="<?php if (
                        isset($username)
                      ) {
                        echo $username;
@@ -39,13 +39,13 @@
                      ) {
                        echo $mail2;
         } ?>" />
-         <label for="mdp">Mot de passe :</label>
-         <input type="password" placeholder="Votre mot de passe" id="mdp" name="mdp" />
-         <label for="mdp2">Confirmation du mot de passe :</label>
-         <input type="password" placeholder="Confirmez votre mdp" id="mdp2" name="mdp2" />
-         <input type="submit" name="forminscription" value="Je m'inscris" />
-         <?php if (isset($erreur)) {
-           echo '<font color="red">' . $erreur . '</font>';
+         <label for="pass">Mot de passe :</label>
+         <input type="password" placeholder="Votre mot de passe" id="pass" name="pass" />
+         <label for="pass2">Confirmation du mot de passe :</label>
+         <input type="password" placeholder="Confirmez votre mot de passe" id="pass2" name="pass2" />
+         <input type="submit" name="signinform" value="Je m'inscris" />
+         <?php if (isset($error)) {
+           echo '<font color="red">' . $error . '</font>';
         } ?>
 
         <br/>

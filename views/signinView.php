@@ -15,12 +15,12 @@
         <a href='index.php'> Retour </a>
         
         <form method="POST" action="" class="signCard">
-            <input type="email" name="mailconnect" placeholder="Mail" />
-            <input type="password" name="mdpconnect" placeholder="Mot de passe" />
+            <input type="email" name="mailConnect" placeholder="Mail" />
+            <input type="password" name="passConnect" placeholder="Mot de passe" />
             <br /><br />
-            <input type="submit" name="formconnexion" value="Se connecter !" />
-            <?php if (isset($erreur)) {
-            echo '<font color="red">' . $erreur . '</font>';
+            <input type="submit" name="formConnect" value="Se connecter !" />
+            <?php if (isset($error)) {
+            echo '<font color="red">' . $error . '</font>';
             } ?>
             <br/>
             <p>Pas encore de compte ? <a href='index.php?page=signup'> Inscrivez-vous </a> </p>

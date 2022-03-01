@@ -2,7 +2,7 @@
 
     abstract class Model{
 
-        private $host = "localhost";
+        private $host = "localhost:3307";
         private $db_name = "twitter_clone";
         private $username = "root";
         private $password ="root";
@@ -21,6 +21,7 @@
             // On essaie de se connecter à la base
             try{
                 $this->db = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+                $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                
             }catch(PDOException $exception){
                 echo "Erreur de connexion : " . $exception->getMessage();

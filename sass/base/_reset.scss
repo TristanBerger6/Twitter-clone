@@ -21,6 +21,9 @@ body {
   box-sizing: border-box; // padding + border included in width
   line-height: 1.5;
   min-height: 100vh; // prevent small screen from being an issue
+  position : absolute;
+  width : 100%;
+  
 }
 
 ul {
