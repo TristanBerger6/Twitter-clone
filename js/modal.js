@@ -30,7 +30,6 @@ for (let i = 0; i < modalsBtn.length; i++) {
 
 document.addEventListener('click',(e) => {
     let targetId = e.target.id;
-    console.log(targetId);
     check = targetId.replace(/[0-9]/g, '');
     if (check === 'modal') {
         for (let i = 0; i < modals.length; i++) {

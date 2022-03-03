@@ -1,4 +1,10 @@
 <?php
+
+ /**
+  * Custom string encoding
+  * @param string $titre string to encode
+  * @return string $encoded string encoded
+  */
  function url_custom_encode($titre) {
     $titre = htmlspecialchars($titre);
     $find = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', 'Œ', 'œ', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', 'Š', 'š', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', 'Ÿ', '?', '?', '?', '?', 'Ž', 'ž', '?', 'ƒ', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?');
@@ -15,5 +21,43 @@
     $encoded = substr($encoded, 0, -1);
     return $encoded;
  }
+
+
+ /**
+  * Check image validity and upload to the desired directoy
+  * @param string $target_dir path to the desired directory
+  * @param object $file file to upload
+  * @param int $maxSize maximum size of the file
+  * @return array error and unique name of the file that has been uploaded. 
+  * if $error is not null, $uploadedName is null, the file has not been uploaded . If $error is null, then $uploadedName is not null and the file has been uploaded.
+  */
+  function image_check_upload($target_dir,$file,$maxSize) {
+      $error = null;
+      $uploadedName = null;
+
+      $tabExtension = explode('.',$file['name']);
+      $extension = strtolower(end($tabExtension));
+      $extensions = ['jpg','png','jpeg','gif'];
+      
+      if(in_array($extension,$extensions)){
+         if($file['size']<$maxSize && $file['size'] != 0){
+            if($file['error'] == 0 ){
+                  $uniqueName = uniqid('', true);
+                  $uploadedName = $uniqueName.".".$extension;
+                  move_uploaded_file($file['tmp_name'],$target_dir.$uploadedName );
+            }else{
+                  $error = 'Une erreur est survenue <br/>' ;
+            }
+         }else{
+            $error =  'La taille des fichiers ne doit pas dépasser 1Mo <br/>';
+         }
+      }else{
+         $error =  'Les images doivent être au format .png .jpeg ou .jpg <br/>';
+      }
+
+      return [$error, $uploadedName];
+  }
+
+
 
 ?>

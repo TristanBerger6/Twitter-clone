@@ -4,6 +4,9 @@
 
     class User extends Model{
 
+        public $defaultCover = 'default_cover_500x200.png';
+        public $defaultProfile = 'default_profile_400x400.png';
+
         public function __construct(){
             $this->getConnection();
         }
@@ -30,6 +33,16 @@
             $req->execute([$id]);
             return $req;
         }
+        public function getUserCover($id){
+            $req = $this->db->prepare('SELECT imgcover FROM users WHERE id = ?');
+            $req->execute([$id]);
+            return $req;
+        }
+        public function getUserProfile($id){
+            $req = $this->db->prepare('SELECT img FROM users WHERE id = ?');
+            $req->execute([$id]);
+            return $req;
+        }
 
 
 
@@ -40,11 +53,42 @@
             $insert->execute([$bio,$id]); 
             return $insert;
         }
+        public function updateName($name,$id){
+            $insert = $this->db->prepare(
+                'UPDATE users SET name = ? WHERE id = ?'
+              );
+            $insert->execute([$name,$id]); 
+            return $insert;
+        }
+        public function updateUsername($username,$id){
+            $insert = $this->db->prepare(
+                'UPDATE users SET username = ? WHERE id = ?'
+              );
+            $insert->execute([$username,$id]); 
+            return $insert;
+        }
+        public function updateCover($cover,$id){
+            $insert = $this->db->prepare(
+                'UPDATE users SET imgcover = ? WHERE id = ?'
+              );
+            $insert->execute([$cover,$id]); 
+            return $insert;
+        }
+        public function updateProfile($profile,$id){
+            $insert = $this->db->prepare(
+                'UPDATE users SET img = ? WHERE id = ?'
+              );
+            $insert->execute([$profile,$id]); 
+            return $insert;
+        }
+
+
+
         public function setAll($name,$username,$mail,$pass){
             $insert = $this->db->prepare(
-                'INSERT INTO users(name,username, mail, password, img, imgcover, bio, date_hour_creation) VALUES(?,?,?,?,"default_profile_400x400.png","default_profile_500x200.png","",NOW())'
+                'INSERT INTO users(name,username, mail, password, img, imgcover, bio, date_hour_creation) VALUES(?,?,?,?,?,?,"",NOW())'
               );
-            $insert->execute([$name,$username,$mail,$pass]); 
+            $insert->execute([$name,$username,$mail,$pass,$this->defaultProfile,$this->defaultCover]); 
             return $insert;
         }
       

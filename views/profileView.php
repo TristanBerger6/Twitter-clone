@@ -9,6 +9,7 @@
   <title>twitter Clone</title>
   <meta name="description" content="Clone de Twitter">
   <script src="./js/modal.js" defer></script>
+  <script src="./js/previewImages.js" defer></script>
  </head>
 
 
@@ -20,9 +21,22 @@
             <span class="modalClose" id="modalClose1">close</span>
             <br/>
             <form  method="POST" action="" enctype="multipart/form-data" >
+                <label for="name"> Votre Nom :</label>
+                <input type="text" placeholder="Votre Nom" id="name" name="name" value="<?php if (isset($reqUser['name'])) {echo $reqUser['name'];} ?>" />
+                <label for="username"> Votre Pseudo :</label>
+                <input type="text" placeholder="Votre Pseudo" id="username" name="username" value="<?php if (isset($reqUser['username'])) {echo $reqUser['username'];} ?>" />
                 <label for="bio"> Votre biographie :</label>
                 <input type="text" placeholder="Votre biographie" id="bio" name="bio" value="<?php if (isset($reqUser['bio'])) {echo $reqUser['bio'];} ?>" />
-                <input type="file" id="cover" name="cover" >
+                <div > 
+                    <img id="cover-preview" src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="cover image preview">
+                </div>
+                <label for="cover" class="labelInput"> Votre cover :</label>
+                <input type="file" id="cover" name="cover" class="imgInput" >
+                <div > 
+                    <img id="profile-preview" src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image preview">
+                </div>
+                <label for="profile" class="labelInput"> Votre profil :</label>
+                <input type="file" id="profile" name="profile" class="imgInput" >
                 <button type="submit" name="updateProfile" id="sumbitUpdateProfile">Enregistrer</button>
                 <br/>
                 <?php if (isset($error)) {
@@ -39,12 +53,14 @@
             <p><?= $nbTweets ?> Tweets</p>
         </div>
         <div>
-            <img src='./public/img/<?= $reqUser['imgcover']?>' alt="profile image" class="coverImg"> 
-            <img src='./public/img/<?= $reqUser['img']?>' alt="profile image" class="profileImg"> 
+            <img src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="profile image" class="coverImg"> 
+            <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profileImg"> 
             <p> <?= $reqUser['name']?> </p>
             <p> @ <?= $reqUser['username']?> </p>
             <p> <?= $reqUser['bio']?> </p>
+            <?php if($_SESSION['id'] === $_GET['id']){ ?>
             <button class="modalBtn" id="modalBtn1">Configurer le profil </button>
+            <?php } ?>
         </div>
         <div>
             <p> <?= $nbFollowing ?> abonnements  </p>
