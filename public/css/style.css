@@ -326,4 +326,24 @@ body {
   cursor: pointer;
 }
 
+.abo {
+  background: black;
+  color: white;
+  width: min-content;
+}
+.abo:hover {
+  background: white;
+  color: black;
+}
+
+.noabo {
+  background: white;
+  color: black;
+  width: min-content;
+}
+
+.abo, .noabo {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */

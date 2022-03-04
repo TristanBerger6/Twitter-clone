@@ -3,6 +3,6 @@
 if (isset($_SESSION['id'])){
     require_once(ROOT.'views/homeView.php');
 }else{
-    header('Location: index.php');
+    die("Erreur : La page recherchée n'existe pas");
 }
     

@@ -43,6 +43,16 @@
             $req->execute([$id]);
             return $req;
         }
+        public function getUsersFollowers($id){
+            $req = $this->db->prepare('SELECT *,users.id AS user_id FROM users LEFT JOIN follows ON follows.id_follower = users.id WHERE id_followed = ?');
+            $req->execute([$id]);
+            return $req;
+        }
+        public function getUsersFollowed($id){
+            $req = $this->db->prepare('SELECT *,users.id AS user_id FROM users LEFT JOIN follows ON follows.id_followed = users.id WHERE id_follower = ?');
+            $req->execute([$id]);
+            return $req;
+        }
 
 
 

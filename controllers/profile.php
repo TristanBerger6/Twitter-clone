@@ -124,17 +124,20 @@ if (isset($_SESSION['id'])){
 
         $reqTweets = $tweet->getTweets($reqUser['id']);
         $reqFollowers = $follow->getFollowers($reqUser['id']);
-        $reqFollowing = $follow->getFollowing($reqUser['id']);
+        $reqFollowed = $follow->getFollowed($reqUser['id']);
 
         $nbFollowers = $reqFollowers->rowCount();
-        $nbFollowing = $reqFollowing->rowCount(); 
+        $nbFollowed = $reqFollowed->rowCount(); 
         $nbTweets = $reqTweets->rowCount();
+
+        $isFollowed = $follow->isFollowed($_SESSION['id'],$reqUser['id']);
+        $isFollowed = $isFollowed->rowCount();
 
         require_once(ROOT.'views/profileView.php');
     }else{
-        header('Location: index.php');
+        die("Erreur : La page recherchée n'existe pas");
     }
 }else{
-    header('Location: index.php');
+    die("Erreur : La page recherchée n'existe pas");
 }
     

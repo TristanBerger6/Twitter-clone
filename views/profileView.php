@@ -10,6 +10,7 @@
   <meta name="description" content="Clone de Twitter">
   <script src="./js/modal.js" defer></script>
   <script src="./js/previewImages.js" defer></script>
+  <script src="./js/follow.js" type="module" defer></script>
  </head>
 
 
@@ -59,12 +60,18 @@
             <p> @ <?= $reqUser['username']?> </p>
             <p> <?= $reqUser['bio']?> </p>
             <?php if($_SESSION['id'] === $_GET['id']){ ?>
-            <button class="modalBtn" id="modalBtn1">Configurer le profil </button>
+                <button class="modalBtn" id="modalBtn1">Configurer le profil </button>
+            <?php }else{ ?>
+                <?php if($isFollowed){?>
+                <p class="abo" user_id='<?= $reqUser['id']?>'>Abonné</p>
+                <?php }else{ ?>
+                <p class="noabo" user_id='<?= $reqUser['id']?>'>Suivre</p>
+                <?php } ?>
             <?php } ?>
         </div>
         <div>
-            <p> <?= $nbFollowing ?> abonnements  </p>
-            <p> <?= $nbFollowers ?> abonnées</p>
+            <p> <?php echo '<a href="index.php?page=follow&id='.$reqUser['id'].'&type=followed">'?> <?= $nbFollowed ?> abonnements </a> </p>
+            <p> <?php echo '<a href="index.php?page=follow&id='.$reqUser['id'].'&type=followers">'?> <?= $nbFollowers ?> abonnées </a></p>
             <p> A rejoint Twitter en <?= $reqUser['date_hour_creation']?> </p>
         </div>
 
