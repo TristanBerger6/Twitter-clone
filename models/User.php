@@ -63,6 +63,13 @@
             $insert->execute([$bio,$id]); 
             return $insert;
         }
+        public function updateMail($mail,$id){
+            $insert = $this->db->prepare(
+                'UPDATE users SET mail = ? WHERE id = ?'
+              );
+            $insert->execute([$mail,$id]); 
+            return $insert;
+        }
         public function updateName($name,$id){
             $insert = $this->db->prepare(
                 'UPDATE users SET name = ? WHERE id = ?'
@@ -89,6 +96,13 @@
                 'UPDATE users SET img = ? WHERE id = ?'
               );
             $insert->execute([$profile,$id]); 
+            return $insert;
+        }
+        public function updatePass($pass,$id){
+            $insert = $this->db->prepare(
+                'UPDATE users SET password = ? WHERE id = ?'
+              );
+            $insert->execute([$pass,$id]); 
             return $insert;
         }
 

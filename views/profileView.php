@@ -17,6 +17,8 @@
 <body>
 
     <?php require('includes/nav.php') ?>
+
+    <?php if($_SESSION['id'] === $_GET['id']){ ?>
     <div class="modal" id="modal1">
         <div class="modal__content">
             <span class="modalClose" id="modalClose1">close</span>
@@ -47,6 +49,7 @@
             </form>
         </div>
     </div>
+    <?php } ?>
 
     <main class='homeContainer'>
         <div>
@@ -60,7 +63,7 @@
             <p> @ <?= $reqUser['username']?> </p>
             <p> <?= $reqUser['bio']?> </p>
             <?php if($_SESSION['id'] === $_GET['id']){ ?>
-                <button class="modalBtn" id="modalBtn1">Configurer le profil </button>
+                <button class="modalBtn" id="modalBtn1">Editer le profil </button>
             <?php }else{ ?>
                 <?php if($isFollowed){?>
                 <p class="abo" user_id='<?= $reqUser['id']?>'>Abonné</p>

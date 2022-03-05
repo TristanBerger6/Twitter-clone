@@ -15,8 +15,8 @@
         <a href='index.php'> Retour </a>
         
         <form method="POST" action="" class="signCard">
-            <input type="email" name="mailConnect" placeholder="Mail" />
-            <input type="password" name="passConnect" placeholder="Mot de passe" />
+            <input type="email" name="mailConnect" placeholder="Mail" required/>
+            <input type="password" name="passConnect" placeholder="Mot de passe" required/>
             <br /><br />
             <input type="submit" name="formConnect" value="Se connecter !" />
             <?php if (isset($error)) {

@@ -35,27 +35,27 @@ if (isset($_POST['signinform'])) {
                 if ($pass == $pass2) {
                   $insertuser = $user->setAll($name,$username,$mail,$pass);
                   $error =
-                    "Votre compte a bien été créé ! <a href=\"index.php?page=signin\">Me connecter</a>";
+                    "Votre compte a bien été créé. <a href=\"index.php?page=signin\">Me connecter</a>";
                 } else {
-                  $error = 'Vos mots de passes ne correspondent pas !';
+                  $error = 'Les mots de passes ne correspondent pas.';
                 }
               } else {
-                $error = 'Pseudo déjà utilisé !';
+                $error = 'Pseudo déjà utilisé.';
               }
             } else {
-              $error = 'Adresse mail déjà utilisée !';
+              $error = 'Adresse email déjà utilisée.';
             }
           } else {
-            $error = "Votre adresse mail n'est pas valide !";
+            $error = "Adresse email non valide.";
           }
         } else {
-          $error = 'Vos adresses mail ne correspondent pas !';
+          $error = 'Les adresses email ne correspondent pas !';
         }
       } else {
-        $error = 'Votre nom et votre pseudo ne doivent pas dépasser 40 caractères !';
+        $error = 'Le nom et le pseudo ne doivent pas dépasser 40 caractères !';
       }
     } else {
-      $error = 'Tous les champs doivent être complétés !';
+      $error = 'Tous les champs doivent être complétés.';
     }
   }
 

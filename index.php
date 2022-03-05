@@ -28,6 +28,9 @@
                 case 'follow':
                     require_once(ROOT.'controllers/follow.php');
                     break;
+                case 'settings':
+                    require_once(ROOT.'controllers/settings.php');
+                    break;
                 case 'logout':
                     require_once(ROOT.'controllers/logout.php');
                     break;

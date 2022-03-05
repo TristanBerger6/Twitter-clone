@@ -14,7 +14,7 @@ if (isset($_SESSION['id'])){
         if ($_SESSION['id'] === $_GET['id']){
 
             // if the user whose connected udapte his profile
-            if(isset($_POST['name'])){
+            if(isset($_POST['updateProfile'])){
                 $error='';
                 $updateProfile = false;
                 $updateCover = false;
@@ -52,7 +52,7 @@ if (isset($_SESSION['id'])){
                 if($bioLength <= 140){
                     $updateBio = true;
                 }else{
-                    $error .= 'Votre biographie ne doit pas dépasser 140 caractères <br/>';
+                    $error .= 'La biographie ne doit pas dépasser 140 caractères <br/>';
                 }
                 // check for name length 
                 $name = htmlspecialchars($_POST['name']);
@@ -60,7 +60,7 @@ if (isset($_SESSION['id'])){
                 if($nameLength <= 40){
                     $updateName = true;
                 }else{
-                    $error .= 'Votre Nom ne doit pas dépasser 40 caractères <br/>';
+                    $error .= 'le Nom ne doit pas dépasser 40 caractères <br/>';
                 }
                 // check for username length
                 $username = htmlspecialchars($_POST['username']);
@@ -68,7 +68,7 @@ if (isset($_SESSION['id'])){
                 if($usernameLength <= 40){
                     $updateUsername = true;
                 }else{
-                    $error .= 'Votre Pseudo ne doit pas dépasser 40 caractères <br/>';
+                    $error .= 'Le Pseudo ne doit pas dépasser 40 caractères <br/>';
                 }
 
                 //if all inputs have no errors, then update what needs to be updated
