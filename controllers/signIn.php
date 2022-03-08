@@ -1,7 +1,7 @@
 <?php 
 
-require_once("models/User.php");
-$user = new User();
+require_once("models/UsersManager.php");
+$usersManager = new UsersManager();
 
 
 if (isset($_POST['formConnect'])) {
@@ -9,7 +9,7 @@ if (isset($_POST['formConnect'])) {
     $passConnect = $_POST['passConnect'];
     if (!empty($mailConnect) AND !empty($passConnect)) {
       $passConnect = sha1($passConnect);
-      $requser = $user->getMailPass($mailConnect,$passConnect);
+      $requser = $usersManager->getMailPass($mailConnect,$passConnect);
       $userExists = $requser->rowCount();
       if ($userExists == 1) {
         $userInfo = $requser->fetch();

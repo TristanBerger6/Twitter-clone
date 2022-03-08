@@ -1,7 +1,7 @@
 <?php 
 
-require_once("models/User.php");
-$user = new User();
+require_once("models/UsersManager.php");
+$usersManager = new UsersManager();
 
 
 
@@ -26,14 +26,14 @@ if (isset($_POST['signinform'])) {
       if ($usernamelength <= 40 && $namelength <= 40) {
         if ($mail == $mail2) {
           if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            $reqMail = $user->getMail($mail);
-            $reqUsername = $user->getUsername($username);
+            $reqMail = $usersManager->getMail($mail);
+            $reqUsername = $usersManager->getUsername($username);
             $mailExists = $reqMail->rowCount();
             $usernameExists = $reqUsername->rowCount();
             if ($mailExists == 0) {
               if ($usernameExists == 0) {
                 if ($pass == $pass2) {
-                  $insertuser = $user->setAll($name,$username,$mail,$pass);
+                  $insertuser = $usersManager->setAll($name,$username,$mail,$pass);
                   $error =
                     "Votre compte a bien été créé. <a href=\"index.php?page=signin\">Me connecter</a>";
                 } else {

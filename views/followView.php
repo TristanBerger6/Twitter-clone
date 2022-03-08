@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="stylesheet" href="./public/css/style.css" /> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <title>twitter Clone</title>
   <meta name="description" content="Clone de Twitter">
-  <script src="./js/follow.js" type="module" defer></script>
+  <script src="./js/js_ajax/tweet.js" type="module" defer></script>
+  <script src="./js/js_ajax/follow.js" type="module" defer></script>
+  <script src="./js/modules/modules.js" type="module" defer></script>
  </head>
 
 
@@ -28,7 +31,7 @@
         <div>
             <?php foreach($usersToDisplay as $u){?>
                 <div>
-                    <a href='index.php?page=profile&id=<?= $u['user_id']?>'><img src='./public/img/profile/<?= $u['img']?>' alt='<?=$u['name']?> profile image' class="profileImg"> </a>
+                    <a href='index.php?page=profile&id=<?= $u['user_id']?>'><img src='./public/img/profile/<?= $u['img']?>' alt='<?=$u['name']?> profile image' class="profile-img"> </a>
                     <p><a href='index.php?page=profile&id=<?= $u['user_id']?>'> <?= $u['name']?> </a></p>
                     <p>@<?= $u['username']?></p>
                     <p><?= $u['bio']?></p>

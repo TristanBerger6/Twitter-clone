@@ -245,6 +245,26 @@ body {
   color: var(--clr-dark);
 }
 
+.abo {
+  background: black;
+  color: white;
+  width: min-content;
+}
+.abo:hover {
+  background: white;
+  color: black;
+}
+
+.noabo {
+  background: white;
+  color: black;
+  width: min-content;
+}
+
+.abo, .noabo {
+  cursor: pointer;
+}
+
 .signCard {
   max-width: 800px;
   margin: auto;
@@ -272,6 +292,23 @@ body {
   max-width: 800px;
 }
 
+.postTweet {
+  border: 1px solid black;
+}
+.postTweet form .img-icon {
+  color: blue;
+  cursor: pointer;
+}
+.postTweet form #tweet-img {
+  display: none;
+}
+.postTweet form .img-tweet-preview {
+  display: none;
+}
+.postTweet form .close-preview {
+  display: none;
+}
+
 .nav {
   position: fixed;
   display: flex;
@@ -290,12 +327,12 @@ body {
   height: 2000px;
 }
 
-.profileImg {
+.profile-img {
   width: 100px;
   height: 100px;
 }
 
-.coverImg {
+.cover-img {
   width: 300px;
   height: 50px;
 }
@@ -305,11 +342,11 @@ body {
   flex-direction: column;
 }
 
-.imgInput {
+.input-img {
   display: none;
 }
 
-.labelInput {
+.label-input {
   display: block;
   width: 45%;
   height: 45px;
@@ -323,26 +360,6 @@ body {
   text-transform: Uppercase;
   font-weight: 600;
   border-radius: 5px;
-  cursor: pointer;
-}
-
-.abo {
-  background: black;
-  color: white;
-  width: min-content;
-}
-.abo:hover {
-  background: white;
-  color: black;
-}
-
-.noabo {
-  background: white;
-  color: black;
-  width: min-content;
-}
-
-.abo, .noabo {
   cursor: pointer;
 }
 

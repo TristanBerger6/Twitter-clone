@@ -49,7 +49,8 @@
                   $error = 'Une erreur est survenue <br/>' ;
             }
          }else{
-            $error =  'La taille des fichiers ne doit pas dépasser 1Mo <br/>';
+            $maxSize = substr($maxSize, 0, -6);
+            $error =  'La taille des fichiers ne doit pas dépasser '.$maxSize.'Mo<br/>';
          }
       }else{
          $error =  'Les images doivent être au format .png .jpeg ou .jpg <br/>';

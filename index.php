@@ -40,6 +40,24 @@
                     break;
 
             }
+        }else if (isset($_GET['handle'])){
+            $handler = htmlspecialchars($_GET['handle']);
+            switch($handler){
+                case 'follow':
+                    require_once(ROOT.'controllers/handlers/handleFollow.php');
+                    break; 
+                case 'profile':
+                    require_once(ROOT.'controllers/handlers/handleProfile.php');
+                    break;
+                case 'tweet':
+                    require_once(ROOT.'controllers/handlers/handleTweet.php');
+                    break;
+                default :
+                    http_response_code(404);
+                    die("Erreur : La page recherchée n'existe pas");
+                    break;
+                }
+            
         }else{
             require_once(ROOT.'controllers/starting.php');
         }

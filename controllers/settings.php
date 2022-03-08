@@ -1,24 +1,24 @@
 <?php 
 
-require_once("models/User.php");
-require_once("models/Follow.php");
-require_once("models/Tweet.php");
+require_once("models/UsersManager.php");
+require_once("models/FollowsManager.php");
+require_once("models/TweetsManager.php");
 
-$user = new User();
-$follow = new Follow();
-$tweet = new Tweet();
+$usersManager = new UsersManager();
+$followsManager = new FollowsManager();
+$tweetsManager = new TweetsManager();
 
 
 if (isset($_SESSION['id'])){
 
     if(isset($_POST['updateMail']) ){
         $mail = htmlspecialchars($_POST['mail']);
-        $reqUser = $user->getUser($_SESSION['id']);
+        $reqUser = $usersManager->getUser($_SESSION['id']);
         $reqUser = $reqUser->fetch();
 
         if(!empty($_POST['mail'])){
             if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                $updateMail = $user->updateMail($mail,$reqUser['id']);
+                $updateMail = $usersManager->updateMail($mail,$reqUser['id']);
                 $error = 'Votre adresse email à bien été modifiée.';
             }else{
                 $error = ' Adresse email non valide.';
@@ -33,12 +33,12 @@ if (isset($_SESSION['id'])){
         $newPass2 = sha1($_POST['newPass2']);
 
         if(!empty($_POST['pass']) && !empty($_POST['pass']) && !empty($_POST['pass'])){
-            $reqUser = $user->getUser($_SESSION['id']);
+            $reqUser = $usersManager->getUser($_SESSION['id']);
             $reqUser = $reqUser->fetch();
             if($reqUser['password'] == $pass){
                 if($newPass == $newPass2){
                     if($newPass != $pass){
-                        $updatePass = $user->updatePass($newPass,$reqUser['id']);
+                        $updatePass = $usersManager->updatePass($newPass,$reqUser['id']);
                         $errorPass = 'Votre mot de passe à bien été modifié.';
 
                     }else{
@@ -55,7 +55,7 @@ if (isset($_SESSION['id'])){
         }
     }
 
-    $reqUser = $user->getUser($_SESSION['id']);
+    $reqUser = $usersManager->getUser($_SESSION['id']);
     $reqUser = $reqUser->fetch();
 
     require_once(ROOT.'views/settingsView.php');

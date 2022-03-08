@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="stylesheet" href="./public/css/style.css" /> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <title>twitter Clone</title>
   <meta name="description" content="Clone de Twitter">
-  <script src="./js/modal.js" defer></script>
-  <script src="./js/previewImages.js" defer></script>
-  <script src="./js/follow.js" type="module" defer></script>
+  <script src="./js/js_ajax/tweet.js" type="module" defer></script>
+  <script src="./js/js_ajax/follow.js" type="module" defer></script>
+  <script src="./js/modules/modules.js" type="module" defer></script>
+  <?php if($_SESSION['id'] === $_GET['id']){ ?>
+    <script src="./js/js_ajax/updateProfile.js" type="module" defer></script>
+  <?php } ?>
+  
  </head>
 
 
@@ -19,11 +24,11 @@
     <?php require('includes/nav.php') ?>
 
     <?php if($_SESSION['id'] === $_GET['id']){ ?>
-    <div class="modal" id="modal1">
+    <div class="modal" id="modal2">
         <div class="modal__content">
-            <span class="modalClose" id="modalClose1">close</span>
+            <span class="modalClose" id="modalClose2">close</span>
             <br/>
-            <form  method="POST" action="" enctype="multipart/form-data" >
+            <form  method="POST" action="" id="formUpdate" enctype="multipart/form-data" >
                 <label for="name"> Votre Nom :</label>
                 <input type="text" placeholder="Votre Nom" id="name" name="name" value="<?php if (isset($reqUser['name'])) {echo $reqUser['name'];} ?>" />
                 <label for="username"> Votre Pseudo :</label>
@@ -31,20 +36,19 @@
                 <label for="bio"> Votre biographie :</label>
                 <input type="text" placeholder="Votre biographie" id="bio" name="bio" value="<?php if (isset($reqUser['bio'])) {echo $reqUser['bio'];} ?>" />
                 <div > 
-                    <img id="cover-preview" src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="cover image preview">
+                    <img class="preview-input cover-img" id="preview-input2" src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="cover image preview">
                 </div>
-                <label for="cover" class="labelInput"> Votre cover :</label>
-                <input type="file" id="cover" name="cover" class="imgInput" >
+                <label for="input-img2" class="label-input"> Votre cover :</label>
+                <input type="file" id="input-img2" name="cover" class="input-img" >
                 <div > 
-                    <img id="profile-preview" src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image preview">
+                    <img class="preview-input profile-img" id="preview-input3" src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image preview">
                 </div>
-                <label for="profile" class="labelInput"> Votre profil :</label>
-                <input type="file" id="profile" name="profile" class="imgInput" >
-                <button type="submit" name="updateProfile" id="sumbitUpdateProfile">Enregistrer</button>
+                <label for="input-img3" class="label-input"> Votre profil :</label>
+                <input type="file" id="input-img3" name="profile" class="input-img" >
+                <button type="submit" name="updateProfile" id="submitUpdateProfile" >Enregistrer</button>
                 <br/>
-                <?php if (isset($error)) {
-                echo '<font color="red">' . $error . '</font>';
-                } ?>
+                <div id="update-error"></div>
+               
             
             </form>
         </div>
@@ -57,13 +61,13 @@
             <p><?= $nbTweets ?> Tweets</p>
         </div>
         <div>
-            <img src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="profile image" class="coverImg"> 
-            <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profileImg"> 
+            <img src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="profile image" class="cover-img"> 
+            <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profile-img"> 
             <p> <?= $reqUser['name']?> </p>
             <p> @ <?= $reqUser['username']?> </p>
             <p> <?= $reqUser['bio']?> </p>
             <?php if($_SESSION['id'] === $_GET['id']){ ?>
-                <button class="modalBtn" id="modalBtn1">Editer le profil </button>
+                <button class="modalBtn" id="modalBtn2" >Editer le profil </button>
             <?php }else{ ?>
                 <?php if($isFollowed){?>
                 <p class="abo" user_id='<?= $reqUser['id']?>'>Abonné</p>

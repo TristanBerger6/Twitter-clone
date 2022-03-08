@@ -1,50 +1,35 @@
 <?php 
 
-require_once("models/User.php");
-require_once("models/Follow.php");
-require_once("models/Tweet.php");
+require_once("models/UsersManager.php");
+require_once("models/FollowsManager.php");
+require_once("models/TweetsManager.php");
 
-$user = new User();
-$follow = new Follow();
-$tweet = new Tweet();
+$usersManager = new UsersManager();
+$followsManager = new FollowsManager();
+$tweetsManager = new TweetsManager();
+
 
 
 if (isset($_SESSION['id'])){
 
-    if (isset($_GET['unfollow'])){
-        
-        $res= receive_fetch_body();
-        $id_to_unfollow = $res['user_to_unfollow']; 
-        $reqUnfollow = $follow->unfollow($_SESSION['id'],$id_to_unfollow);
-        send_fetch_response($id_to_unfollow);  
-    }
-    if (isset($_GET['follow'])){
-        
-        $res= receive_fetch_body();
-        $id_to_follow = $res['user_to_follow']; 
-        $reqFollow = $follow->follow($_SESSION['id'],$id_to_follow);
-        send_fetch_response($id_to_follow);  
-    }
-
-
     if (isset($_GET['id']) && !empty($_GET['id']) && isset($_GET['type']) && $_GET['type']=='followers' || $_GET['type']=='followed'){
 
-        $reqUser = $user->getUser($_GET['id']);
+        $reqUser = $usersManager->getUser($_GET['id']);
         $reqUser = $reqUser->fetch();
         $usersToDisplay = [];
        
 
         if($_GET['type']== 'followers'){
-            $reqFollowers = $user->getUsersFollowers($reqUser['id']);
+            $reqFollowers = $usersManager->getUsersFollowers($reqUser['id']);
             $users = $reqFollowers;
         }
         if($_GET['type']== 'followed'){
-            $reqFollowed = $user->getUsersFollowed($reqUser['id']);
+            $reqFollowed = $usersManager->getUsersFollowed($reqUser['id']);
             $users = $reqFollowed;
         }
 
         while($u = $users->fetch()){
-            $isFollowed = $follow->isFollowed($_SESSION['id'],$u['user_id']);
+            $isFollowed = $followsManager->isFollowed($_SESSION['id'],$u['user_id']);
             $isFollowed = $isFollowed->rowCount();
             $u['followed']= $isFollowed;
             array_push($usersToDisplay,$u);
