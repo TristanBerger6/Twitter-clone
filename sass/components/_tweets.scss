@@ -16,3 +16,38 @@
         }
     }
 }
+
+.tweet{
+    border : 1px solid black;
+    &__opt{
+        &__btn{
+            position : relative;
+        }
+        display : none;   
+        position : absolute; 
+        top : 0;
+        left : 0;
+        z-index: 1;
+        background-color: white;
+        border : 1px solid red;
+    }
+    &__reacts{
+        &__btn{
+            position : relative;
+        }
+        display : none;   
+        position : absolute; 
+        top : 0;
+        left : 0;
+        z-index: 1;
+        background-color: white;
+        border : 1px solid red;
+    }
+
+    &__like[liked = "1"]{
+        color : red;
+    }
+    &__retweet[retweeted = "1"]{
+        color : green;
+    }
+}

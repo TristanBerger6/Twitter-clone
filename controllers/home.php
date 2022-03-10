@@ -3,10 +3,16 @@
 require_once("models/UsersManager.php");
 require_once("models/FollowsManager.php");
 require_once("models/TweetsManager.php");
+require_once("models/LikesManager.php");
+require_once("models/RetweetsManager.php");
+require_once("models/CommentsManager.php");
 
 $tweetsManager = new TweetsManager();
 $usersManager = new UsersManager();
 $followsManager = new FollowsManager();
+$likesManager = new LikesManager();
+$retweetsManager = new RetweetsManager();
+$commentsManager = new CommentsManager();
 
 
 
@@ -40,10 +46,12 @@ if (isset($_SESSION['id'])){
         }
     }
 
+    // get All tweets to display
     $allTweets = [];
 
     $reqUserTweets = $tweetsManager->getTweets($reqUser['id']);
     $reqUserTweets = $reqUserTweets->fetchAll();
+ 
     foreach($reqUserTweets as $t){
         array_push($allTweets, $t);
     }
@@ -52,6 +60,7 @@ if (isset($_SESSION['id'])){
     foreach($reqFollowed as $followed){
         $reqFollowedTweets = $tweetsManager->getTweets($followed['id_followed']);
         $reqFollowedTweets = $reqFollowedTweets->fetchAll();
+        $reqFollowedInfos = $usersManager->getUser($followed['id_followed']);
         foreach($reqFollowedTweets as $t){
             array_push($allTweets, $t);
         }
@@ -64,9 +73,38 @@ if (isset($_SESSION['id'])){
         return ($a['date_hour_creation']> $b['date_hour_creation']) ? -1: 1;
     });
 
+    // Add user info, nb of like, nb of retweet, nb of comment on each tweet
+    $allTweetsWInfos = [];
 
-    var_dump($allTweets);
-   
+    foreach($allTweets as $t){
+        $reqUserNameUsername = $usersManager->getUserNameUsername($t['id_user']);
+        $reqUserNameUsername = $reqUserNameUsername->fetch();
+        $t['name'] = $reqUserNameUsername['name'];
+        $t['username'] = $reqUserNameUsername['username'];
+        $reqLikes = $likesManager->getTweetLikes($t['id']);
+        $t['nbLikes'] = $reqLikes->rowCount();
+        $reqRetweets = $retweetsManager->getRetweetsOfTweet($t['id']);
+        $t['nbRetweets'] = $reqRetweets->rowCount();
+        $reqComments = $commentsManager->getTweetComments($t['id']);
+        $t['nbComments'] = $reqComments->rowCount();
+        $isFollowed = $followsManager->isFollowed($_SESSION['id'],$t['id_user']);
+        $isFollowed = $isFollowed->rowCount();
+        $t['followed']= $isFollowed;
+        $isLiked = $likesManager->isLiked($_SESSION['id'],$t['id']);
+        $isLiked = $isLiked->rowCount();
+        $t['liked']= $isLiked;
+        $isRetweeted = $retweetsManager->isRetweeted($_SESSION['id'],$t['id']);
+        $isRetweeted = $isRetweeted->rowCount();
+        $t['retweeted']= $isRetweeted;
+        array_push($allTweetsWInfos, $t);
+        
+    }
+ 
+
+    
+
+
+  
 
 
 

@@ -52,6 +52,15 @@
                 case 'tweet':
                     require_once(ROOT.'controllers/handlers/handleTweet.php');
                     break;
+                case 'delete':
+                    require_once(ROOT.'controllers/handlers/handleDelete.php');
+                    break;
+                case 'like':
+                    require_once(ROOT.'controllers/handlers/handleLike.php');
+                    break;  
+                case 'retweet':
+                    require_once(ROOT.'controllers/handlers/handleRetweet.php');
+                    break;   
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");

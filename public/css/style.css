@@ -309,6 +309,40 @@ body {
   display: none;
 }
 
+.tweet {
+  border: 1px solid black;
+}
+.tweet__opt {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid red;
+}
+.tweet__opt__btn {
+  position: relative;
+}
+.tweet__reacts {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid red;
+}
+.tweet__reacts__btn {
+  position: relative;
+}
+.tweet__like[liked="1"] {
+  color: red;
+}
+.tweet__retweet[retweeted="1"] {
+  color: green;
+}
+
 .nav {
   position: fixed;
   display: flex;

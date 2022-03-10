@@ -53,6 +53,11 @@
             $req->execute([$id]);
             return $req;
         }
+        public function getUserNameUsername($id){
+            $req = $this->db->prepare('SELECT name,username FROM users WHERE id = ?');
+            $req->execute([$id]);
+            return $req;
+        }
 
 
 
