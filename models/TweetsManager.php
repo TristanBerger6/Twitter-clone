@@ -14,10 +14,20 @@
             $req->execute([$id_user]);
             return $req;
         }
+        public function getTweet($id_tweet){
+            $req = $this->db->prepare('SELECT * FROM tweets WHERE id = ?');
+            $req->execute([$id_tweet]);
+            return $req;
+        }
 
         public function newTweet($id_user,$content,$img){
             $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,date_hour_creation) VALUES(?,?,?,false,0,NOW())');
             $req->execute([$id_user,$content,$img]);
+            return $req;
+        }
+        public function newQuotedTweet($id_user,$content,$img,$quoted_id){
+            $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,date_hour_creation) VALUES(?,?,?,true,?,NOW())');
+            $req->execute([$id_user,$content,$img,$quoted_id]);
             return $req;
         }
 

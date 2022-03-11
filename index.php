@@ -61,6 +61,9 @@
                 case 'retweet':
                     require_once(ROOT.'controllers/handlers/handleRetweet.php');
                     break;   
+                case 'quote':
+                    require_once(ROOT.'controllers/handlers/handleQuote.php');
+                    break;  
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");

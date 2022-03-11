@@ -14,6 +14,11 @@
             $req->execute([$id_tweet]);
             return $req;
         }
+        public function getUserRetweets($id_user){
+            $req = $this->db->prepare('SELECT * FROM retweets WHERE id_user = ?');
+            $req->execute([$id_user]);
+            return $req;
+        }
         public function isRetweeted($id_user,$id_tweet){
             $req = $this->db->prepare('SELECT * FROM retweets WHERE id_user = ? AND id_original_tweet = ?');
             $req->execute([$id_user,$id_tweet]);

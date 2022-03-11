@@ -24,9 +24,9 @@
     <?php require('includes/nav.php') ?>
 
     <?php if($_SESSION['id'] === $_GET['id']){ ?>
-    <div class="modal" id="modal2">
+    <div class="modal modal2" >
         <div class="modal__content">
-            <span class="modalClose" id="modalClose2">close</span>
+            <span class="modalClose modalClose2" >close</span>
             <br/>
             <form  method="POST" action="" id="formUpdate" enctype="multipart/form-data" >
                 <label for="name"> Votre Nom :</label>
@@ -67,7 +67,7 @@
             <p> @ <?= $reqUser['username']?> </p>
             <p> <?= $reqUser['bio']?> </p>
             <?php if($_SESSION['id'] === $_GET['id']){ ?>
-                <button class="modalBtn" id="modalBtn2" >Editer le profil </button>
+                <button class="modalBtn modalBtn2"  >Editer le profil </button>
             <?php }else{ ?>
                 <?php if($isFollowed){?>
                 <p class="abo" user_id='<?= $reqUser['id']?>'>Abonné</p>

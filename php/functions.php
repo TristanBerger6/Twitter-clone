@@ -101,5 +101,34 @@
    die(json_encode(['value' => 1,'error' => null,'data' => $decoded, ]));
 }
 
+function get_time_ago_fr( $time )
+{
+
+   $now = new DateTime('now',new DateTimeZone('Europe/Paris'));
+   $ago = new DateTime($time,new DateTimeZone('Europe/Paris'));
+   $diff = $now->diff($ago);
+
+   $diff->w = floor($diff->d / 7);
+
+   $string = array(
+       'y' => 'year',
+       'm' => 'month',
+       'w' => 'week',
+       'd' => 'day',
+       'h' => 'hour',
+       'i' => 'minute',
+       's' => 'second',
+   );
+   foreach ($string as $k => &$v) {
+       if ($diff->$k) {
+           $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+       } else {
+           unset($string[$k]);
+       }
+   }
+
+   if (!$full) $string = array_slice($string, 0, 1);
+   return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
 
 ?>

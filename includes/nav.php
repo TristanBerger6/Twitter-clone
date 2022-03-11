@@ -11,12 +11,12 @@
     <?php echo "<a href='index.php?page=profile&id=".$_SESSION['id']."'> Profil </a>" ?>
     <a href='index.php?page=settings'> Paramètres </a>
     <a href='index.php?page=logout'> Déconnexion </a>
-    <button class="modalBtn" id="modalBtn1" >Tweeter </button>
+    <button class="modalBtn modalBtn1"  >Tweeter </button>
 </div>
 
-<div class="modal" id="modal1">
+<div class="modal modal1" >
         <div class="modal__content">
-            <span class="modalClose" id="modalClose1">close</span>
+            <span class="modalClose modalClose1" >close</span>
             <br/>
             <div class="postTweet">
             <form action='' method="post" id="formPostTweet"  enctype='multipart/form-data'>

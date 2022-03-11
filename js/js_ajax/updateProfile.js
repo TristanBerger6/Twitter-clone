@@ -6,9 +6,9 @@ import { postForm, postData } from "../functions.js";
 
 
 /****************** Elt Query ***************************/
-let modal = document.getElementById('modal2');
-let modalBtn = document.getElementById('modalBtn2');
-let modalClose = document.getElementById('modalClose2');
+let modal = document.getElementsByClassName('modal2')[0];
+let modalBtn = document.getElementsByClassName('modalBtn2')[0];
+let modalClose = document.getElementsByClassName('modalClose2')[0];
 
 let EltSubmit = document.getElementById('submitUpdateProfile');
 let EltPreviewProfile = document.getElementById('preview-input3');
@@ -69,8 +69,13 @@ modalClose.addEventListener('click',(e)=>{
 });
 
 document.addEventListener('click',(e) => {
-    let targetId = e.target.id;
-    let check = targetId.replace(/[0-9]/g, '');
+    let check = null;
+    let targetClassList = e.target.classList;
+        for(let i=0; i<targetClassList.length; i++){
+            if(targetClassList[i].match(/\d+/)){
+                check = targetClassList[i].replace(/[0-9]/g, '');
+            }
+        }
     if (check === 'modal') {
         EltPreviewProfile.src = savePreviewProfile;
         EltPreviewCover.src = savePreviewCover;
