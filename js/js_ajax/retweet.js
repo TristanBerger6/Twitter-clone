@@ -45,21 +45,18 @@
         if(EltsRetweet[i].getAttribute('id_tweet') == idTweet && idEltRetweet != idEltRetweetBtn ){
             originalRetweet = EltsRetweet[i];
             idOriginalRetweet = originalRetweet.id.replace('tweet__retweet','');
-            console.log(idOriginalRetweet);
         }
     }
     for (let i =0; i<EltsRetweetBtn.length; i++){
         let idEltRetweetBtn = EltsRetweetBtn[i].id.replace('tweet__retweet-btn','');
         if(idOriginalRetweet == idEltRetweetBtn){
             originalRetweetBtn = EltsRetweetBtn[i];
-            console.log(idEltRetweetBtn);
             } 
         }
         for (let i =0; i<EltsNb.length; i++){
         let idEltNb = EltsNb[i].id.replace('tweet__retweet-nb','');
         if(idEltNb == idOriginalRetweet){
             originalNb = EltsNb[i];
-            console.log(idEltNb);
         } 
     }
 

@@ -19,29 +19,36 @@
 
 .tweet{
     border : 1px solid black;
+   
     &__opt{
         &__btn{
             position : relative;
+            z-index : 2;
         }
         display : none;   
         position : absolute; 
         top : 0;
         left : 0;
-        z-index: 1;
+        z-index: 3;
         background-color: white;
         border : 1px solid red;
     }
     &__reacts{
         &__btn{
             position : relative;
+            z-index : 2;
         }
         display : none;   
         position : absolute; 
         top : 0;
         left : 0;
-        z-index: 1;
+        z-index: 3;
         background-color: white;
         border : 1px solid red;
+    }
+    &__like{
+        position : relative;
+        z-index : 1;
     }
 
     &__like[liked = "1"]{

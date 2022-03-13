@@ -78,8 +78,8 @@ if (isset($_SESSION['id'])){
         foreach($reqFollowedRetweets as $rt){
             $retweeterName = $usersManager->getUser($rt['id_user'])->fetch()['name'];
             $reqOriginalTweet = $tweetsManager->getTweet($rt['id_original_tweet'])->fetch();
-            $reqOriginalTweet['retweeter'] = ''.$retweeterName.'a retweeté';
-            $reqOriginalTweet['retweeter'] = $rt['id_user'];
+            $reqOriginalTweet['retweeter'] = ''.$retweeterName.' a retweeté';
+            $reqOriginalTweet['retweeter_id'] = $rt['id_user'];
             $reqOriginalTweet['date'] = $rt['date_hour_creation'];
             array_push($allTweets, $reqOriginalTweet);
         }
@@ -129,6 +129,7 @@ if (isset($_SESSION['id'])){
         }
         array_push($allTweetsWInfos, $t);  
     }
+    //var_dump($allTweetsWInfos);
     
  
 

@@ -34,6 +34,9 @@
                 case 'logout':
                     require_once(ROOT.'controllers/logout.php');
                     break;
+                case 'status':
+                    require_once(ROOT.'controllers/status.php');
+                    break;
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");
