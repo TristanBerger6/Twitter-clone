@@ -46,6 +46,10 @@
         background-color: white;
         border : 1px solid red;
     }
+    &__comments{
+        position : relative;
+        z-index : 1;
+    }
     &__like{
         position : relative;
         z-index : 1;
@@ -56,5 +60,8 @@
     }
     &__retweet[retweeted = "1"]{
         color : green;
+    }
+    .text-mentions{
+        background : grey;
     }
 }

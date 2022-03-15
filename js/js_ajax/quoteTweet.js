@@ -1,25 +1,26 @@
 /**
  *  Handle quote from button in each tweet. quoting will reload the page unless an error is detected by handleQuote.php. In that case
  *  an error will appear in the modal without reloading the page.
+ *  Note that there is only 1 modal handling quotes for all the tweets. It will be updated with the right informations thanks to this file.
  *  
 */
 import { postForm, postData } from "../functions.js";
 
 
 /****************** Elt Query ***************************/
-let modalClose = document.getElementsByClassName('modalClose2')[0];
+let modalClose = document.getElementsByClassName('modalClose9')[0];
 
-// Elt of the tweet itself
+// Elt of the tweet we are going to post
 let EltSubmit = document.getElementById('quoteTweet');
-let EltPreviewImg = document.getElementById('preview-input3');
-let EltInputImg = document.getElementById('input-img3');
-let EltText = document.getElementById('tweet-text3');
+let EltPreviewImg = document.getElementById('preview-input9');
+let EltInputImg = document.getElementById('input-img9');
+let EltText = document.getElementById('tweet-text9');
 let EltForm = document.getElementById('formQuoteTweet');
 let EltError = document.getElementById('quoteTweet-error');
-let EltCount =document.getElementById('count-text3');
-let EltClosePreview = document.getElementById('close-preview3')
+let EltCount =document.getElementById('count-text9');
+let EltClosePreview = document.getElementById('close-preview9')
 
-//Elt to get from the quoted tweet
+//Elt needed from the original tweet to be able to display them in the modal
 let EltTweetProfile = null;
 let EltTweetName = null;
 let EltTweetUsername = null;
@@ -27,7 +28,7 @@ let EltTweetDate = null;
 let EltTweetContent = null;
 let EltTweetImg = null;
 
-//Elt to display from the quoted tweet in the new tweet
+//Elt displaying the original tweet
 let EltQuotedProfile = document.getElementById("quotedTweet__profile");
 let EltQuotedName = document.getElementById("quotedTweet__name");
 let EltQuotedUsername = document.getElementById("quotedTweet__username");
@@ -36,7 +37,7 @@ let EltQuotedContent = document.getElementById("quotedTweet__content");
 let EltQuotedImg = document.getElementById("quotedTweet__img");
 let EltQuotedId = document.getElementById("quotedTweet__id");
 
-// display the proper tweet in the quoted one
+// display the original tweet in the quoted one
 let EltsModalBtn = document.getElementsByClassName('modalBtn');
 
 for(let i =0; i<EltsModalBtn.length; i++){

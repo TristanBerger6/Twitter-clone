@@ -37,6 +37,9 @@
                 case 'status':
                     require_once(ROOT.'controllers/status.php');
                     break;
+                case 'notifs':
+                    require_once(ROOT.'controllers/notifs.php');
+                    break;
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");
@@ -67,6 +70,9 @@
                 case 'quote':
                     require_once(ROOT.'controllers/handlers/handleQuote.php');
                     break;  
+                case 'comment':
+                    require_once(ROOT.'controllers/handlers/handleComment.php');
+                    break; 
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");

@@ -35,10 +35,12 @@
                     <p><a href='index.php?page=profile&id=<?= $u['user_id']?>'> <?= $u['name']?> </a></p>
                     <p>@<?= $u['username']?></p>
                     <p><?= $u['bio']?></p>
+                    <?php if($u['user_id'] != $_SESSION['id']){ ?>
                     <?php if($u['followed']){?>
                     <p class="abo" user_id='<?= $u['user_id']?>'>Abonné</p>
                     <?php }else{ ?>
                     <p class="noabo" user_id='<?= $u['user_id']?>'>Suivre</p>
+                    <?php } ?>
                     <?php } ?>
 
                     <br/>

@@ -21,14 +21,22 @@
         }
 
         public function newTweet($id_user,$content,$img){
-            $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,date_hour_creation) VALUES(?,?,?,false,0,NOW())');
+            $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,false,0,false,0,NOW())');
             $req->execute([$id_user,$content,$img]);
-            return $req;
+            $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
+            return $reqId;
         }
         public function newQuotedTweet($id_user,$content,$img,$quoted_id){
-            $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,date_hour_creation) VALUES(?,?,?,true,?,NOW())');
+            $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,true,?,false,0,NOW())');
             $req->execute([$id_user,$content,$img,$quoted_id]);
-            return $req;
+            $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
+            return $reqId;
+        }
+        public function newComment($id_user,$content,$img,$commented_id){
+            $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,false,0,true,?,NOW())');
+            $req->execute([$id_user,$content,$img,$commented_id]);
+            $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
+            return $reqId;
         }
 
         // get all the tweets of the followed people
@@ -37,14 +45,33 @@
             $req->execute([$id_user]);
             return $req;
         }
+         // get all comments of a tweet
+         public function getTweetComments($id_tweet){
+            $req = $this->db->prepare('SELECT * FROM tweets WHERE commentof_id = ?');
+            $req->execute([$id_tweet]);
+            return $req;
+        }
 
         public function deleteTweet($id){
-            $req = $this->db->prepare('DELETE FROM tweets WHERE id = ? ');
+            $req = $this->db->prepare('DELETE FROM tweets WHERE id = ?');
             $req2 = $this->db->prepare('DELETE FROM likes WHERE id_tweet = ? ');
             $req3 = $this->db->prepare('DELETE FROM retweets WHERE id_original_tweet = ? ');
             $req->execute([$id]);
             $req2->execute([$id]);
             $req3->execute([$id]);
+            $reqComments = $this->db->prepare('SELECT * FROM tweets WHERE commentof_id = ?');
+            $reqComments->execute([$id]);
+            $reqMentions = $this->db->prepare('DELETE FROM mentions WHERE id_tweet = ?');
+            $reqMentions->execute([$id]);
+            foreach($reqComments as $com){
+                $this->deleteTweet($com['id']);
+            }
+            $reqQuotes = $this->db->prepare('SELECT * FROM tweets WHERE quoted_id = ?');
+            $reqQuotes->execute([$id]);
+            foreach($reqQuotes as $quotes){
+                $this->deleteTweet($quotes['id']);
+            }
+            
             return $req;
         }
       

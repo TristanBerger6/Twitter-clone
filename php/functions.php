@@ -131,4 +131,38 @@ function get_time_ago_fr( $time )
    return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 
+/**
+ * Look for mentions @username in a string
+* @param string $text
+* @param bool $at, if $at == true, keep the @ in the returned strings
+* @return array $mentions, array with all the mentioned names
+*/
+function get_mentions_from_string( $text, $at = false )
+{
+
+   preg_match('/^@[^\s]+/', $text, $mentionAtStart);
+   preg_match_all('/\s@[^\s]+/', $text, $mentionsInText);
+   $mentions = [];
+   if($mentionAtStart){
+      if($at){
+            array_push($mentions,$mentionAtStart[0]);
+      }else{
+            array_push($mentions,str_replace('@','',$mentionAtStart[0]));
+      }
+   }
+   if($mentionsInText){
+      foreach($mentionsInText[0] as $men){
+         if($at){
+               array_push($mentions,str_replace(' ','',$men));
+         }else{
+               array_push($mentions,str_replace([' ','@'],'',$men));
+         }
+      }
+   }
+   return $mentions;
+}
+
+
+
+
 ?>

@@ -6,15 +6,15 @@ import { postForm, postData } from "../functions.js";
 
 
 /****************** Elt Query ***************************/
-let modal = document.getElementsByClassName('modal2')[0];
-let modalBtn = document.getElementsByClassName('modalBtn2')[0];
-let modalClose = document.getElementsByClassName('modalClose2')[0];
+let modal = document.getElementsByClassName('modal6')[0];
+let modalBtn = document.getElementsByClassName('modalBtn6')[0];
+let modalClose = document.getElementsByClassName('modalClose6')[0];
 
 let EltSubmit = document.getElementById('submitUpdateProfile');
-let EltPreviewProfile = document.getElementById('preview-input3');
-let EltPreviewCover = document.getElementById('preview-input2');
-let EltInputProfile = document.getElementById('input-img3');
-let EltInputCover = document.getElementById('input-img2');
+let EltPreviewProfile = document.getElementById('preview-input7');
+let EltPreviewCover = document.getElementById('preview-input6');
+let EltInputProfile = document.getElementById('input-img7');
+let EltInputCover = document.getElementById('input-img6');
 let EltBio = document.getElementById('bio');
 let EltUsername = document.getElementById('username');
 let EltName = document.getElementById('name');

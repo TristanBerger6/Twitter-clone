@@ -62,7 +62,13 @@ if (isset($_SESSION['id'])){
         $username = htmlspecialchars($_POST['username']);
         $usernameLength = strlen($username);
         if($usernameLength <= 40){
-            $updateUsername = true;
+            //check if username has a space
+            $woSpace = str_replace(' ','',$username);
+            if($woSpace == $username){
+                $updateUsername = true;
+            }else{
+                $error .='Le pseudo ne doit pas contenir d\'espaces <br/>';
+            }   
         }else{
             $error .= 'Le pseudo ne doit pas dépasser 40 caractères <br/>';
         }

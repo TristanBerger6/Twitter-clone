@@ -19,8 +19,13 @@
             $req->execute([$id_user,$id_tweet]);
             return $req;
         }
+        public function getUserLikes($id_user){
+            $req = $this->db->prepare('SELECT * FROM likes WHERE id_user = ? ');
+            $req->execute([$id_user]);
+            return $req;
+        }
         public function likeTweet($id_user, $id_tweet){
-            $req = $this->db->prepare('INSERT INTO likes(id_user,id_tweet,id_comment,id_reply,date_hour_creation) VALUES(?,?,0,0,NOW())');
+            $req = $this->db->prepare('INSERT INTO likes(id_user,id_tweet,date_hour_creation) VALUES(?,?,NOW())');
             $req->execute([$id_user,$id_tweet]);
             return $req;
         }
