@@ -26,9 +26,10 @@
         <div class="postTweet">
             <form action='' method="post" enctype='multipart/form-data'>
                 <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profile-img"> 
-                <div style="position:relative">
-                <textarea name="tweet-text" class="tweet-text" id="tweet-text2" rows="8" cols="80" placeholder="Quoi de neuf ?"></textarea>
-                <div class="text-mentions" id="text-mentions2" style="z-index:99;position:abolute;bottom:0;left:0;transform:translateY(-100%)"> Allo </div>
+                <div style="position : relative">
+                <textarea name="tweet-text" class="tweet-text sr-only" id="tweet-text2" rows="8" cols="80" placeholder="Quoi de neuf ?"></textarea>
+                <div class="contenteditable" id="contenteditable2" contenteditable> </div>
+                <ul class="text-mentions" id="text-mentions2" style="z-index:99;position:absolute;bottom:0;left:0;transform:translateY(100%)"> </ul>
                 </div>
                 <span class="count-text" id="count-text2">140</span>
                 <span class="close-preview" id="close-preview2"> close preview</span>

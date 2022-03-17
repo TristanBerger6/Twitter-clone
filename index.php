@@ -73,6 +73,9 @@
                 case 'comment':
                     require_once(ROOT.'controllers/handlers/handleComment.php');
                     break; 
+                case 'mention':
+                    require_once(ROOT.'controllers/handlers/handleMention.php');
+                    break; 
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");

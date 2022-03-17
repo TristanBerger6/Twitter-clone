@@ -64,6 +64,11 @@
             $req->execute([$username]);
             return $req;
         }
+        public function getUserUsernameStartingWith($string){
+            $req = $this->db->prepare('SELECT * FROM users WHERE username LIKE ?');
+            $req->execute([$string]);
+            return $req;
+        }
 
         
        

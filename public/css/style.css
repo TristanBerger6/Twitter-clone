@@ -352,8 +352,18 @@ body {
 .tweet__retweet[retweeted="1"] {
   color: green;
 }
-.tweet .text-mentions {
-  background: grey;
+
+.contenteditable {
+  -moz-appearance: textfield-multiline;
+  -webkit-appearance: textarea;
+  border: 1px solid gray;
+  font: medium -moz-fixed;
+  font: -webkit-small-control;
+  height: 100px;
+  overflow: auto;
+  padding: 2px;
+  resize: both;
+  width: 100%;
 }
 
 .nav {
