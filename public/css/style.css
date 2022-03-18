@@ -366,6 +366,10 @@ body {
   width: 100%;
 }
 
+.mentions {
+  color: blue;
+}
+
 .nav {
   position: fixed;
   display: flex;

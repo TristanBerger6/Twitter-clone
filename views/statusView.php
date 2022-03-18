@@ -95,7 +95,7 @@
                             <?php } ?>
                 </div>
                 <?php } ?>
-                <div class="tweet__comments modalBtn modalBtn3" commented_i="<?= $i ?>"  commented_id="<?= $tweet['id']?>"> <i class="far fa-comment" aria-hidden="true"></i><p><?= $tweet['nbComments'] ?></p></div>
+                <div class="tweet__comments modalBtn modalBtn9" commented_i="<?= $i ?>"  commented_id="<?= $tweet['id']?>"> <i class="far fa-comment" aria-hidden="true"></i><p><?= $tweet['nbComments'] ?></p></div>
                 <div class="tweet__reacts__btn" id="tweet__reacts__btn<?= $i ?>" >
                     <div class="tweet__retweet" id="tweet__retweet<?= $i ?>" retweeted="<?= $tweet['retweeted']?>"  id_tweet=<?= $tweet['id']?> >
                         <i class="fas fa-retweet"  aria-hidden="true"></i>
@@ -104,7 +104,7 @@
                     <div class="tweet__reacts" id="tweet__reacts<?= $i ?>"> 
                         <div class="tweet__reacts-back" style="position:fixed;width:100vw;height:100vh;top:0;left:0;z-index:-1"></div>
                         <div class="tweet__retweet-btn" id="tweet__retweet-btn<?= $i ?>"><i class="fas fa-retweet " aria-hidden="true"></i> <p><?= $tweet['retweeted'] ? 'Annuler le retweet' : 'Retweeter'?></p> </div>
-                        <div quoted_i="<?= $i ?>"  quoted_id="<?= $tweet['id']?>" class="modalBtn modalBtn2"><i class="fas fa-retweet" aria-hidden="true"></i> <p>Citer le tweet</p>  </div>
+                        <div quoted_i="<?= $i ?>"  quoted_id="<?= $tweet['id']?>" class="modalBtn modalBtn8"><i class="fas fa-retweet" aria-hidden="true"></i> <p>Citer le tweet</p>  </div>
                     
                     </div>
                 </div>
