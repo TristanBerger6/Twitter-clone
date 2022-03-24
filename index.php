@@ -40,6 +40,9 @@
                 case 'notifs':
                     require_once(ROOT.'controllers/notifs.php');
                     break;
+                case 'explore':
+                    require_once(ROOT.'controllers/explore.php');
+                    break;
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");

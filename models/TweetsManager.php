@@ -14,12 +14,35 @@
             $req->execute([$id_user]);
             return $req;
         }
+        // get all the tweets containing the string
+        public function getTweetContentQuery($string){
+            $string = "%".$string."%";
+            $req = $this->db->prepare('SELECT * FROM tweets WHERE content LIKE ?');
+            $req->execute([$string]);
+            return $req;
+        }
+        //get all the tweets quoted from this tweet
+        public function getQuotedFromTweet($id_tweet){
+            $req = $this->db->prepare('SELECT * FROM tweets WHERE quoted_id = ?');
+            $req->execute([$id_tweet]);
+            return $req;
+        }
+        //get all the comments from this tweet
+        public function getCommentsOfTweet($id_tweet){
+            $req = $this->db->prepare('SELECT * FROM tweets WHERE commentof_id = ?');
+            $req->execute([$id_tweet]);
+            return $req;
+        }
+
+
+
+
+
         public function getTweet($id_tweet){
             $req = $this->db->prepare('SELECT * FROM tweets WHERE id = ?');
             $req->execute([$id_tweet]);
             return $req;
         }
-
         public function newTweet($id_user,$content,$img){
             $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,false,0,false,0,NOW())');
             $req->execute([$id_user,$content,$img]);

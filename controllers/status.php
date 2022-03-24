@@ -31,7 +31,11 @@ if (isset($_SESSION['id'])){
                     if($rt['id_original_tweet'] == $_GET['id']){
                         $tweet['retweeter_id'] = $_GET['retweeter'];
                         $name = $usersManager->getUser($_GET['retweeter'])->fetch()['name'];
-                        $tweet['retweeter'] = ''.$name.' a retweeté';
+                        if($_GET['retweeter']== $_SESSION['id']){
+                            $tweet['retweeter'] = 'Vous avez retweeté';
+                        }else{
+                            $tweet['retweeter'] = $name.' a retweeté';
+                        }
                     }
                 }
             }
@@ -59,8 +63,10 @@ if (isset($_SESSION['id'])){
                     if($reqId){
                         $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
                         if(strpos($t['content'],$reqId) == false){
-                            $t['content']= preg_replace('/\s'.$mentionUsername.'+/', $replace, $t['content']);
-                            $t['content']= preg_replace('/^'.$mentionUsername.'+/', $replace, $t['content']);
+                            $t['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $t['content']);
+                            $t['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $t['content']);
+                            $t['content']= preg_replace('/\s'.$mentionUsername.'$/', $replace, $t['content']);
+                            $t['content']= preg_replace('/^'.$mentionUsername.'$/', $replace, $t['content']);
                         }
                        
                     }
@@ -157,8 +163,10 @@ if (isset($_SESSION['id'])){
                     if($reqId){
                         $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
                         if(strpos($t['content'],$reqId) == false){
-                            $t['content']= preg_replace('/\s'.$mentionUsername.'+/', $replace, $t['content']);
-                            $t['content']= preg_replace('/^'.$mentionUsername.'+/', $replace, $t['content']);
+                            $t['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $t['content']);
+                            $t['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $t['content']);
+                            $t['content']= preg_replace('/\s'.$mentionUsername.'$/', $replace, $t['content']);
+                            $t['content']= preg_replace('/^'.$mentionUsername.'$/', $replace, $t['content']);
                         }
                        
                     }

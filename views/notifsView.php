@@ -27,8 +27,30 @@
         <br/>
         <br/>
        
-        <div>
-           
+        <div  class='homeContainer'>
+           <?php foreach($allNotifs as $notif){?>
+                <?php if($notif['type'] == 'follow'){ ?>
+                    <a href="index.php?page=profile&id=<?= $notif['foreign_id']?>?>">
+                <?php }else{ ?>
+                    <a href="index.php?page=status&id=<?= $notif['id_tweet']?><?= $notif['type']=='retweet' ? '&retweeter='.$notif['foreign_id'].'':  '' ?>">
+                <?php } ?>
+                    <?php if($notif['type'] === 'retweet' || $notif['type'] === 'quote') { ?>
+                        <i class="fas fa-retweet"  aria-hidden="true" style='color : green'></i>
+                    <?php }else if($notif['type'] === 'follow' || $notif['type'] === 'mention'){ ?>
+                        <i class="fas fa-user"  aria-hidden="true" style='color : black'></i>
+                    <?php }else if($notif['type'] === 'comment'){ ?>
+                        <i class="far fa-comment" aria-hidden="true" style='color : black'></i>
+                    <?php }else{ ?>
+                        <i class="fas fa-heart" aria-hidden="true" style='color : red'></i>
+                    <?php } ?>
+                    <img src='./public/img/profile/<?= $notif['foreign_profile']?>' alt="profile image of <?= $notif['foreign_name'] ?>" class="profile-img">
+                    <p><?= $notif['foreign_name']?></p>
+                    <p><?= $notif['type'] ?></p>
+                    <p><?= $notif['date']?></p>
+                </a>
+                <br/>
+
+            <?php } ?>
 
         </div>
 

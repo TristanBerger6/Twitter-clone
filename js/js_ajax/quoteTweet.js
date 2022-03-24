@@ -8,17 +8,18 @@ import { postForm, postData } from "../functions.js";
 
 
 /****************** Elt Query ***************************/
-let modalClose = document.getElementsByClassName('modalClose9')[0];
+let modalClose = document.getElementsByClassName('modalClose8')[0];
 
 // Elt of the tweet we are going to post
 let EltSubmit = document.getElementById('quoteTweet');
-let EltPreviewImg = document.getElementById('preview-input9');
-let EltInputImg = document.getElementById('input-img9');
-let EltText = document.getElementById('tweet-text9');
+let EltPreviewImg = document.getElementById('preview-input8');
+let EltInputImg = document.getElementById('input-img8');
+let EltText = document.getElementById('tweet-text8');
+let EltContenteditable = document.getElementById('contenteditable8');
 let EltForm = document.getElementById('formQuoteTweet');
 let EltError = document.getElementById('quoteTweet-error');
-let EltCount =document.getElementById('count-text9');
-let EltClosePreview = document.getElementById('close-preview9')
+let EltCount =document.getElementById('count-text8');
+let EltClosePreview = document.getElementById('close-preview8')
 
 //Elt needed from the original tweet to be able to display them in the modal
 let EltTweetProfile = null;
@@ -92,6 +93,7 @@ modalClose.addEventListener('click',(e)=>{
     EltInputImg.value="";
     EltText.value = "";
     EltPreviewImg.style.display = 'none';
+    EltContenteditable.innerHTML = "";
     EltError.innerHTML = "";
     EltCount.innerHTML = '140';
     EltClosePreview.style.display = 'none';
@@ -109,6 +111,7 @@ document.addEventListener('click',(e) => {
         EltInputImg.value="";
         EltPreviewImg.style.display = 'none';
         EltText.value = "";
+        EltContenteditable.innerHTML = "";
         EltError.innerHTML = "";
         EltCount.innerHTML = '140';
         EltClosePreview.style.display = 'none';

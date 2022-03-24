@@ -14,5 +14,11 @@
             $req->execute([$id_from,$id_for,$id_tweet]);
             return $req;
         }
+        // get all the mentions of the user 
+        public function getUserMentions($id_for){
+            $req = $this->db->prepare('SELECT * FROM mentions WHERE mentionfor_id = ?');
+            $req->execute([$id_for]);
+            return $req;
+        }
         
     }

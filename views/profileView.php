@@ -208,7 +208,11 @@
                 <div class="postTweet">
                     <form action='' method="post" id="formQuoteTweet"  enctype='multipart/form-data'>
                     <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profile-img"> 
-                    <textarea name="tweet-text" class="tweet-text" id="tweet-text8" rows="8" cols="80" placeholder="Quoi de neuf ?"></textarea>
+                    <div style="position : relative">
+                    <textarea name="tweet-text" class="tweet-text sr-only" id="tweet-text8" rows="8" cols="80" placeholder="Tweeter votre réponse"></textarea>
+                    <div class="contenteditable" id="contenteditable8" contenteditable> </div>
+                    <ul class="text-mentions" id="text-mentions8" style="z-index:99;position:absolute;bottom:0;left:0;transform:translateY(100%)"> </ul>
+                    </div>
                     <div class="tweet" id="quotedTweet">
                         <img src='' alt="" class="profile-img" id="quotedTweet__profile"> 
                         <p id="quotedTweet__name"> </p>
@@ -248,7 +252,11 @@
                         <img src='' alt="" class="profile-img" id="commentedTweet__img"> 
                     </div>
                     <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profile-img"> 
-                    <textarea name="tweet-text" class="tweet-text" id="tweet-text9" rows="8" cols="80" placeholder="Tweeter votre réponse"></textarea>
+                    <div style="position : relative">
+                    <textarea name="tweet-text" class="tweet-text sr-only" id="tweet-text9" rows="8" cols="80" placeholder="Tweeter votre réponse"></textarea>
+                    <div class="contenteditable" id="contenteditable9" contenteditable> </div>
+                    <ul class="text-mentions" id="text-mentions9" style="z-index:99;position:absolute;bottom:0;left:0;transform:translateY(100%)"> </ul>
+                    </div>
                     <span class="count-text" id="count-text9">140</span>
                     <span class="close-preview" id="close-preview9"> close preview</span>
                     <img class="preview-input img-tweet-preview" id="preview-input9" src='' alt="tweet image preview">
