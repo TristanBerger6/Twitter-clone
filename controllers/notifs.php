@@ -114,6 +114,7 @@ if (isset($_SESSION['id'])){
         }
     }
 
+    // sort by date
     uasort($allNotifs,function($a,$b){
         if ($a == $b){
             return 0;

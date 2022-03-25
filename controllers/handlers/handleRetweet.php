@@ -1,12 +1,13 @@
 <?php
- 
+ /**
+ * receive ajax call to retweet a tweet. 
+ */
 
  require_once("models/RetweetsManager.php");
  
  $retweetsManager = new RetweetsManager();
  
  if (isset($_SESSION['id'])){
-     // AJAX ask for follow or unfollow 
      if (isset($_GET['unretweet'])){
              
          $res= receive_fetch_body();

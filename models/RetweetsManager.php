@@ -8,7 +8,7 @@
             $this->getConnection();
         }
         
-        // get all Likes of a tweet
+ 
         public function getRetweetsOfTweet($id_tweet){
             $req = $this->db->prepare('SELECT * FROM retweets WHERE id_original_tweet = ?');
             $req->execute([$id_tweet]);

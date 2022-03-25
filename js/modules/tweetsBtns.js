@@ -1,3 +1,7 @@
+/**
+ *  Open and remove tweet options on click( button to follow, unfollow the user or delete a tweet)
+ *  Open and remove tweet reacts on click( button to retweet and quote tweet)
+ */
 
 export function useTweetsOpt(){
     let EltsOpt = document.getElementsByClassName('tweet__opt');
@@ -83,3 +87,4 @@ export function useTweetsReacts(){
         }
     }
 }
+

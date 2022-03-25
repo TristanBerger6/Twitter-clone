@@ -3,6 +3,7 @@
     define('ROOT', str_replace('index.php','',$_SERVER['SCRIPT_FILENAME']));
     setlocale(LC_TIME,'fr');
     require_once(ROOT.'php/functions.php');
+    require_once(ROOT."php/utils.php");
     // On appelle le modèle et le contrôleur principaux
    
     

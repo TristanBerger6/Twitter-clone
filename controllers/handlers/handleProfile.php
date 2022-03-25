@@ -1,15 +1,13 @@
 <?php 
+/**
+ * receive ajax call with formData to update user profile. 
+ */
 
 require_once("models/UsersManager.php");
-require_once("models/FollowsManager.php");
-require_once("models/TweetsManager.php");
-
 $usersManager = new UsersManager();
-$followsManager = new FollowsManager();
-$tweetsManager = new TweetsManager();
+
 
 if (isset($_SESSION['id'])){
-    // if the user whose connected udapte his profile
     if(isset($_GET['updateProfile'])){
         $error='';
         $updateProfile = false;

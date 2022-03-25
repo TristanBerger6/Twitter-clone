@@ -1,13 +1,13 @@
 <?php
- 
+ /**
+ * receive ajax call to like or unlike a tweet. 
+ */
  
  require_once("models/LikesManager.php");
  
-
  $likesManager = new LikesManager();
  
  if (isset($_SESSION['id'])){
-     // AJAX ask for follow or unfollow 
      if (isset($_GET['unlike'])){
              
          $res= receive_fetch_body();

@@ -1,18 +1,18 @@
 <?php 
+/**
+ * receive ajax call with formData to quote a tweet. 
+ */
 
 require_once("models/UsersManager.php");
-require_once("models/FollowsManager.php");
 require_once("models/TweetsManager.php");
 require_once("models/MentionsManager.php");
 
 $usersManager = new UsersManager();
-$followsManager = new FollowsManager();
 $tweetsManager = new TweetsManager();
 $mentionsManager = new MentionsManager();
 
 
 if (isset($_SESSION['id'])){
-    // if the user whose connected want to post a tweet
     if( isset($_GET['quoteTweet']) ){
     
         // check tweet length

@@ -1,12 +1,12 @@
  <?php
- 
-require_once("models/UsersManager.php");
-require_once("models/FollowsManager.php");
-require_once("models/TweetsManager.php");
+ /**
+ * receive ajax call to follow or unfollow a user. 
+ */
 
-$usersManager = new UsersManager();
+require_once("models/FollowsManager.php");
+
 $followsManager = new FollowsManager();
-$tweetsManager = new TweetsManager();
+
 
 if (isset($_SESSION['id'])){
     // AJAX ask for follow or unfollow 

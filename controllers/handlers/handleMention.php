@@ -1,14 +1,11 @@
 <?php
- 
+/**
+ * receive ajax call to check wether a mention match a user of the db. 
+ */
  require_once("models/UsersManager.php");
- require_once("models/FollowsManager.php");
- require_once("models/TweetsManager.php");
- require_once("models/MentionsManager.php");
 
  $usersManager = new UsersManager();
- $followsManager = new FollowsManager();
- $tweetsManager = new TweetsManager();
- $mentionsManager = new MentionsManager();
+
 
  if (isset($_SESSION['id'])){
      // AJAX ask to look for possible mentions

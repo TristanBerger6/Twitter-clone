@@ -1,11 +1,9 @@
 <?php 
-
-require_once("models/UsersManager.php");
-require_once("models/FollowsManager.php");
+/**
+ * receive ajax call to delete a tweet. 
+ */
 require_once("models/TweetsManager.php");
 
-$usersManager = new UsersManager();
-$followsManager = new FollowsManager();
 $tweetsManager = new TweetsManager();
 
 if (isset($_SESSION['id'])){

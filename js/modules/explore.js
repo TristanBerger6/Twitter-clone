@@ -1,4 +1,10 @@
-import { postData } from "../functions.js";
+/**
+ * When the user searches for a word, send a get request to the explore page with the query value
+ * If the user searches for a person with @.., display a suggestion div. On click, redirects to the 
+ * user profile.
+ */
+
+import { postData } from "../utils/functions.js";
 
 export function useExplore(){
     let EltInput = document.getElementById('explore-input');

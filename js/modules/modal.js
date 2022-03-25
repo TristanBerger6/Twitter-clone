@@ -1,5 +1,9 @@
-// Work as follow : all modalBtn2 opens modal2 and modalClose2.
+/**
+ * Open and close modals. ex : all modalBtn2 opens modal2 and modalClose2.
+ */
 export function useModal(){
+    // Each of the elements with the following classes also have a class with the same name + a number
+    // (ex class='modal1 modal' class='modalBtn1 modalBtn' ..) to find the elements belonging to the same entity.
     let modals = document.getElementsByClassName('modal');
     let modalsBtn = document.getElementsByClassName('modalBtn');
     let modalsClose = document.getElementsByClassName('modalClose');
@@ -16,6 +20,7 @@ export function useModal(){
                 EltsModals[nb] = modals[i];
             }
         }
+        // modals.length == modalsClose.length
         // look for another class modalCloseX with X a number among all elements with modalClose class,
         // if found, fill the array EltModalsClose[X]=theElement
         for ( let j=0; j<modalsClose[i].classList.length; j++){
@@ -27,7 +32,7 @@ export function useModal(){
     }
 
     
-    // foreach button to open the modal, look for the number to open and open it
+    // foreach button opening a modal, look for the number to open and add an event listener to open the correpsonding modal
     for (let i = 0; i < modalsBtn.length; i++) {
         let nb = null;
         for ( let j=0; j<modalsBtn[i].classList.length; j++){
@@ -50,6 +55,7 @@ export function useModal(){
         }
     }
     
+    // modal close
     document.addEventListener('click',(e) => {
         let check = null;
         let targetClassList = e.target.classList;
@@ -65,7 +71,6 @@ export function useModal(){
         }
       });
 }
-
 
 
 

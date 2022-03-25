@@ -1,17 +1,22 @@
-import { postData } from "../functions.js";
-
-
-
+/**
+ * Implements a counter on the number of characters of the tweet
+ * Also implements the coloring of mentions ( words starting with @) and
+ * a div with mention suggestions appears when writing a mention
+ * No line breaks available
+ * 
+ */
+import { postData } from "../utils/functions.js";
 
 export function useCount(){
+    // Each of the elements with the following classes also have an id with the same name + a number.
+    // (ex id=count-text1 id=tweet-text1 ..) to find the elements belonging to the same entity.
     let EltCountText = document.getElementsByClassName('count-text');
     let EltText = document.getElementsByClassName('tweet-text');
     let EltMentions = document.getElementsByClassName('text-mentions');
     let EltContenteditable = document.getElementsByClassName('contenteditable');
 
     
-    // contenteditable contains the text inside the div, than we pass it to the textarea ( EltText ) via its value to send it with an ajax call
-    // No line breaks available
+    // contenteditable contains the text inside its div, than we pass it to the textarea ( EltText ) via its value to send it with an ajax call
     for(let i=0; i<EltContenteditable.length; i++){
         EltContenteditable[i].addEventListener('input',(e)=>{
             let EltCond = e.currentTarget;
@@ -21,17 +26,15 @@ export function useCount(){
     
             for(let s=0; s<EltText.length; s++){ // look for the corresponding textarea
                 let idText = EltText[s].id.replace('tweet-text','');
-    
                 if(idEditable === idText){ // found the textarea
                     EltText[s].value = valueText; // set the value
-                    console.log(EltText[s].value);
-                    for(let j=0; j<EltCountText.length; j++){ 
+                    for(let j=0; j<EltCountText.length; j++){ // look for the corresponding Count element
                         let idCount = EltCountText[j].id.replace('count-text','');
-                        if(idEditable === idCount){
+                        if(idEditable === idCount){ // found the count element
                             EltCountText[j].innerHTML = (140-valueText.length).toString();
                         }
                     }
-                    for(let l=0; l<EltMentions.length; l++){ 
+                    for(let l=0; l<EltMentions.length; l++){  // look for the corresponding mention element
                         let idMentions = EltMentions[l].id.replace('text-mentions','');
                         if(idEditable === idMentions){ // found the corresponding mentions element
                             EltMentions[l].innerHTML = ``; // reset the mentions element
@@ -114,18 +117,18 @@ export function useCount(){
         EltCond.focus();
     }
 
-    //disable enter
+    //disable enter because line breaks not available. If not disabled, the counting of words becomes false
     document.addEventListener('keypress',(e)=>{
         if(e.key === "Enter" && document.activeElement.classList.contains('contenteditable')){
-            console.log(document.activeElement);
             e.preventDefault();
         }
     })
    
 }
 
+
 /*
-/ Note that enter will set a double \n\n while maj+enter just a \n
+/ Tests to implements line break, not working yet
       // Loop through words
         let str =  EltCond.innerText; // get online text ( with /n included in innerText)
         let lines = [];

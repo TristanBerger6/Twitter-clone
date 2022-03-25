@@ -4,7 +4,7 @@
   * Custom string encoding
   * @param string $titre string to encode
   * @return string $encoded string encoded
-  */
+  ******************************************************************/
  function url_custom_encode($titre) {
     $titre = htmlspecialchars($titre);
     $find = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', 'Ø', 'Ù', 'Ú', 'Û', 'Ü', 'Ý', 'ß', 'à', 'á', 'â', 'ã', 'ä', 'å', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', 'ø', 'ù', 'ú', 'û', 'ü', 'ý', 'ÿ', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', 'Œ', 'œ', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', 'Š', 'š', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', 'Ÿ', '?', '?', '?', '?', 'Ž', 'ž', '?', 'ƒ', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?');
@@ -30,7 +30,7 @@
   * @param int $maxSize maximum size of the file
   * @return array error and unique name of the file that has been uploaded. 
   * if $error is not null, $uploadedName is null, the file has not been uploaded . If $error is null, then $uploadedName is not null and the file has been uploaded.
-  */
+  ******************************************************************************************/
   function image_check_upload($target_dir,$file,$maxSize) {
       $error = null;
       $uploadedName = null;
@@ -59,11 +59,13 @@
       return [$error, $uploadedName];
   }
 
+
+
   /**
   * 
   * @return object the data received with fetch
   * 
-  */
+  **********************************************************************/
   function receive_fetch_body() {
 
    /* Get content type */
@@ -92,15 +94,22 @@
    return $decoded;
 }
 
+
  /**
   * 
   * @param object $decoded, data to send back as a response
-  */
+  *********************************************************************/
   function send_fetch_response($decoded) {
    /* Send success to fetch API */
    die(json_encode(['value' => 1,'error' => null,'data' => $decoded, ]));
 }
 
+
+/**
+ *  get time elapsed since a given $time
+  * @param string $time
+  * @return string $string, time elapsed since $time, string in french
+  **********************************************************************/
 function get_time_ago_fr( $time )
 {
 
@@ -111,32 +120,34 @@ function get_time_ago_fr( $time )
    $diff->w = floor($diff->d / 7);
 
    $string = array(
-       'y' => 'year',
-       'm' => 'month',
-       'w' => 'week',
-       'd' => 'day',
-       'h' => 'hour',
+       'y' => 'an',
+       'm' => 'mois',
+       'w' => 'semaine',
+       'd' => 'jour',
+       'h' => 'heure',
        'i' => 'minute',
-       's' => 'second',
+       's' => 'seconde',
    );
    foreach ($string as $k => &$v) {
        if ($diff->$k) {
-           $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+           $v = $diff->$k . ' ' . $v . ($diff->$k > 1 && $v != 'mois'? 's' : '');
        } else {
            unset($string[$k]);
        }
    }
 
    if (!$full) $string = array_slice($string, 0, 1);
-   return $string ? implode(', ', $string) . ' ago' : 'just now';
+   return $string ? 'il y a '.implode(', ', $string) : 'il y a moins d\'une seconde';
 }
+
+
 
 /**
  * Look for mentions @username in a string
 * @param string $text
 * @param bool $at, if $at == true, keep the @ in the returned strings
 * @return array $mentions, array with all the mentioned names
-*/
+****************************************************************/
 function get_mentions_from_string( $text, $at = false )
 {
 

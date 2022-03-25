@@ -9,9 +9,8 @@
   
   <title>twitter Clone</title>
   <meta name="description" content="Clone de Twitter">
-  <script src="./js/js_ajax/postTweet.js" type="module" defer></script>
-  <script src="./js/js_ajax/follow.js" type="module" defer></script>
-  <script src="./js/modules/modules.js" type="module" defer></script>
+  <script src="./js/globalPostTweet.js" type="module" defer></script>
+
  </head>
 
 

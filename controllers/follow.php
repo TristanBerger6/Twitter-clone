@@ -2,11 +2,11 @@
 
 require_once("models/UsersManager.php");
 require_once("models/FollowsManager.php");
-require_once("models/TweetsManager.php");
+
 
 $usersManager = new UsersManager();
 $followsManager = new FollowsManager();
-$tweetsManager = new TweetsManager();
+
 
 
 
