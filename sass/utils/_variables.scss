@@ -6,42 +6,36 @@ $screen-xxl-min: 1500px;
 
 :root {
   /* colors */
-  --clr-dark: black;
-  --clr-light: grey;
-  --clr-white: white;
+  --clr-dark: 0, 0%, 0%;
+  --clr-white: 200, 6.7%, 91.2%;
+  --clr-grey-light: 210, 4.2%, 46.3%;
+  --clr-grey-dark: 220, 12%, 9.8%;
+  --clr-blue: 204, 87.6%, 52.7%;
+  --clr-green: 160, 100%, 36.5%;
+  --clr-pink: 332, 94.9%, 53.5%;
 
   /* font-sizes */
-  --fs-900: 5rem;
-  --fs-800: 3.5rem;
+  --fs-900: 4rem;
+  --fs-800: 1.9rem;
   --fs-700: 1.5rem;
-  --fs-600: 1rem;
+  --fs-600: 1.1rem;
   --fs-500: 1rem;
   --fs-400: 0.9375rem;
   --fs-300: 0.9rem;
   --fs-200: 0.875rem;
 
   /* font-families */
-  --ff-serif: 'Bellefair', serif;
-  --ff-sans-cond: 'Barlow Condensed', sans-serif;
-  --ff-sans-normal: 'Barlow', sans-serif;
+  --ff: Helvetica, Arial, sans-serif;
+  
+  
 }
 
 @media (min-width: $screen-sm-min) {
   :root {
-    --fs-800: 5rem;
-    --fs-700: 2.5rem;
-    --fs-600: 1.5rem;
-    --fs-500: 1.25rem;
-    --fs-400: 1rem;
   }
 }
 
 @media (min-width: $screen-md-min) {
   :root {
-    --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
-    --fs-600: 2rem;
-    --fs-500: 1.75rem;
-    --fs-400: 1.125rem;
   }
 }
