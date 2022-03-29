@@ -21,9 +21,9 @@
       </div>
       <p class="fs-900  ls-1-3 lh-1-3 title">Ça se passe maintenant</p>
       <p class="fs-800 ">Rejoignez Twitter dès aujourd'hui</p>
-      <a class="fs-500 start-buton ls-0-7" href= 'index.php?page=signup' > S'inscrire </a>
+      <a class="fs-500 start-buton ls-0-7 bg-blue text-white" href= 'index.php?page=signup' > S'inscrire </a>
       <p class="fs-600 ">Vous avez déjà un compte ?</p>
-      <a class="fs-500 start-buton start-buton--black ls-0-7" href= 'index.php?page=signin' > Se connecter </a>
+      <a class="fs-500 start-buton start-buton--black ls-0-7 bg-dark text-blue" href= 'index.php?page=signin' > <div>Se connecter</div> </a>
     </div>
   </main>
     

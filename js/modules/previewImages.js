@@ -20,11 +20,11 @@ export function usePreviewImages(){
                     var src = URL.createObjectURL(objectUrl);
                     EltPreviewInput[j].src = src;
                     if(EltPreviewInput[j].classList.contains('img-tweet-preview')){
-                        EltPreviewInput[j].style.display = 'block';
+                        EltPreviewInput[j].style.display = 'grid';
                         for (let k=0; k<EltClosePreview.length; k++){ // look for the corresonding close preview
                             let idClose = EltClosePreview[k].id.replace('close-preview','');
                             if( idPreview === idClose ){ // found the corresponding one
-                                EltClosePreview[k].style.display= 'block';
+                                EltClosePreview[k].style.display= 'grid';
                             }
                         }
     

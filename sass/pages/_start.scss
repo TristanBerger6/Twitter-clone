@@ -36,7 +36,6 @@
 }
 
 .start-buton{
-    background : hsl(var(--clr-blue));
     display : grid;
     width : 300px;
     height : 40px;
@@ -45,9 +44,25 @@
     border-radius: 20px;
     box-shadow: 0 0 5px hsl(var(--clr-blue),.5);
     &--black{
-        background : hsl(var(--clr-dark));
         border :1px solid hsl(var(--clr-grey-light));
-        color: hsl(var(--clr-blue));
         box-shadow: none;
+        position : relative;
+        &:hover{
+            background : hsl(var(--clr-blue),0.2);
+            div{
+                z-index : 2;
+            }
+            &::after{
+                content: "";
+                position: absolute;
+                top: 0; bottom: 0; left: 0; right: 0; 
+                z-index : 1;
+                border-radius: 20px;
+                background: hsl(var(--clr-dark),.8);
+            }
+        }
+    }
+    &:hover{
+        background : hsl(var(--clr-blue),.9);
     }
 }

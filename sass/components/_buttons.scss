@@ -17,3 +17,17 @@
 .abo,.noabo{
     cursor : pointer;
 }
+
+.tweet-btn{
+    display : grid;
+    height : 50px;
+    justify-items: center;
+    align-items: center;
+    border: 0;
+    cursor : pointer;
+    border-radius: 25px;
+    box-shadow: 0 0 3px hsl(var(--clr-blue),.5);
+    &:hover{
+        background : hsl(var(--clr-blue),.9);
+    }
+}

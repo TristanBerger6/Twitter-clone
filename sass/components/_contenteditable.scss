@@ -1,16 +1,46 @@
 .contenteditable {
     -moz-appearance: textfield-multiline;
     -webkit-appearance: textarea;
-    border: 1px solid gray;
-    font: medium -moz-fixed;
-    font: -webkit-small-control;
-    height: 100px;
+    border : none;
+    resize :none;
+    height: 110px;
     overflow: auto;
-    padding: 2px;
-    resize: both;
-    width: 100%;
+    padding: 5px;
+    max-width: 100%;
+    font-size: var(--fs-700);
+    &:focus{
+        border:none;
+        outline : none;
+    }
+}
+
+.contenteditable:empty:before{
+    content : attr(data-placeholder);
+    color : hsl(var(--clr-grey-light));
 }
 
 .mentions{
-    color : blue;
+    color : hsl(var(--clr-blue));
+}
+
+.text-mentions{
+    background : black;
+    display : none;
+    box-shadow: 0 0 15px hsl(var(--clr-grey-light));
+    max-height : 500px;
+    overflow: auto;
+    .mention-prop{
+        padding : 1rem 1rem;
+        cursor: pointer;
+        img{
+            height :40px;
+            width :40px;
+            border-radius: 20px;
+        }
+        &:hover{
+            background: hsl(var(--clr-grey-dark));
+        }
+       
+
+    }
 }

@@ -1,0 +1,89 @@
+.sign-page{
+    height : 100vh;
+    width : 100vw;
+    padding-top: 15vh;
+    @media(max-width:$screen-sm-min){
+        padding-top: 0;
+    }
+}
+
+
+.sign-card{
+    max-width : 600px;
+    border-radius: 20px;
+    max-height: 80vh;  
+    overflow-y:auto;
+    margin-inline : auto;
+    &__topside{
+        display : flex;
+        padding : 10px 15px;
+        margin-bottom: 1rem;
+        width : 100%;
+        justify-content: flex-start;
+        &>*{
+            display: grid;
+            width: 50%;
+            path{
+                fill : hsl(var(--clr-white),0.9);
+            }
+        }
+        .back svg{
+            width :20px; 
+        }
+        .logo{
+            position : relative;
+            transform: translateX(-15px);
+            svg{
+                width : 31px;
+            }
+   
+        }
+    }
+    @media(max-width:$screen-sm-min){
+        max-height : 100vh;
+        height : 100%;
+        border-radius: 0;
+    }
+}
+
+.sign-form{
+    display : flex;
+    flex-direction: column;
+    
+    & >*{
+        width : 300px;
+        margin : auto;  
+    }
+    > *:where(:not(:first-child)){
+        margin-top: 0.8rem;
+    }
+
+}
+
+.sign-buton{
+    display : grid;
+    height : 34px;
+    justify-items: center;
+    align-items: center;
+    border-radius: 20px;
+    border : none;
+    margin-top : 2rem;
+    margin-bottom: 1rem;
+    cursor : pointer;
+}
+
+.sign-input{
+    color: hsl(var(--clr-white),0.9);
+    border : 1px solid hsl(var(--clr-grey-light),0.5);
+    border-radius : 5px;
+    height : 56px;
+    padding-inline : 8px;
+    &:focus{
+        border : 1px solid hsl(var(--clr-blue),0.8);
+        outline: solid 2px hsl(var(--clr-blue),0.8);;
+    }
+}
+
+.sign-redirect{
+    margin-bottom: 3rem;
+}

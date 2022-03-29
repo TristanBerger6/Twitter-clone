@@ -1,0 +1,30 @@
+.preview{
+        position: relative;
+        .close-preview{
+            display : none;
+            width : 30px;
+            height : 30px;
+            background : hsl(var(--clr-grey-dark),0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            position : absolute;
+            align-content: center;
+            justify-content: center;
+            left:10px;
+            top:10px;
+            cursor: pointer;
+            svg{
+                width: 18px;
+                height: 18px
+            }
+        }
+        .preview-input{
+            display : none;
+            border-radius : 15px;
+        }
+
+}
+
+.input-img{
+    display : none;
+}

@@ -2,7 +2,25 @@
     position : fixed;
     display : flex;
     flex-direction: column;
-    max-width: 300px;
-    margin-right : auto;
-    margin-top: 5em;
+    max-width: 250px;
+    a{
+        height : 50px;
+        width : min-content;
+        align-items: center;
+        padding: 5px 15px;
+        
+        div{
+            height : 100%;
+            display : grid;
+            align-content: center;
+        }
+        &:hover{
+            border-radius : 25px;
+            background-color: hsl(var(--clr-white),.1);
+        }
+    }
+    svg{
+        width :26px;
+        height : 26px;
+    }
 }

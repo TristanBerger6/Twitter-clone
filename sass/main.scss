@@ -8,10 +8,11 @@
 @import './base/typography';
 
 @import './components/buttons';
-@import './components/signCard';
 @import './components/modal';
 @import './components/tweets';
 @import './components/contenteditable';
+@import './components/preview-img';
+@import './components/post';
 
 @import './layout/header';
 @import './layout/nav';
@@ -23,4 +24,5 @@
 @import './pages/follow';
 @import './pages/settings';
 @import './pages/start';
+@import './pages/signInUp';
 

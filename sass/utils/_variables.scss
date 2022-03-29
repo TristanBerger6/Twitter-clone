@@ -13,21 +13,23 @@ $screen-xxl-min: 1500px;
   --clr-blue: 204, 87.6%, 52.7%;
   --clr-green: 160, 100%, 36.5%;
   --clr-pink: 332, 94.9%, 53.5%;
+  --clr-navy: 206, 18.2%, 17.3%;
 
   /* font-sizes */
   --fs-900: 4rem;
   --fs-800: 1.9rem;
-  --fs-700: 1.5rem;
+  --fs-700: 1.3rem;
   --fs-600: 1.1rem;
   --fs-500: 1rem;
-  --fs-400: 0.9375rem;
+  --fs-400: 0.9rem;
   --fs-300: 0.9rem;
   --fs-200: 0.875rem;
 
   /* font-families */
   --ff: Helvetica, Arial, sans-serif;
+  --scrollbar-color: hsla(0,0%,100%,0.25);
   
-  
+  --scrollbar-bg: transparent;
 }
 
 @media (min-width: $screen-sm-min) {

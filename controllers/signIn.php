@@ -18,7 +18,7 @@ if (isset($_POST['formConnect'])) {
         $_SESSION['mail'] = $userInfo['mail'];
         header('Location: index.php?page=home');
       } else {
-        $error = 'Email et/ou mot de passe est incorrect(s).';
+        $error = 'Email et/ou mot de passe incorrect(s).';
       }
     } else {
       $error = 'Tous les champs doivent être complétés.';

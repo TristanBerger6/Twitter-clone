@@ -1,2 +1,31 @@
+.connected-page{
+    background : hsl(var(--clr-dark));
+    &__container{
+        height : 100%;
+        max-width: 1200px;
+        margin-inline : auto;
+    }
+}
 
+.homeContainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+    border :1px solid hsl(var(--clr-grey-light));
+    border-top :0;
+    border-bottom: 0;
+    &>*{
+        padding-inline: 15px;
+    }
+    .page-title{
+        position : sticky;
+        padding-block : 15px;
+        top : 0px;
+        z-index : 3;
+        width :100%;
+        background : hsl(var(--clr-dark),.8);
+        backdrop-filter: blur(12px);
 
+    }
+}

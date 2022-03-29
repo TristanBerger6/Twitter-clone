@@ -1,13 +1,21 @@
-.homeContainer{
-    display: flex;
-    flex-direction: column;
-    max-width: 700px;
-    margin: auto;
-    margin-top: 5em;
-    height : 2000px;
+.post-tweet{
+    border-bottom : 1px solid hsl(var(--clr-grey-light));
+    &__right{
+        &__top{
+            width: 500px;
+            border-bottom : 1px solid hsl(var(--clr-grey-light));
+            .contenteditable{
+                height: 110px;
+                margin-bottom : 10px;
+            }
+            .preview-input{
+                margin-bottom: 10px;
+            }
+        }
+    }
 }
 
-.text-mentions{
-    background : grey;
-    display : none;
-}
+
+
+
+

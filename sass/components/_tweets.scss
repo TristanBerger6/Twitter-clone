@@ -1,21 +1,4 @@
-.postTweet{
-    border : 1px solid black;
-    form{
-        .img-icon{
-            color : blue;
-            cursor: pointer;
-        }
-        #tweet-img{
-            display :none;
-        }
-        .img-tweet-preview{
-            display : none;
-        }
-        .close-preview{
-            display : none;
-        }
-    }
-}
+
 
 .tweet{
     border : 1px solid black;
@@ -62,3 +45,10 @@
         color : green;
     }
 }
+
+.tweet-profile{
+    width :48px;
+    height :48px;
+    border-radius: 50%;
+}
+
