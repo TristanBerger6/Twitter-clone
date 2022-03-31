@@ -1,20 +1,12 @@
-.post-tweet{
-    border-bottom : 1px solid hsl(var(--clr-grey-light));
-    &__right{
-        &__top{
-            width: 500px;
-            border-bottom : 1px solid hsl(var(--clr-grey-light));
-            .contenteditable{
-                height: 110px;
-                margin-bottom : 10px;
-            }
-            .preview-input{
-                margin-bottom: 10px;
-            }
-        }
-    }
-}
 
+
+.reload-page{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding-block: 10px ;
+    border-bottom : 1px solid hsl(var(--clr-grey-light));
+}
 
 
 

@@ -38,6 +38,24 @@ export function usePostComment(){
     let EltCommentedImg = document.getElementById("commentedTweet__img");
     let EltCommentedId = document.getElementById("commentedTweet__id");
 
+    // same thing is the commented tweet is a quote, we need to get the quoted tweet
+    //Elt needed from the quoted tweet to be able to display them in the modal
+    let EltQuotedProfile = null;
+    let EltQuotedName = null;
+    let EltQuotedUsername = null;
+    let EltQuotedDate = null;
+    let EltQuotedContent = null;
+    let EltQuotedImg = null;
+
+    //Elt displaying the quoted tweet
+    let EltCommentedQuotedProfile = document.getElementById("commentedQuotedTweet__profile");
+    let EltCommentedQuotedName = document.getElementById("commentedQuotedTweet__name");
+    let EltCommentedQuotedUsername = document.getElementById("commentedQuotedTweet__username");
+    let EltCommentedQuotedDate = document.getElementById("commentedQuotedTweet__date");
+    let EltCommentedQuotedContent = document.getElementById("commentedQuotedTweet__content");
+    let EltCommentedQuotedImg = document.getElementById("commentedQuotedTweet__img");
+    let EltCommentedQuotedDiv = document.getElementById("commentedQuotedTweet__div");
+
     // display the original tweet in the commented one
     let EltsModalBtn = document.getElementsByClassName('modalBtn');
 
@@ -56,6 +74,32 @@ export function usePostComment(){
             EltCommentedUsername.innerHTML = EltTweetUsername.innerHTML;
             EltCommentedDate.innerHTML = EltTweetDate.innerHTML;
             EltCommentedContent.innerHTML = EltTweetContent.innerHTML;
+
+            EltQuotedProfile = document.getElementById(`quoted__profile${iCommented}`);
+            if(EltQuotedProfile){
+                EltCommentedQuotedDiv.style.display='block';
+                EltQuotedName = document.getElementById(`quoted__name${iCommented}`);
+                EltQuotedUsername = document.getElementById(`quoted__username${iCommented}`);
+                EltQuotedDate = document.getElementById(`quoted__date${iCommented}`);
+                EltQuotedContent = document.getElementById(`quoted__content${iCommented}`);
+                EltQuotedImg = document.getElementById(`quoted__img${iCommented}`);
+                EltCommentedQuotedProfile.src = EltQuotedProfile.src;
+                EltCommentedQuotedName.innerHTML = EltQuotedName.innerHTML;
+                EltCommentedQuotedUsername.innerHTML = EltQuotedUsername.innerHTML;
+                EltCommentedQuotedDate.innerHTML = EltQuotedDate.innerHTML;
+                EltCommentedQuotedContent.innerHTML = EltQuotedContent.innerHTML;
+    
+                if(EltQuotedImg){
+                    EltCommentedQuotedImg.src = EltQuotedImg.src;
+                }else{
+                    EltCommentedQuotedImg.style.display = 'none';
+                }
+            }else{
+                EltCommentedQuotedDiv.style.display='none';
+            }
+           
+            
+
             if(EltTweetImg){
                 EltCommentedImg.src = EltTweetImg.src;
             }else{
@@ -64,6 +108,8 @@ export function usePostComment(){
 
         })
     }
+
+    
 
     /****************** Event Listeners ***************************/
 

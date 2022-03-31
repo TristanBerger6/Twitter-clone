@@ -19,7 +19,7 @@
     <?php require('includes/nav.php') ?>
     <main class='homeContainer'>
         <div class="page-title"><a href="index.php?page=home"><h1 class="fs-700">Accueil</h1></a></div>
-        <div>
+        <div class="post-tweet__container">
             <form action='' method="post" enctype='multipart/form-data' class="post-tweet flex">
                 
                 <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="tweet-profile"> 
@@ -50,17 +50,13 @@
                 
             </form>
         </div>
-        <div>
+        <div class="reload-page">
             <a href="index.php?page=home" class="text-blue fs-600">Recharger la page</a>
         </div>
         <?php $i = 0;
               foreach($allTweetsWInfos as $tweet){
                 $i++ ?>
             <?php require('includes/tweet.php') ?>
-            <br/>
-            <br/>
-            <br/>
-            
         <?php } ?>
         <?php require('includes/modalComments.php') ?>
         <?php require('includes/modalQuotes.php') ?>  

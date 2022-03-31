@@ -122,22 +122,22 @@ function get_time_ago_fr( $time )
    $string = array(
        'y' => 'an',
        'm' => 'mois',
-       'w' => 'semaine',
-       'd' => 'jour',
-       'h' => 'heure',
-       'i' => 'minute',
-       's' => 'seconde',
+       'w' => 'sem',
+       'd' => 'j',
+       'h' => 'h',
+       'i' => 'min',
+       's' => 'sec',
    );
    foreach ($string as $k => &$v) {
        if ($diff->$k) {
-           $v = $diff->$k . ' ' . $v . ($diff->$k > 1 && $v != 'mois'? 's' : '');
+           $v = $diff->$k . ' ' . $v . ($diff->$k > 1 && $v == 'an'? 's' : '');
        } else {
            unset($string[$k]);
        }
    }
 
    if (!$full) $string = array_slice($string, 0, 1);
-   return $string ? 'il y a '.implode(', ', $string) : 'il y a moins d\'une seconde';
+   return $string ? ''.implode(', ', $string) : '1 sec';
 }
 
 

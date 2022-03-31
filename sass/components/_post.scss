@@ -1,5 +1,4 @@
 // number count, open preview image and Tweet/Comment/Quote button
-
 .post-botom{
     height : 60px;
     display : flex;
@@ -20,6 +19,27 @@
     }
 }
 
+
+.post-tweet{
+    &__container{
+        border-bottom : 1px solid hsl(var(--clr-grey-light));
+    }
+    &__right{
+        width : 90%;
+        &__top{
+            border-bottom : 1px solid hsl(var(--clr-grey-light));
+            width : 100%;
+            
+            .contenteditable{
+                height: 110px;
+                margin-bottom : 10px;
+            }
+            .preview-input{
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
 
 
 

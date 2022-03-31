@@ -17,7 +17,7 @@
         let Elt = e.currentTarget;
         let liked = e.currentTarget.getAttribute('liked');
         let idTweet = e.currentTarget.getAttribute('id_tweet');
-        let EltIcon = e.currentTarget.firstElementChild;
+        let EltIcon = e.currentTarget.firstElementChild.firstElementChild;
         let EltNb = e.currentTarget.lastElementChild;
     
 
@@ -27,7 +27,7 @@
             .then(data => {
                 
                 Elt.setAttribute('liked','0');
-                Elt.style.color = "black";
+                Elt.style.color = "hsl(210, 4.2%, 46.3%)";
                 EltIcon.classList.remove('fas');
                 EltIcon.classList.add('far');
                 EltNb.innerHTML = parseInt(EltNb.innerHTML) - 1;
@@ -38,7 +38,7 @@
             .then(data => {
             
                 Elt.setAttribute('liked','1');
-                Elt.style.color = "red";
+                Elt.style.color = "hsl(332, 94.9%, 53.5%)";
                 EltIcon.classList.remove('far');
                 EltIcon.classList.add('fas');
                 EltNb.innerHTML = parseInt(EltNb.innerHTML) + 1;

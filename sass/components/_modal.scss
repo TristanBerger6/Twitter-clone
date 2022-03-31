@@ -7,14 +7,87 @@
     left:0;
     top:0;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: hsl(var(--clr-grey-dark),.8);
 
+    &__close{
+        cursor : pointer;
+        display : grid;
+        align-content: center;
+        justify-content: center;
+        width : 30px;
+        height :30px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        svg{
+            width : 20px;
+            height :20px;
+        }
+        &:hover{
+            background-color: hsl(var(--clr-grey-dark),.8);
+        }
+    }
     &__content{
-        background-color: #fefefe;
-        margin : 15% auto;
+        background-color: hsl(var(--clr-dark));
+        border-radius: 20px;
+        margin : 8% auto;
         padding: 20px;
-        border : 1px solid #888;
         max-width : 800px;
 
     }
+    @media(max-width:$screen-md-min){
+        background-color: hsl(var(--clr-dark),1);
+        &__content{
+            border-radius: 0;
+            margin : 0 0;
+            padding: 0;
+            width : 100%;
+        }
+
+    }
+}
+
+.modal-comment{
+    .tweet{
+        margin-bottom: 15px;
+        &__left{
+            position: relative;
+            &::after{
+                content : '';
+                position: absolute;
+                bottom: -12px;
+                top: 50px;
+                right: 50%;
+                width : 2px;
+                background-color: hsl(var(--clr-grey-light),1);
+            }
+        }
+    }
+    .tweet__right__header{
+        justify-content: flex-start;
+    }
+    .tweet__right__header__names>*{
+        max-height: 25px;
+        max-width: 28ch;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        @media(max-width:$screen-md-min){
+            max-width: 20ch;
+        }
+        @media(max-width:$screen-sm-min){
+            max-width: 17ch;
+        }
+        @media(max-width:500px){
+            max-width: 9ch;
+        }
+        @media(max-width:390px){
+            max-width: 6ch;
+        }
+    }
+    .tweet__right__header__date{
+        max-height: 25px;
+        overflow:hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+    }
+    
 }

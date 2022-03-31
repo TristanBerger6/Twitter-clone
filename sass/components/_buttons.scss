@@ -30,4 +30,20 @@
     &:hover{
         background : hsl(var(--clr-blue),.9);
     }
+    i{
+        display : none;
+    }
+    @media(max-width:$screen-xl-min){
+        p{
+            display : none;
+        }
+        i{
+            display : block;
+        }
+    }
+    @media(max-width:500px){
+        margin-top: 0;
+        height : 35px;
+        aspect-ratio: 1;
+    }
 }

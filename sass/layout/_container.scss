@@ -3,7 +3,14 @@
     &__container{
         height : 100%;
         max-width: 1200px;
+        padding-inline: 1%;
         margin-inline : auto;
+        @media(max-width:$screen-xl-min){
+            max-width: 800px;
+        }
+        @media(max-width:500px){
+            padding-inline: 0;
+        }
     }
 }
 
@@ -27,5 +34,11 @@
         background : hsl(var(--clr-dark),.8);
         backdrop-filter: blur(12px);
 
+    }
+    @media(max-width:$screen-md-min){
+        margin-left : 60px;
+    }
+    @media(max-width:500px){
+        margin-inline : auto;
     }
 }
