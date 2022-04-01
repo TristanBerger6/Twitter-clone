@@ -12,7 +12,11 @@
          
     $res= receive_fetch_body();
     $stringToCheck = $res['stringToCheck'].'%'; 
-    $reqPossibleUsers = $usersManager->getUserUsernameStartingWith($stringToCheck)->fetchAll();
+    if(strlen($stringToCheck)>= 2){
+        $reqPossibleUsers = $usersManager->getUserUsernameStartingWith($stringToCheck)->fetchAll();
+    }else{
+        $reqPossibleUsers = [];
+    }
     send_fetch_response($reqPossibleUsers);  
 
          

@@ -18,94 +18,90 @@
  </head>
 
 
-<body>
-
-    <?php require('includes/nav.php') ?>
-
-    <?php if($_SESSION['id'] === $_GET['id']){ ?>
-    <div class="modal modal6" >
-        <div class="modal__content">
-            <span class="modalClose modalClose6" >close</span>
-            <br/>
-            <form  method="POST" action="" id="formUpdate" enctype="multipart/form-data" >
-                <label for="name"> Votre Nom :</label>
-                <input type="text" placeholder="Votre Nom" id="name" name="name" value="<?php if (isset($reqUser['name'])) {echo $reqUser['name'];} ?>" />
-                <label for="username"> Votre Pseudo :</label>
-                <input type="text" placeholder="Votre Pseudo" id="username" name="username" value="<?php if (isset($reqUser['username'])) {echo $reqUser['username'];} ?>" />
-                <label for="bio"> Votre biographie :</label>
-                <input type="text" placeholder="Votre biographie" id="bio" name="bio" value="<?php if (isset($reqUser['bio'])) {echo $reqUser['bio'];} ?>" />
-                <div > 
-                    <img class="preview-input cover-img" id="preview-input6" src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="cover image preview">
-                </div>
-                <label for="input-img6" class="label-input"> Votre cover :</label>
-                <input type="file" id="input-img6" name="cover" class="input-img" >
-                <div > 
-                    <img class="preview-input profile-img" id="preview-input7" src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image preview">
-                </div>
-                <label for="input-img7" class="label-input"> Votre profil :</label>
-                <input type="file" id="input-img7" name="profile" class="input-img" >
-                <button type="submit" name="updateProfile" id="submitUpdateProfile" >Enregistrer</button>
-                <br/>
-                <div id="update-error"></div>
-               
-            
-            </form>
+<body class='connected-page'>
+    <div class="connected-page__container">
+        <?php require('includes/nav.php') ?>
+        <?php if($_SESSION['id'] === $_GET['id']){ ?>
+        <div class="modal modal6 modal-profile" >
+            <div class="modal__content">
+                <form  method="POST" action="" id="formUpdate" enctype="multipart/form-data" >
+                    <div class="profile-modal__header flex">
+                        <span class="modalClose modalClose6 modal__close" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="rgb(255,255,255)" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg></span>
+                        <button class="basic-btn basic-btn--white fw-700" type="submit" name="updateProfile" id="submitUpdateProfile" >Enregistrer</button>
+                    </div>
+                    <div class="profile-modal__cover"> 
+                        <img class="preview-input" id="preview-input6" src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="cover image preview">
+                        <label for="input-img6" class="profile-modal__label"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path fill="rgb(255,255,255)" d="M194.6 32H317.4C338.1 32 356.4 45.22 362.9 64.82L373.3 96H448C483.3 96 512 124.7 512 160V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V160C0 124.7 28.65 96 64 96H138.7L149.1 64.82C155.6 45.22 173.9 32 194.6 32H194.6zM256 384C309 384 352 341 352 288C352 234.1 309 192 256 192C202.1 192 160 234.1 160 288C160 341 202.1 384 256 384z"/></svg></label>
+                        <input type="file" id="input-img6" name="cover" class="input-img" >
+                    </div>
+                    <div class="profile-modal__profile"> 
+                        <img class="preview-input" id="preview-input7" src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image preview">
+                        <label for="input-img7" class="profile-modal__label"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path fill="rgb(255,255,255)" d="M194.6 32H317.4C338.1 32 356.4 45.22 362.9 64.82L373.3 96H448C483.3 96 512 124.7 512 160V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V160C0 124.7 28.65 96 64 96H138.7L149.1 64.82C155.6 45.22 173.9 32 194.6 32H194.6zM256 384C309 384 352 341 352 288C352 234.1 309 192 256 192C202.1 192 160 234.1 160 288C160 341 202.1 384 256 384z"/></svg></label>
+                        <input type="file" id="input-img7" name="profile" class="input-img" >
+                    </div>
+                    <div class="profile-modal__inputs flex"> 
+                        <input type="text" placeholder="Votre Nom" id="name" name="name" value="<?php if (isset($reqUser['name'])) {echo $reqUser['name'];} ?>" />
+                        <input type="text" placeholder="Votre Pseudo" id="username" name="username" value="<?php if (isset($reqUser['username'])) {echo $reqUser['username'];} ?>" />
+                        <input type="text" placeholder="Votre biographie" id="bio" name="bio" value="<?php if (isset($reqUser['bio'])) {echo $reqUser['bio'];} ?>" />
+                    </div>
+                    <div id="update-error"></div>
+                </form>
+            </div>
         </div>
-    </div>
-    <?php } ?>
-
-    <main class='homeContainer'>
-        <div>
-            <p><?= $reqUser['name']?></p>
-            <p><?= $nbTweets ?> Tweets</p>
-        </div>
-        <div>
-            <img src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="profile image" class="cover-img"> 
-            <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="profile-img"> 
-            <p> <?= $reqUser['name']?> </p>
-            <p> @ <?= $reqUser['username']?> </p>
-            <p> <?= $reqUser['bio']?> </p>
-            <?php if($_SESSION['id'] === $_GET['id']){ ?>
-                <button class="modalBtn modalBtn6"  >Editer le profil </button>
-            <?php }else{ ?>
-                <?php if($isFollowed){?>
-                <p class="abo" user_id='<?= $reqUser['id']?>'>Abonné</p>
-                <?php }else{ ?>
-                <p class="noabo" user_id='<?= $reqUser['id']?>'>Suivre</p>
-                <?php } ?>
-            <?php } ?>
-        </div>
-        <div>
-            <p> <?php echo '<a href="index.php?page=follow&id='.$reqUser['id'].'&type=followed">'?> <?= $nbFollowed ?> abonnements </a> </p>
-            <p> <?php echo '<a href="index.php?page=follow&id='.$reqUser['id'].'&type=followers">'?> <?= $nbFollowers ?> abonnées </a></p>
-            <p> A rejoint Twitter en <?= $reqUser['date_hour_creation']?> </p>
-        </div>
-        <div>
-            <a href='index.php?page=profile&id=<?=$reqUser['id'] ?>'>tweets</a>
-            <a href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=with_replies'>Tweets et réponses</a>
-            <a href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=medias'>Médias</a>
-            <a href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=likes'>J'aime</a>
-        </div>
-        <br/>
-        <br/>
-        <br/>
-        <?php $i = 0;
-              foreach($allTweetsWInfos as $tweet){
-                $i++ ?>
-            <?php require('includes/tweet.php') ?>
-            <br/>
-            <br/>
-            <br/>
-            
         <?php } ?>
-        <?php require('includes/modalComments.php') ?>
-        <?php require('includes/modalQuotes.php') ?>  
-        
-        
 
-        
-    </main>
-
-
+        <main class='homeContainer'>
+            <div class="page-title flex">
+                <a href="javascript:history.go(-1)" class="page-title__back" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path fill="rgb(255,255,255)" d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"/></svg></a>
+                <a href=""><h1 class="fs-700"><?= $reqUser['name']?></h1></a>
+            </div>
+            <div class="profile">
+                <div class="profile__cover">
+                    <img src='./public/img/cover/<?= $reqUser['imgcover']?>' alt="profile image"> 
+                </div>
+                <div class="profile__profile flex">
+                    <div class="profile__profile__img">
+                        <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image"> 
+                    </div>
+                    <?php if($_SESSION['id'] === $_GET['id']){ ?>
+                        <button class="modalBtn modalBtn6 basic-btn"  ><p class="fw-700">Editer le profil</p> </button>
+                    <?php }else{ ?>
+                        <?php if($isFollowed){?>
+                        <p class="abo fw-700 basic-btn" user_id='<?= $reqUser['id']?>'>Abonné</p>
+                        <?php }else{ ?>
+                        <p class="noabo fw-700 basic-btn basic-btn--white" user_id='<?= $reqUser['id']?>'>Suivre</p>
+                        <?php } ?>
+                    <?php } ?>
+                </div>
+                <div class="profile__core">
+                    <div class="profile__core__name">
+                        <p class="fs-600 fw-700"> <?= $reqUser['name']?> </p>
+                        <p class="text-light"> @ <?= $reqUser['username']?> </p>
+                    </div>
+                    <p class="profile__core__bio"> <?= $reqUser['bio']?> </p>
+                    <p class="text-light"> A rejoint Twitter en <?= $reqUser['date_hour_creation']?> </p>
+                    <div class="profile__core__abos flex">
+                        <p> <?php echo '<a class="text-light" href="index.php?page=follow&id='.$reqUser['id'].'&type=followed">'?> <span class="text-white"><?= $nbFollowed ?></span> abonnements </a> </p>
+                        <p> <?php echo '<a class="text-light" href="index.php?page=follow&id='.$reqUser['id'].'&type=followers">'?> <span class="text-white"><?= $nbFollowers ?></span> abonnées </a></p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="page-switch flex no-padding fs-400 text-light">
+                <a class="text-light <?= empty($_GET['type']) ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>'><p>tweets</p></a>
+                <a class="text-light <?= $_GET['type'] == 'with_replies' ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=with_replies'><p>Tweets et réponses</p></a>
+                <a class="text-light <?= $_GET['type'] == 'medias' ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=medias'><p>Médias</p></a>
+                <a class="text-light <?= $_GET['type'] == 'likes' ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=likes'><p>J'aime</p></a>
+            </div>
+            <?php $i = 0;
+                foreach($allTweetsWInfos as $tweet){
+                    $i++;
+                    require('includes/tweet.php');
+                } 
+                require('includes/modalComments.php');
+                require('includes/modalQuotes.php');
+            ?>  
+        </main>
+    </div>
 </body>
 </html>

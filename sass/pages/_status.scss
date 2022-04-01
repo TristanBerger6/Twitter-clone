@@ -1,0 +1,50 @@
+.status-tweet-response{
+    border-bottom : 1px solid hsl(var(--clr-grey-light));
+    .tweet__container{
+        border-bottom : none;
+        &:not(:last-child){
+            position: relative;
+            &::after{
+                content : '';
+                position: absolute;
+                bottom: -6px;
+                top: 60px;
+                left: 24px;
+                width : 2px;
+                background-color: hsl(var(--clr-grey-light),1);
+            } 
+        }
+    }
+    .tweet__link:hover{
+        &::after{
+            right:-15px; 
+        }
+    }
+    
+}
+.tweet-status{
+    flex-direction: column;
+    &__header{
+        justify-content: space-between;
+    }
+    &__core,&__nbreacts{
+        border-bottom : 1px solid hsl(var(--clr-grey-light));
+        padding-bottom: 1rem;
+    }
+    &__nbreacts{
+        p{
+            z-index:2;
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    &__reacts{
+        justify-content: space-evenly;
+        padding-bottom: 0.5rem;
+        i{
+            font-size: 1.2rem;
+        }
+    }
+}

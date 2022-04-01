@@ -8,6 +8,7 @@
 
  export function useLike(){
     let EltsLike = document.getElementsByClassName('tweet__like');
+    let EltsNbLike = document.getElementsByClassName('tweet__like-nb')
 
     for (let i =0; i<EltsLike.length; i++){
         EltsLike[i].addEventListener('click', handleLike);
@@ -18,7 +19,13 @@
         let liked = e.currentTarget.getAttribute('liked');
         let idTweet = e.currentTarget.getAttribute('id_tweet');
         let EltIcon = e.currentTarget.firstElementChild.firstElementChild;
-        let EltNb = e.currentTarget.lastElementChild;
+        let EltNb = null;
+        for ( let i=0; i<EltsNbLike.length; i++){
+            let idEltNb = EltsNbLike[i].id.replace('tweet__like-nb','');
+            if(idEltNb == idTweet){
+                EltNb = EltsNbLike[i];
+            }
+        }
     
 
 
@@ -27,7 +34,7 @@
             .then(data => {
                 
                 Elt.setAttribute('liked','0');
-                Elt.style.color = "hsl(210, 4.2%, 46.3%)";
+                Elt.style.color = "hsl(var(--clr-grey-light))";
                 EltIcon.classList.remove('fas');
                 EltIcon.classList.add('far');
                 EltNb.innerHTML = parseInt(EltNb.innerHTML) - 1;
@@ -38,7 +45,7 @@
             .then(data => {
             
                 Elt.setAttribute('liked','1');
-                Elt.style.color = "hsl(332, 94.9%, 53.5%)";
+                Elt.style.color = "hsl(var(--clr-pink))";
                 EltIcon.classList.remove('far');
                 EltIcon.classList.add('fas');
                 EltNb.innerHTML = parseInt(EltNb.innerHTML) + 1;

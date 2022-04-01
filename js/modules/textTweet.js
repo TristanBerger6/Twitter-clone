@@ -13,6 +13,7 @@ export function useTextTweet(){
     let EltCountText = document.getElementsByClassName('count-text');
     let EltText = document.getElementsByClassName('tweet-text');
     let EltMentions = document.getElementsByClassName('text-mentions');
+    let EltMentionsContainer = document.getElementsByClassName('text-mentions__container');
     let EltContenteditable = document.getElementsByClassName('contenteditable');
 
     
@@ -37,7 +38,6 @@ export function useTextTweet(){
                     for(let l=0; l<EltMentions.length; l++){  // look for the corresponding mention element
                         let idMentions = EltMentions[l].id.replace('text-mentions','');
                         if(idEditable === idMentions){ // found the corresponding mentions element
-                            EltMentions[l].innerHTML = ``; // reset the mentions element
                             let lastWord = valueText.split(' ').pop();
                             let isMention = lastWord.match(/^@/);
                             if(isMention){ // found some mentions @.. at the end of the text
@@ -46,7 +46,8 @@ export function useTextTweet(){
                                 if(stringToCheck){
                                     postData('index.php?handle=mention',{'stringToCheck' : stringToCheck})
                                     .then(data => {
-                                        EltMentions[l].style.display = 'block';
+                                        EltMentions[l].innerHTML = ``; // reset the mentions element
+                                        EltMentionsContainer[l].style.display = 'block';
                                         data.data.forEach((element)=>{
                                             EltMentions[l].innerHTML += `<li class="mention-prop flex">
                                             <img src='./public/img/profile/${element['img']}' alt="profile image" class="profile-img mention-img"> 
@@ -62,7 +63,7 @@ export function useTextTweet(){
                                         })
                                 }
                             }else{
-                                EltMentions[l].style.display = 'none';
+                                EltMentionsContainer[l].style.display = 'none';
                             }
                             
                         }
@@ -81,12 +82,12 @@ export function useTextTweet(){
             EltContenteditable[i].innerHTML = EltContenteditable[i].innerHTML.split(" ").slice(0, -1).join(" ");
             EltContenteditable[i].innerHTML +=  username ;
             EltText[s].value = EltContenteditable[i].innerText;
-            EltMentions[l].style.display = 'none';
+            EltMentionsContainer[l].style.display = 'none';
             color_mention(EltContenteditable[i]);
            
         }
-
     }
+
 
    
     function color_mention(EltCond){
@@ -134,6 +135,17 @@ export function useTextTweet(){
     for(let i=0; i<EltContenteditable.length; i++){
         let placeholder = EltContenteditable[i].getAttribute('data-placeholder');
         EltContenteditable[i].innerHTML = ''&&(EltContenteditable[i].innerHTML = placeholder);
+    }
+    // remove mentions container when clicking elsewhere than a mention 
+    for (let i =0; i<EltMentionsContainer.length; i++){
+        EltMentionsContainer[i].addEventListener('click',(e)=>{
+            let check = e.target.classList.contains('text-mentions-back');
+            if(check){
+                for (let j=0;j<EltMentionsContainer.length; j++){
+                    EltMentionsContainer[j].style.display ='none';
+                }
+            }
+        })
     }
    
 }

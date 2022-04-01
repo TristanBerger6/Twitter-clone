@@ -19,7 +19,7 @@
     }
     &__right{
         flex : 1 1 auto;
-        max-width: 85%;
+        max-width: 92%;
         &__header{
             --gap : 0.5rem;
             justify-content: space-between;
@@ -271,7 +271,7 @@
         color : hsl(var(--clr-green));
     }
     &__link:hover{
-        &::before{
+        &::after{
             position: absolute;
             content: '';
             top:0px;
@@ -279,8 +279,6 @@
             left:-15px;
             bottom:0px;
             background-color: hsl(var(--clr-grey-light),.1);
-            
-
         }
     }
 }
@@ -337,14 +335,26 @@
 
 
 .tweet-profile{
-    width :48px;
-    height :48px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    &__container{
+        width :48px;
+        height :48px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
 }
 .quoted-profile{
-    width :25px;
-    height :25px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    &__container{
+        width :25px;
+        height :25px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
 }
 
 .tweet-img{

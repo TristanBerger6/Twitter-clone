@@ -36,8 +36,7 @@ export function useFollow(){
             Elt.removeEventListener('click',handleUnfollow);
             Elt.addEventListener('click',handleFollow);
             Elt.innerHTML = 'Suivre';
-            Elt.classList.add('noabo');
-            Elt.classList.remove('abo');
+            Elt.classList.add('basic-btn--white');
         })
     }
 
@@ -52,8 +51,7 @@ export function useFollow(){
             Elt.removeEventListener('click',handleFollow);
             Elt.addEventListener('click',handleUnfollow);
             Elt.innerHTML = 'Abonné';
-            Elt.classList.add('abo');
-            Elt.classList.remove('noabo');
+            Elt.classList.remove('basic-btn--white');
         })
     }
 

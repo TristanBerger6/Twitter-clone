@@ -18,21 +18,39 @@
     display: flex;
     flex-direction: column;
     max-width: 600px;
+    min-height : 100vh;
     margin: auto;
     border :1px solid hsl(var(--clr-grey-light));
     border-top :0;
     border-bottom: 0;
-    &>*{
+    &>*:not(.no-padding){
         padding-inline: 15px;
     }
     .page-title{
         position : sticky;
+        align-items: center;
         padding-block : 15px;
         top : 0px;
         z-index : 3;
         width :100%;
         background : hsl(var(--clr-dark),.8);
         backdrop-filter: blur(12px);
+        &__back{
+            cursor : pointer;
+            display : grid;
+            align-content: center;
+            justify-content: center;
+            width : 30px;
+            height :30px;
+            border-radius: 50%;
+            svg{
+                width : 20px;
+                height :20px;
+            }
+            &:hover{
+                background-color: hsl(var(--clr-grey-dark),.8);
+            }
+        }
 
     }
     @media(max-width:$screen-md-min){

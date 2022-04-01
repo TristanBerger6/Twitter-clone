@@ -1,22 +1,3 @@
-.abo{
-    background : black ;
-    color : white;
-    width : min-content;
-    &:hover{
-        background: white;
-        color : black;
-    }
-}
-
-.noabo{
-    background: white;
-    color : black;
-    width : min-content;
-}
-
-.abo,.noabo{
-    cursor : pointer;
-}
 
 .tweet-btn{
     display : grid;
@@ -45,5 +26,30 @@
         margin-top: 0;
         height : 35px;
         aspect-ratio: 1;
+    }
+}
+
+.basic-btn{
+    cursor : pointer;
+    display : grid;
+    height : 36px;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid hsl(var(--clr-grey-light));
+    cursor : pointer;
+    border-radius: 18px;
+    padding: 0 16px;
+    background-color: hsl(var(--clr-dark));
+    color : hsl(var(--clr-white));
+    &:hover{
+        background : hsl(var(--clr-white),.1);
+    }
+    &--white{
+        background-color: hsl(var(--clr-white));
+        color : hsl(var(--clr-dark));
+        border-radius: none;
+        &:hover{
+            background : hsl(var(--clr-white),.9);
+        }
     }
 }

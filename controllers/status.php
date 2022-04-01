@@ -71,7 +71,6 @@ if (isset($_SESSION['id'])){
                        
                     }
                 } 
-                $t['date_hour_creation'] = get_time_ago_fr($t['date_hour_creation']);
                 $reqUserNameUsername = $usersManager->getUserNameUsername($t['id_user'])->fetch();
                 $reqUserProfile = $usersManager->getUserProfile($t['id_user'])->fetch();
                 $t['name'] = $reqUserNameUsername['name'];
@@ -92,6 +91,21 @@ if (isset($_SESSION['id'])){
                 // if the tweet of the status is quoted, add quoted infos
                 if($t['quote']){
                     $reqQuotedTweet = $tweetsManager->getTweet($t['quoted_id'])->fetch();
+                    $mentionedUsernames = get_mentions_from_string( $reqQuotedTweet['content'], true);
+                    foreach($mentionedUsernames as $mentionUsername){
+                        $withoutAt = str_replace('@','',$mentionUsername);
+                        $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
+                        if($reqId){
+                            $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
+                            if(strpos($reqQuotedTweet['content'],$reqId) == false){
+                                $reqQuotedTweet['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $reqQuotedTweet['content']);
+                                $reqQuotedTweet['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $reqQuotedTweet['content']);
+                                $reqQuotedTweet['content']= preg_replace('/\s'.$mentionUsername.'$/', $replace, $reqQuotedTweet['content']);
+                                $reqQuotedTweet['content']= preg_replace('/^'.$mentionUsername.'$/', $replace, $reqQuotedTweet['content']);
+                            }
+                        
+                        }
+                    } 
                     $reqUserQuotedTweet = $usersManager->getUser($reqQuotedTweet['id_user'])->fetch();
                     $t['quotedProfile'] = $reqUserQuotedTweet['img'];
                     $t['quotedName']= $reqUserQuotedTweet['name'];

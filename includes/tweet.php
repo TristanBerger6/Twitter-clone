@@ -16,7 +16,9 @@
                 <a href="index.php?page=profile&id=<?=$tweet['id_user']?>">
                     <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                 </a>
-                <img id="tweet__profile<?= $i?>" src='./public/img/profile/<?= $tweet['profile']?>' alt="profile image of <?= $tweet['name'] ?>" class="tweet-profile">
+                <div class="tweet-profile__container">
+                    <img id="tweet__profile<?= $i?>" src='./public/img/profile/<?= $tweet['profile']?>' alt="profile image of <?= $tweet['name'] ?>" class="tweet-profile">
+                </div>
             </div> 
             <div class="tweet__right">
                 <div class="tweet__right__header flex">
@@ -69,10 +71,12 @@
                                     <span class="quoted__link" style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                                 </a>
                                 <div class="quoted__top flex">
-                                    <img id="quoted__profile<?= $i?>" src='./public/img/profile/<?= $tweet['quotedProfile']?>'  alt="profile image of <?= $tweet['quotedName'] ?>" class="quoted-profile" > 
+                                    <div class="quoted-profile__container">
+                                        <img id="quoted__profile<?= $i?>" src='./public/img/profile/<?= $tweet['quotedProfile']?>'  alt="profile image of <?= $tweet['quotedName'] ?>" class="quoted-profile" > 
+                                    </div>
                                     <div class="quoted__top__names flex">
-                                    <p id="quoted__name<?= $i?>" class="fw-700"> <?= $tweet['quotedName'] ?></p>
-                                    <p id="quoted__username<?= $i?>" class="text-light"> @<?= $tweet['quotedUsername'].' ·' ?></p>
+                                        <p id="quoted__name<?= $i?>" class="fw-700"> <?= $tweet['quotedName'] ?></p>
+                                        <p id="quoted__username<?= $i?>" class="text-light"> @<?= $tweet['quotedUsername'].' ·' ?></p>
                                     </div>
                                     <p id="quoted__date<?= $i?>" class="text-light quoted__top__date"> <?= $tweet['quotedDate'] ?> </p>
                                 </div>
@@ -112,7 +116,7 @@
                     </div>
                     <div id_tweet=<?= $tweet['id']?> class="tweet__like flex text-light" liked="<?= $tweet['liked']?>" > 
                         <div><i class="fa-heart <?= $tweet['liked'] ? 'fas' : 'far' ?> " aria-hidden="true"></i></div>
-                        <p class="" ><?= $tweet['nbLikes'] ?></p>
+                        <p class="tweet__like-nb" id="tweet__like-nb<?=$tweet['id'] ?>"><?= $tweet['nbLikes'] ?></p>
                     </div>
                 </div>
             </div>

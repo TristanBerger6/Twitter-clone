@@ -10,29 +10,38 @@ export function useExplore(){
     let EltInput = document.getElementById('explore-input');
     let EltSubmit = document.getElementById('explore-submit');
     let EltSuggestions = document.getElementById('explore-suggestions');
+    let EltSuggestionsContainer = document.getElementById('explore-suggestions-container');
 
+    let EltBlock = document.getElementById('explore-block');
+    let EltBlockSearch = document.getElementById('explore-block-search');
+    let EltBlockClose = document.getElementById('explore-block-close');
+
+    // on enter, send Get request via url
     EltSubmit.addEventListener('click',(e)=>{
         e.preventDefault();
         let textValue = EltInput.value;
         location.replace(`index.php?page=explore&query=${textValue}`);
     })
 
+    // on input, display suggestions with an ajax call to handleMention.php
     EltInput.addEventListener('input',(e)=>{
         let textValue = EltInput.value;
         let startMention = textValue.match(/^@/);
-        EltSuggestions.innerHTML = ``;
         if(startMention){
             let nbWords = startMention.input.split(' ').length;
             if(nbWords === 1){
                 let stringToCheck = startMention.input.replace('@','');
                 postData('index.php?handle=mention',{'stringToCheck' : stringToCheck})
                     .then(data => {
-                        EltSuggestions.style.display = 'block';
+                        EltSuggestions.innerHTML = ``;
+                        EltSuggestionsContainer.style.display = 'block';
                         data.data.forEach((element)=>{
-                            EltSuggestions.innerHTML += `<li id_user="${element['id']}" class="mention-prop">
+                            EltSuggestions.innerHTML += `<li id_user="${element['id']}" class="mention-prop flex">
                             <img src='./public/img/profile/${element['img']}' alt="profile image" class="profile-img mention-img"> 
-                            <p class="mention-name">@${element['name']}</p>
-                            <p class="mention-username">@${element['username']}</p>
+                            <div class="mention-prop__right"> 
+                            <p class="mention-name fw-700">@${element['name']}</p>
+                            <p class="mention-username text-light">@${element['username']}</p>
+                            </div>
                             </li>`;
                         })
                         for (let k=0; k<EltSuggestions.childNodes.length; k++){
@@ -40,17 +49,49 @@ export function useExplore(){
                         }
                         })
             }else{
-                EltSuggestions.style.display = 'none';
+                EltSuggestionsContainer.style.display = 'none';
             }
         }else{
-            EltSuggestions.style.display = 'none';
+            EltSuggestionsContainer.style.display = 'none';
         }
-
     })
 
     function handleClickSuggestion(e){
-        
         location.replace(`index.php?page=profile&id=${e.currentTarget.getAttribute('id_user')}`); 
-        
     }
+
+    // Change style on focus and blur
+    EltInput.addEventListener('focus',(e)=>{
+        if(EltInput.value !== ''){
+            EltBlockClose.style.display="grid";
+        }
+        EltBlock.style.outline="1px solid hsl(var(--clr-blue))";
+        EltBlockSearch.style.fill = "hsl(var(--clr-blue))";
+        EltBlockClose.style.background = "hsl(var(--clr-blue))";
+    })
+    EltInput.addEventListener('blur',(e)=>{
+        EltBlock.style.outline="none";
+        EltBlockSearch.style.fill = "hsl(var(--clr-white))";
+        EltBlockClose.style.background = "hsl(var(--clr-white))";
+    })
+    // Close buton appears disappears when writing in the input
+    EltInput.addEventListener('input',(e)=>{
+        if (e.currentTarget.value == ''){
+            EltBlockClose.style.display="none";
+        }else{
+            EltBlockClose.style.display="grid";
+        }
+    })
+    //Reset input's value when clicking onthe close buton
+    EltBlockClose.addEventListener('click',(e)=>{
+        EltInput.value = "";
+        EltBlockClose.style.display="none";
+    })
+    // Remove suggestions container on click elsewhere than suggestions
+    EltSuggestionsContainer.addEventListener('click',(e)=>{
+        let check = e.target.classList.contains('text-mentions-back');
+        if(check){
+            EltSuggestionsContainer.style.display = 'none';
+        }
+    })
 }

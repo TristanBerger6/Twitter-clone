@@ -24,8 +24,12 @@
 }
 
 .text-mentions{
+    &__container{
+        display: none;
+    }
     background : black;
-    display : none;
+    width : max-content;
+    border-radius: 10px;
     box-shadow: 0 0 15px hsl(var(--clr-grey-light));
     max-height : 500px;
     overflow: auto;

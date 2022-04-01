@@ -83,7 +83,7 @@ if (isset($_SESSION['id'])){
                 $updateCover = $usersManager->updateCover($resNameCover,$_SESSION['id']);
             }
             if($updateProfile){
-                $reqProfile = $userManager->getUserProfile($_SESSION['id']);
+                $reqProfile = $usersManager->getUserProfile($_SESSION['id']);
                 $reqProfile = $reqProfile->fetch();
                 if($reqProfile['img'] != $usersManager->defaultProfile){
                     unlink($target_dirProfile.$reqProfile['img']);

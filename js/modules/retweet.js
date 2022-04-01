@@ -68,13 +68,13 @@
             .then(data => { // remove retweet from the retweeted tweet
                 EltRetweet.setAttribute('retweeted','0');
                 EltRetweetBtn.lastElementChild.innerHTML="Retweeter";
-                EltRetweet.style.color = "hsl(210, 4.2%, 46.3%)";
+                EltRetweet.style.color = "hsl(var(--clr-grey-light))";
                 EltNb.innerHTML = parseInt(EltNb.innerHTML) - 1;
 
                 if(idOriginalRetweet !== null){ // remove retweet from the original tweet
                     originalRetweet.setAttribute('retweeted','0');
                     originalRetweetBtn.lastElementChild.innerHTML="Retweeter";
-                    originalRetweet.style.color = "hsl(210, 4.2%, 46.3%)";
+                    originalRetweet.style.color = "hsl(var(--clr-grey-light))";
                     originalNb.innerHTML = parseInt(originalNb.innerHTML) - 1;
                 }
             
@@ -87,13 +87,13 @@
             
                 EltRetweet.setAttribute('retweeted','1');
                 EltRetweetBtn.lastElementChild.innerHTML="Annuler le retweet";
-                EltRetweet.style.color = "hsl(160, 100%, 36.5%)";  
+                EltRetweet.style.color = "hsl(var(--clr-green))";  
                 EltNb.innerHTML = parseInt(EltNb.innerHTML) + 1;
 
                 if(idOriginalRetweet !== null){// add retweet to the original tweet
                     originalRetweet.setAttribute('retweeted','1');
                     originalRetweetBtn.lastElementChild.innerHTML="Annuler le retweet";
-                    originalRetweet.style.color = "hsl(160, 100%, 36.5%)";
+                    originalRetweet.style.color = "hsl(var(--clr-green))";
                     originalNb.innerHTML = parseInt(originalNb.innerHTML) + 1;
                 }
         

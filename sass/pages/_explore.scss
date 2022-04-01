@@ -1,0 +1,35 @@
+.explore-block{
+    margin-block: 10px ;
+    padding-inline : 15px;
+    height : 50px;
+    border-radius: 25px ;
+    align-items: center;
+    width : 100%;
+    max-width: 500px;
+    background : hsl(var(--clr-grey-dark));
+    &__close{
+        display : none;
+        align-content: center;
+        justify-content: center;
+        width : 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: hsl(var(--clr-white));
+        path{
+            fill: hsl(var(--clr-dark));
+        }
+    }
+    input{
+        flex : 1;
+        color : hsl(var(--clr-white));
+        background: none;
+        border : none;
+        &:focus{
+            outline : none;
+        }
+    }
+   svg{
+       width:18px;
+       height :18px;
+   }
+}

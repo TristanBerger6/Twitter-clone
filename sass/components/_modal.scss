@@ -49,18 +49,17 @@
 .modal-comment{
     .tweet{
         margin-bottom: 15px;
-        &__left{
-            position: relative;
-            &::after{
-                content : '';
-                position: absolute;
-                bottom: -12px;
-                top: 50px;
-                right: 50%;
-                width : 2px;
-                background-color: hsl(var(--clr-grey-light),1);
-            }
+        position: relative;
+        &::after{
+            content : '';
+            position: absolute;
+            bottom: -12px;
+            top: 50px;
+            left: 24px;
+            width : 2px;
+            background-color: hsl(var(--clr-grey-light),1);
         }
+        
     }
     .tweet__right__header{
         justify-content: flex-start;
