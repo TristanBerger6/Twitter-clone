@@ -22,7 +22,7 @@
     <div class="connected-page__container">
         <?php require('includes/nav.php') ?>
         <?php if($_SESSION['id'] === $_GET['id']){ ?>
-        <div class="modal modal6 modal-profile" >
+        <div class="modal modal6 profile-modal" >
             <div class="modal__content">
                 <form  method="POST" action="" id="formUpdate" enctype="multipart/form-data" >
                     <div class="profile-modal__header flex">

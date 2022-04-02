@@ -29,6 +29,7 @@ if (isset($_SESSION['id'])){
             if($rt['id_user'] !== $_SESSION['id']){
                 $tmp = null;
                 $tmp['type'] = 'retweet';
+                $tmp['display'] = 'a retweeté un de vos tweet';
                 $tmp['foreign_name'] = $usersManager->getUser($rt['id_user'])->fetch()['name'];
                 $tmp['foreign_profile'] = $usersManager->getUser($rt['id_user'])->fetch()['img'];
                 $tmp['foreign_id'] = $rt['id_user'];
@@ -44,6 +45,7 @@ if (isset($_SESSION['id'])){
             if($q['id_user'] !== $_SESSION['id']){
                 $tmp = null;
                 $tmp['type'] = 'quote';
+                $tmp['display'] = 'a cité un de vos tweet';
                 $tmp['foreign_name'] = $usersManager->getUser($q['id_user'])->fetch()['name'];
                 $tmp['foreign_profile'] = $usersManager->getUser($q['id_user'])->fetch()['img'];
                 $tmp['foreign_id'] = $q['id_user'];
@@ -59,6 +61,7 @@ if (isset($_SESSION['id'])){
             if($c['id_user'] !== $_SESSION['id']){
                 $tmp = null;
                 $tmp['type'] = 'comment';
+                $tmp['display'] = 'a commenté un de vos tweet';
                 $tmp['foreign_name'] = $usersManager->getUser($c['id_user'])->fetch()['name'];
                 $tmp['foreign_profile'] = $usersManager->getUser($c['id_user'])->fetch()['img'];
                 $tmp['foreign_id'] = $c['id_user'];
@@ -74,6 +77,7 @@ if (isset($_SESSION['id'])){
             if($like['id_user'] !== $_SESSION['id']){
                 $tmp = null;
                 $tmp['type'] = 'like';
+                $tmp['display'] = 'a aimé un de vos tweet';
                 $tmp['foreign_name'] = $usersManager->getUser($like['id_user'])->fetch()['name'];
                 $tmp['foreign_profile'] = $usersManager->getUser($like['id_user'])->fetch()['img'];
                 $tmp['foreign_id'] = $like['id_user'];
@@ -90,6 +94,7 @@ if (isset($_SESSION['id'])){
         if($mention['mentionfrom_id'] !== $_SESSION['id']){
             $tmp = null;
             $tmp['type'] = 'mention';
+            $tmp['display'] = 'vous a mentionné dans un tweet';
             $tmp['foreign_name'] = $usersManager->getUser($mention['mentionfrom_id'])->fetch()['name'];
             $tmp['foreign_profile'] = $usersManager->getUser($mention['mentionfrom_id'])->fetch()['img'];
             $tmp['foreign_id'] = $mention['mentionfrom_id'];
@@ -105,6 +110,7 @@ if (isset($_SESSION['id'])){
         if($follow['id_follower'] !== $_SESSION['id']){
             $tmp = null;
             $tmp['type'] = 'follow';
+            $tmp['display'] = 'vous a mentionné dans un tweet';
             $tmp['foreign_name'] = $usersManager->getUser($follow['id_follower'])->fetch()['name'];
             $tmp['foreign_profile'] = $usersManager->getUser($follow['id_follower'])->fetch()['img'];
             $tmp['foreign_id'] = $follow['id_follower'];

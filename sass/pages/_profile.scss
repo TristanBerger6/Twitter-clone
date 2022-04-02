@@ -28,6 +28,12 @@
     &__core{
         &__name{
             margin-block :20px;
+            overflow: hidden;
+            p{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         }
         &__bio{
             margin-bottom: 15px;
@@ -43,8 +49,10 @@
 }
 
 .profile-modal{
+    @media(max-width:$screen-md-min){
+        padding: 15px;
+    }
     &__header{
-
         justify-content: space-between;
     }
     &__cover{

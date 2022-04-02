@@ -26,6 +26,25 @@
     flex-direction: column;
     &__header{
         justify-content: space-between;
+        &__names>*{
+            max-height: 25px;
+            max-width: 25ch;
+            overflow:hidden;
+            text-overflow: ellipsis;
+            &:hover:first-child{
+                text-decoration: underline;
+            }
+            @media(max-width:$screen-sm-min){
+                max-width: 21ch;
+            }
+            @media(max-width:500px){
+                max-width: 15ch;
+            }
+            @media(max-width:350px){
+                max-width: 12ch;
+            }
+        }
+        
     }
     &__core,&__nbreacts{
         border-bottom : 1px solid hsl(var(--clr-grey-light));

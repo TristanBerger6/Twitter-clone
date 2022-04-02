@@ -62,7 +62,7 @@ if (isset($_SESSION['id'])){
                     $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
                     if($reqId){
                         $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
-                        if(strpos($t['content'],$reqId) == false){
+                        if(strpos($t['content'],'id='.$reqId.'"') == false){
                             $t['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $t['content']);
                             $t['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $t['content']);
                             $t['content']= preg_replace('/\s'.$mentionUsername.'$/', $replace, $t['content']);
@@ -97,7 +97,7 @@ if (isset($_SESSION['id'])){
                         $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
                         if($reqId){
                             $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
-                            if(strpos($reqQuotedTweet['content'],$reqId) == false){
+                            if(strpos($reqQuotedTweet['content'],'id='.$reqId.'"') == false){
                                 $reqQuotedTweet['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $reqQuotedTweet['content']);
                                 $reqQuotedTweet['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $reqQuotedTweet['content']);
                                 $reqQuotedTweet['content']= preg_replace('/\s'.$mentionUsername.'$/', $replace, $reqQuotedTweet['content']);
@@ -176,7 +176,7 @@ if (isset($_SESSION['id'])){
                     $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
                     if($reqId){
                         $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
-                        if(strpos($t['content'],$reqId) == false){
+                        if(strpos($t['content'],'id='.$reqId.'"') == false){
                             $t['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $t['content']);
                             $t['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $t['content']);
                             $t['content']= preg_replace('/\s'.$mentionUsername.'$/', $replace, $t['content']);

@@ -459,24 +459,28 @@ body {
   --gap: 0.5rem;
   justify-content: space-between;
 }
-.tweet__right__header__names > * {
+.tweet__right__header__names a {
   max-height: 25px;
   max-width: 16ch;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tweet__right__header__names a:hover:first-child {
+  text-decoration: underline;
 }
 @media (max-width: 576px) {
-  .tweet__right__header__names > * {
+  .tweet__right__header__names a {
     max-width: 11ch;
   }
 }
 @media (max-width: 500px) {
-  .tweet__right__header__names > * {
+  .tweet__right__header__names a {
     max-width: 8ch;
   }
 }
 @media (max-width: 350px) {
-  .tweet__right__header__names > * {
+  .tweet__right__header__names a {
     max-width: 6ch;
   }
 }
@@ -484,6 +488,7 @@ body {
   max-height: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   word-break: break-word;
 }
 .tweet__right__bot {
@@ -498,6 +503,11 @@ body {
 }
 .tweet__content a:hover {
   text-decoration: underline;
+}
+.tweet__response-to {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tweet__response-to a {
   color: hsl(var(--clr-blue));
@@ -541,6 +551,8 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
   width: 15ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tweet__opt p:hover::before {
   content: "";
@@ -1019,8 +1031,14 @@ body {
   top: 0px;
   z-index: 3;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: hsl(var(--clr-dark), 0.8);
   backdrop-filter: blur(12px);
+}
+.homeContainer .page-title a, .homeContainer .page-title a h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .homeContainer .page-title__back {
   cursor: pointer;
@@ -1028,6 +1046,7 @@ body {
   align-content: center;
   justify-content: center;
   width: 30px;
+  min-width: 30px;
   height: 30px;
   border-radius: 50%;
 }
@@ -1085,6 +1104,12 @@ body {
 }
 .profile__core__name {
   margin-block: 20px;
+  overflow: hidden;
+}
+.profile__core__name p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .profile__core__bio {
   margin-bottom: 15px;
@@ -1096,6 +1121,11 @@ body {
   text-decoration: underline;
 }
 
+@media (max-width: 768px) {
+  .profile-modal {
+    padding: 15px;
+  }
+}
 .profile-modal__header {
   justify-content: space-between;
 }
@@ -1157,6 +1187,88 @@ body {
 .profile-modal__inputs input:focus {
   border: 1px solid hsl(var(--clr-blue), 0.8);
   outline: solid 2px hsl(var(--clr-blue), 0.8);
+}
+
+.follow-page-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.follow-page-title p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.follow__container {
+  padding-block: 20px;
+}
+.follow__container__link {
+  cursor: pointer;
+}
+.follow__container__link:hover::after {
+  position: absolute;
+  content: "";
+  top: 0px;
+  right: -15px;
+  left: -15px;
+  bottom: 0px;
+  background-color: hsl(var(--clr-grey-light), 0.1);
+}
+.follow__right {
+  flex: 1;
+}
+.follow__right__header {
+  justify-content: space-between;
+}
+.follow__right__header__names {
+  max-width: 40ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .follow__right__header__names {
+    max-width: 30ch;
+  }
+}
+@media (max-width: 576px) {
+  .follow__right__header__names {
+    max-width: 22ch;
+  }
+}
+@media (max-width: 400px) {
+  .follow__right__header__names {
+    max-width: 15ch;
+  }
+}
+.follow__right__header__names p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.follow__right__header__names a:hover {
+  text-decoration: underline;
+}
+
+.settings {
+  padding-block: 20px;
+  flex-direction: column;
+}
+.settings input {
+  background: none;
+  border: 1px solid hsl(var(--clr-grey-light));
+  padding: 8px;
+  border-radius: 5px;
+  color: hsl(var(--clr-white));
+}
+.settings input:focus {
+  outline: 1px solid hsl(var(--clr-blue));
+  border: 1px solid hsl(var(--clr-blue));
+}
+.settings .basic-btn {
+  width: 50%;
+  min-width: max-content;
+  align-self: center;
 }
 
 .start {
@@ -1349,6 +1461,30 @@ body {
 .tweet-status__header {
   justify-content: space-between;
 }
+.tweet-status__header__names > * {
+  max-height: 25px;
+  max-width: 25ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tweet-status__header__names > *:hover:first-child {
+  text-decoration: underline;
+}
+@media (max-width: 576px) {
+  .tweet-status__header__names > * {
+    max-width: 21ch;
+  }
+}
+@media (max-width: 500px) {
+  .tweet-status__header__names > * {
+    max-width: 15ch;
+  }
+}
+@media (max-width: 350px) {
+  .tweet-status__header__names > * {
+    max-width: 12ch;
+  }
+}
 .tweet-status__core, .tweet-status__nbreacts {
   border-bottom: 1px solid hsl(var(--clr-grey-light));
   padding-bottom: 1rem;
@@ -1402,6 +1538,35 @@ body {
 .explore-block svg {
   width: 18px;
   height: 18px;
+}
+
+.notif {
+  position: relative;
+  align-items: center;
+  padding-block: 15px;
+}
+.notif:hover::after {
+  position: absolute;
+  content: "";
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: hsl(var(--clr-grey-light), 0.1);
+}
+.notif__icon {
+  font-size: 1.4rem;
+}
+.notif__right {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notif__right__bot {
+  margin-top: 10px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*# sourceMappingURL=style.css.map */

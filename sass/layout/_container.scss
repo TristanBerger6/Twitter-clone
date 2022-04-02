@@ -33,14 +33,21 @@
         top : 0px;
         z-index : 3;
         width :100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
         background : hsl(var(--clr-dark),.8);
         backdrop-filter: blur(12px);
+        a, a h1{
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         &__back{
             cursor : pointer;
             display : grid;
             align-content: center;
             justify-content: center;
             width : 30px;
+            min-width: 30px;
             height :30px;
             border-radius: 50%;
             svg{

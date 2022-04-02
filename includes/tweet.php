@@ -1,7 +1,7 @@
 <div class="tweet__container" style="position:relative">
     <a href="index.php?page=status&id=<?=$tweet['id']?><?= $tweet['retweeter'] ? '&retweeter='.$tweet["retweeter_id"] : ''?>">
         <span class="tweet__link" style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:1"></span>
-        </a>
+    </a>
     <div class="tweet">
         <?php if($tweet['retweeter']){  ?>
             <div style="position:relative" class="tweet__retweet text-light">
@@ -23,15 +23,10 @@
             <div class="tweet__right">
                 <div class="tweet__right__header flex">
                     <div class="flex">
-                        <div style="position:relative">
-                            <a href="index.php?page=profile&id=<?=$tweet['id_user']?>">
-                                <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
-                            </a>
                             <div class="flex tweet__right__header__names">
-                                <p id="tweet__name<?= $i?>" class="fw-700"> <?= $tweet['name'] ?></p>
-                                <p id="tweet__username<?= $i?>" class="text-light"> @<?= $tweet['username']." ·" ?></p>
+                                <a style="position:relative;z-index2" href="index.php?page=profile&id=<?=$tweet['id_user']?>"><p id="tweet__name<?= $i?>" class="fw-700"> <?= $tweet['name'] ?></p></a>
+                                <a style="position:relative;z-index2" href="index.php?page=profile&id=<?=$tweet['id_user']?>"><p id="tweet__username<?= $i?>" class="text-light"> @<?= $tweet['username']." ·" ?></p></a>
                             </div>
-                        </div> 
                         <p id="tweet__date<?= $i?>" class="text-light tweet__right__header__date"> <?= $tweet['date_hour_creation'] ?></p>
                     </div>
                     <div class="tweet__opt__btn tweet__right__header__opt" id="tweet__opt__btn<?= $i ?>">

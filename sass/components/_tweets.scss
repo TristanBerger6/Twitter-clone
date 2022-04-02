@@ -23,11 +23,15 @@
         &__header{
             --gap : 0.5rem;
             justify-content: space-between;
-            &__names>*{
+            &__names a{
                 max-height: 25px;
                 max-width: 16ch;
                 overflow:hidden;
                 text-overflow: ellipsis;
+                white-space: nowrap;
+                &:hover:first-child{
+                    text-decoration: underline;
+                }
                 @media(max-width:$screen-sm-min){
                     max-width: 11ch;
                 }
@@ -42,6 +46,7 @@
                 max-height: 25px;
                 overflow:hidden;
                 text-overflow: ellipsis;
+                white-space: nowrap;
                 word-break: break-word;
             }
         }
@@ -59,11 +64,17 @@
             } 
         }
     }
-    &__response-to a{
-        color : hsl(var(--clr-blue));
-        &:hover{
-            text-decoration: underline;
+    &__response-to{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        a{
+            color : hsl(var(--clr-blue));
+            &:hover{
+                text-decoration: underline;
+            }
         }
+      
     }
    
     &__opt{
@@ -101,6 +112,8 @@
             border-radius: 5px;
             padding : 5px 10px;
             width : 15ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
             &:hover{
                 &::before{
                     content :'';

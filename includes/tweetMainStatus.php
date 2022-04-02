@@ -22,12 +22,9 @@
                                     <img id="tweet__profile<?= $i ?>" src='./public/img/profile/<?= $tweet['profile']?>' alt="profile image of <?= $tweet['name'] ?>" class="tweet-profile">
                                 </div>
                             </div> 
-                            <div style="position:relative">
-                                <a href="index.php?page=profile&id=<?=$tweet['id_user']?>">
-                                    <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
-                                </a>
-                                <p class="fw-700" id="tweet__name<?= $i ?>"> <?= $tweet['name'] ?></p>
-                                <p class="text-light" id="tweet__username<?= $i ?>"> @<?= $tweet['username'] ?></p>
+                            <div class="tweet-status__header__names" style="position:relative">
+                                <a style="position:relative;z-index2" href="index.php?page=profile&id=<?=$tweet['id_user']?>"><p class="fw-700" id="tweet__name<?= $i ?>"> <?= $tweet['name'] ?></p></a>
+                                <a style="position:relative;z-index2" href="index.php?page=profile&id=<?=$tweet['id_user']?>"><p class="text-light" id="tweet__username<?= $i ?>"> @<?= $tweet['username'] ?></p></a>
                             </div> 
                         </div>
                         <div class="tweet__opt__btn" id="tweet__opt__btn<?= $i ?>">
