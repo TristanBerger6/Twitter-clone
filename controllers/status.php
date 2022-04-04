@@ -212,9 +212,9 @@ if (isset($_SESSION['id'])){
                 return ($a['date_hour_creation']< $b['date_hour_creation']) ? -1: 1;
             });
 
-            require_once(ROOT.'views/statusView.php');
+            require_once('views/statusView.php');
         }else{
-            header('Location: index.php?page=home');
+            header('Location: '.$baseURI.'home');
         }
     }else{
         die("Erreur : La page recherchée n'existe pas");

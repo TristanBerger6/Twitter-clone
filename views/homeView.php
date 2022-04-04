@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <base href=<?= $baseURI ?>>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
@@ -18,10 +19,10 @@
 
     <?php require('includes/nav.php') ?>
     <main class='homeContainer'>
-        <div class="page-title"><a href="index.php?page=home"><h1 class="fs-700">Accueil</h1></a></div>
+        <div class="page-title"><a href="home"><h1 class="fs-700">Accueil</h1></a></div>
         <div class="post-tweet__container">
             <form action='' method="post" enctype='multipart/form-data' class="post-tweet flex">
-                <div class="tweet-profile__container">
+                <div class="post-tweet__left tweet-profile__container">
                     <img src='./public/img/profile/<?= $reqUser['img']?>' alt="profile image" class="tweet-profile"> 
                 </div>
                 <div class="post-tweet__right">
@@ -31,7 +32,7 @@
                             <div class="contenteditable" id="contenteditable2" contenteditable data-placeholder="Quoi de neuf ?" > </div>
                             <div class="text-mentions__container" >
                                 <ul class="text-mentions" id="text-mentions2" style="z-index:99;position:absolute;bottom:0;left:0;transform:translateY(100%);"></ul>
-                                <div class="text-mentions-back" style="position:fixed;width:100vw;height:100vh;top:0;left:0;z-index:1"></div>
+                                <div class="text-mentions-back" style="position:fixed;width:100vw;height:100vh;top:0;left:0;z-index:3"></div>
                             </div>
                         </div>
                         <div class='preview'>
@@ -46,16 +47,17 @@
                         <input id="input-img2" class="input-img" aria-hidden="true" type="file" name="tweet-img">
                         <span class="count-text text-blue" id="count-text2">140</span>
                         <input class='tweet-btn bg-blue text-white fw-700' type="submit" name="postTweet" value="Tweeter">
-                        <?php if (isset($error)) {
-                        echo '<font color="red">' . $error . '</font>';
-                        } ?>
                     </div>
+                    <?php if (isset($error)) {
+                        echo '<div class="error">' . $error . '</div>';
+                    } ?>
                 </div>
+               
                 
             </form>
         </div>
         <div class="reload-page">
-            <a href="index.php?page=home" class="text-blue fs-600">Recharger la page</a>
+            <a href="home" class="text-blue fs-600">Recharger la page</a>
         </div>
         <?php $i = 0;
               foreach($allTweetsWInfos as $tweet){

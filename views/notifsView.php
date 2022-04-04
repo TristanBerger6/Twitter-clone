@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <base href=<?= $baseURI ?>>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
@@ -24,9 +25,9 @@
             </div>
             <?php foreach($allNotifs as $notif){?>
                 <?php if($notif['type'] == 'follow'){ ?>
-                    <a class="notif flex" href="index.php?page=profile&id=<?= $notif['foreign_id']?>?>">
+                    <a class="notif flex" href="profile/<?= $notif['foreign_id']?>?>">
                 <?php }else{ ?>
-                    <a class="notif flex" href="index.php?page=status&id=<?= $notif['id_tweet']?><?= $notif['type']=='retweet' ? '&retweeter='.$notif['foreign_id'].'':  '' ?>">
+                    <a class="notif flex" href="status/<?= $notif['id_tweet']?><?= $notif['type']=='retweet' ? '/'.$notif['foreign_id'].'':  '' ?>">
                 <?php } ?>
                     <div class="notif__icon">
                         <?php if($notif['type'] === 'retweet' || $notif['type'] === 'quote') { ?>

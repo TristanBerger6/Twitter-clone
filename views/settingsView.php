@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <base href=<?= $baseURI ?>>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
@@ -31,7 +32,7 @@
                 <input type="text" placeholder="Adresse email" id="mail" name="mail" value="<?php if(isset($mail)){ echo $mail;}?>"/>
                 <button class="basic-btn fw-700" type="submit" name="updateMail" id="sumbitUpdateMail">Enregistrer</button>
                 <?php if (isset($error)) {
-                echo '<font color="red">' . $error . '</font>';
+                echo '<div class="success">' . $error . '</div>';
                 } ?>      
             </form>
             <form  class="settings settings-pass flex" method="POST" action="" enctype="multipart/form-data" >
@@ -44,7 +45,7 @@
                 <input type="password" placeholder="Confirmer le mot de passe" id="newPass2" name="newPass2" required/>
                 <button class="basic-btn fw-700" type="submit" name="updatePass" id="sumbitUpdatePass">Enregistrer</button>
                 <?php if (isset($errorPass)) {
-                echo '<font color="red">' . $errorPass . '</font>';
+                echo '<div class="success">' . $errorPass . '</div>';
                 } ?>      
             </form>
             

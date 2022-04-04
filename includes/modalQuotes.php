@@ -46,8 +46,8 @@
                         <span class="count-text text-blue" id="count-text8">140</span>
                         <input type="text" class="sr-only" aria-hidden="true" name="quoted_id" id="quotedTweet__id" value="">
                         <input class="tweet-btn bg-blue text-white fw-700" type="submit" name="quoteTweet" value="Tweeter" id="quoteTweet">
-                        <div id="quoteTweet-error"></div>
                     </div>
+                    <div class="error" id="quoteTweet-error"></div>
                 </div>
             </form>
         </div>

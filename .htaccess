@@ -1,0 +1,18 @@
+RewriteEngine On
+
+
+
+RewriteRule ^signin$ index.php?page=signin
+RewriteRule ^signup$ index.php?page=signup
+RewriteRule ^home$ index.php?page=home
+RewriteRule ^explore$ index.php?page=explore
+RewriteRule ^explore/([a-zA-Z0-9]+)$ index.php?page=explore&query=$1
+RewriteRule ^notifs$ index.php?page=notifs
+RewriteRule ^profile/([0-9]+)$ index.php?page=profile&id=$1
+RewriteRule ^profile/([0-9]+)/([a-zA-Z0-9\-\_\/]+)$ index.php?page=profile&id=$1&type=$2
+RewriteRule ^settings$ index.php?page=settings
+RewriteRule ^follow/([0-9]+)/([a-zA-Z0-9\-\_\/]+)$ index.php?page=follow&id=$1&type=$2
+RewriteRule ^status/([0-9]+)$ index.php?page=status&id=$1
+RewriteRule ^status/([0-9]+)/([a-zA-Z0-9\-\_\/]+)$ index.php?page=status&id=$1&retweeter=$2
+RewriteRule ^logout$ index.php?page=logout
+

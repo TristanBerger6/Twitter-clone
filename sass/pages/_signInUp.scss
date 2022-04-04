@@ -5,6 +5,11 @@
     @media(max-width:$screen-sm-min){
         padding-top: 0;
     }
+    a{
+        &:hover{
+            text-decoration: underline;
+        }
+    }
 }
 
 

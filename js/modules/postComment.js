@@ -124,7 +124,7 @@ export function usePostComment(){
         postForm(`index.php?handle=comment&commentTweet=1`,formdata)
         .then(res => {
             if(res.data == 'created'){
-                location.replace(`index.php?page=status&id=${EltCommentedId.value}`);
+                location.replace(`status/${EltCommentedId.value}`);
             
             }else{
                 EltError.innerHTML = res.data.error;

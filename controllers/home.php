@@ -126,13 +126,7 @@ if (isset($_SESSION['id'])){
         array_push($allTweetsWInfos, get_tweet_infos($t)); // in php/utils.php
          
     }
-
-
-  
-
-
-
-    require_once(ROOT.'views/homeView.php');
+    require_once('views/homeView.php');
 }else{
     die("Erreur : La page recherchée n'existe pas");
 }

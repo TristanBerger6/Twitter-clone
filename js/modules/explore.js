@@ -20,7 +20,7 @@ export function useExplore(){
     EltSubmit.addEventListener('click',(e)=>{
         e.preventDefault();
         let textValue = EltInput.value;
-        location.replace(`index.php?page=explore&query=${textValue}`);
+        location.replace(`explore/${textValue}`);
     })
 
     // on input, display suggestions with an ajax call to handleMention.php
@@ -57,7 +57,7 @@ export function useExplore(){
     })
 
     function handleClickSuggestion(e){
-        location.replace(`index.php?page=profile&id=${e.currentTarget.getAttribute('id_user')}`); 
+        location.replace(`profile/${e.currentTarget.getAttribute('id_user')}`); 
     }
 
     // Change style on focus and blur

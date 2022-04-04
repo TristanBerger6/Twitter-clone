@@ -1,0 +1,12 @@
+.error{
+    color : red;
+    margin-block: 10px;
+}
+.success{
+    color : hsl(var(--clr-green));
+    margin-block: 10px;
+    a{
+        text-decoration: underline;
+        color : hsl(var(--clr-green));
+    }
+}

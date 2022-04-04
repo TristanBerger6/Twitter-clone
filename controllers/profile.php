@@ -1,5 +1,5 @@
 <?php 
-
+ 
 require_once("models/UsersManager.php");
 require_once("models/FollowsManager.php");
 require_once("models/TweetsManager.php");
@@ -57,10 +57,11 @@ if (isset($_SESSION['id'])){
                     $reqOriginalTweet = $tweetsManager->getTweet($rt['id_original_tweet'])->fetch();
                     if($_GET['id']== $_SESSION['id']){
                         $reqOriginalTweet['retweeter'] = 'Vous avez retweeté';
+                        $reqOriginalTweet['retweeter_id'] = $SESSION['id'];
                     }else{
                         $reqOriginalTweet['retweeter'] = $reqUser['name'].' a retweeté';
+                        $reqOriginalTweet['retweeter_id'] = $_GET['id'];
                     }
-                    $reqOriginalTweet['retweeter_id'] = $_GET['id'];
                     $reqOriginalTweet['date'] = $rt['date_hour_creation'];
                     array_push($allTweets, $reqOriginalTweet);
                 }
@@ -99,10 +100,11 @@ if (isset($_SESSION['id'])){
                     $reqOriginalTweet = $tweetsManager->getTweet($rt['id_original_tweet'])->fetch();
                     if($_GET['id']== $_SESSION['id']){
                         $reqOriginalTweet['retweeter'] = 'Vous avez retweeté';
+                        $reqOriginalTweet['retweeter_id'] = $_SESSION['id'];
                     }else{
                         $reqOriginalTweet['retweeter'] = $reqUser['name'].' a retweeté';
+                        $reqOriginalTweet['retweeter_id'] = $_GET['id'];
                     }
-                    $reqOriginalTweet['retweeter_id'] = $_SESSION['id'];
                     $reqOriginalTweet['date'] = $rt['date_hour_creation'];
                     array_push($allTweets, $reqOriginalTweet);
                 }
@@ -125,7 +127,7 @@ if (isset($_SESSION['id'])){
                 array_push($allTweetsWInfos, get_tweet_infos($t)); // in php/utils.php
             }
 
-            require_once(ROOT.'views/profileView.php');
+            require_once('views/profileView.php');
         }else{
             die("Erreur : La page recherchée n'existe pas");
         }

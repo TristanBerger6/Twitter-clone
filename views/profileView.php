@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <base href=<?= $baseURI?>>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
@@ -42,9 +43,9 @@
                     <div class="profile-modal__inputs flex"> 
                         <input type="text" placeholder="Votre Nom" id="name" name="name" value="<?php if (isset($reqUser['name'])) {echo $reqUser['name'];} ?>" />
                         <input type="text" placeholder="Votre Pseudo" id="username" name="username" value="<?php if (isset($reqUser['username'])) {echo $reqUser['username'];} ?>" />
-                        <input type="text" placeholder="Votre biographie" id="bio" name="bio" value="<?php if (isset($reqUser['bio'])) {echo $reqUser['bio'];} ?>" />
+                        <textarea class="bio" type="text" placeholder="Votre biographie" id="bio" name="bio"><?php if (isset($reqUser['bio'])) {echo $reqUser['bio'];} ?></textarea>
                     </div>
-                    <div id="update-error"></div>
+                    <div class="error" id="update-error"></div>
                 </form>
             </div>
         </div>
@@ -81,17 +82,17 @@
                     <p class="profile__core__bio"> <?= $reqUser['bio']?> </p>
                     <p class="text-light"> A rejoint Twitter en <?= $reqUser['date_hour_creation']?> </p>
                     <div class="profile__core__abos flex">
-                        <p> <?php echo '<a class="text-light" href="index.php?page=follow&id='.$reqUser['id'].'&type=followed">'?> <span class="text-white"><?= $nbFollowed ?></span> abonnements </a> </p>
-                        <p> <?php echo '<a class="text-light" href="index.php?page=follow&id='.$reqUser['id'].'&type=followers">'?> <span class="text-white"><?= $nbFollowers ?></span> abonnées </a></p>
+                        <p> <?php echo '<a class="text-light" href="follow/'.$reqUser['id'].'/followed">'?> <span class="text-white"><?= $nbFollowed ?></span> abonnements </a> </p>
+                        <p> <?php echo '<a class="text-light" href="follow/'.$reqUser['id'].'/followers">'?> <span class="text-white"><?= $nbFollowers ?></span> abonnées </a></p>
                     </div>
                     
                 </div>
             </div>
             <div class="page-switch flex no-padding fs-400 text-light">
-                <a class="text-light <?= empty($_GET['type']) ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>'><p>tweets</p></a>
-                <a class="text-light <?= $_GET['type'] == 'with_replies' ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=with_replies'><p>Tweets et réponses</p></a>
-                <a class="text-light <?= $_GET['type'] == 'medias' ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=medias'><p>Médias</p></a>
-                <a class="text-light <?= $_GET['type'] == 'likes' ? 'active':''?>" href='index.php?page=profile&id=<?=$reqUser['id'] ?>&type=likes'><p>J'aime</p></a>
+                <a class="text-light <?= empty($_GET['type']) ? 'active':''?>" href='profile/<?=$reqUser['id'] ?>'><p>tweets</p></a>
+                <a class="text-light <?= $_GET['type'] == 'with_replies' ? 'active':''?>" href='profile/<?=$reqUser['id'] ?>/with_replies'><p>Tweets et réponses</p></a>
+                <a class="text-light <?= $_GET['type'] == 'medias' ? 'active':''?>" href='profile/<?=$reqUser['id'] ?>/medias'><p>Médias</p></a>
+                <a class="text-light <?= $_GET['type'] == 'likes' ? 'active':''?>" href='profile/<?=$reqUser['id'] ?>/likes'><p>J'aime</p></a>
             </div>
             <?php $i = 0;
                 foreach($allTweetsWInfos as $tweet){

@@ -21,7 +21,13 @@ if (isset($_SESSION['id'])){
         
         $res= receive_fetch_body();
         $id_to_follow = $res['user_to_follow']; 
-        $reqFollow = $followsManager->follow($_SESSION['id'],$id_to_follow);
-        send_fetch_response($id_to_follow);  
+        if($id_to_follow !== $_SESSION['id']){
+            $reqFollow = $followsManager->follow($_SESSION['id'],$id_to_follow);
+            send_fetch_response($id_to_follow); 
+        }else{
+            send_fetch_response('error'); 
+        }
+        
+        
     }
 }

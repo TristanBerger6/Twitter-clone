@@ -81,7 +81,7 @@ export function useQuoteTweet(){
         postForm(`index.php?handle=quote&quoteTweet=1`,formdata)
         .then(res => {
             if(res.data == 'created'){
-                location.replace("");
+                location.reload();
             }else{
                 EltError.innerHTML = res.data.error;
             }

@@ -31,7 +31,7 @@ export function usePostTweet(){
         postForm(`index.php?handle=tweet&postTweet=1`,formdata)
         .then(res => {
             if(res.data == 'created'){
-                location.replace("");
+                location.reload();
             }else{
                 EltError.innerHTML = res.data.error;
             }

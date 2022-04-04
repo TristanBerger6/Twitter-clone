@@ -110,7 +110,7 @@ if (isset($_SESSION['id'])){
         if($follow['id_follower'] !== $_SESSION['id']){
             $tmp = null;
             $tmp['type'] = 'follow';
-            $tmp['display'] = 'vous a mentionné dans un tweet';
+            $tmp['display'] = 'vous suit';
             $tmp['foreign_name'] = $usersManager->getUser($follow['id_follower'])->fetch()['name'];
             $tmp['foreign_profile'] = $usersManager->getUser($follow['id_follower'])->fetch()['img'];
             $tmp['foreign_id'] = $follow['id_follower'];
@@ -131,20 +131,8 @@ if (isset($_SESSION['id'])){
     foreach($allNotifs as $key => $t){
         $allNotifs[$key]['date'] = get_time_ago_fr($t['date']);
     }
-    
-    
 
-
-
-
-
-  
-
-    
-
-    
-
-    require_once(ROOT.'views/notifsView.php');
+    require_once('views/notifsView.php');
 
 }else{
     die("Erreur : La page recherchée n'existe pas");

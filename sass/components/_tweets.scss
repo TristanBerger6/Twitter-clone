@@ -20,6 +20,9 @@
     &__right{
         flex : 1 1 auto;
         max-width: 92%;
+        p{
+            word-break:break-all;
+        }
         &__header{
             --gap : 0.5rem;
             justify-content: space-between;
@@ -79,6 +82,7 @@
    
     &__opt{
         &__btn{
+            min-width: 25px;
             width : 25px;
             height : 25px;
             display : grid;
@@ -179,6 +183,10 @@
             box-shadow: 0 0 5px hsl(var(--clr-white),.5);
             border-radius: 5px;
             width : 25ch;
+            @media(max-width:500px){
+                --gap : 0.5rem;
+                width : 17ch;
+            }
             div{
                 align-items: center;
                 border-radius: 5px;

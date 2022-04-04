@@ -33,34 +33,36 @@
             $req->execute([$id_tweet]);
             return $req;
         }
-
-
-
-
-
+        // get a tweet
         public function getTweet($id_tweet){
             $req = $this->db->prepare('SELECT * FROM tweets WHERE id = ?');
             $req->execute([$id_tweet]);
             return $req;
         }
+
+
+        // set new tweet
         public function newTweet($id_user,$content,$img){
             $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,false,0,false,0,NOW())');
             $req->execute([$id_user,$content,$img]);
             $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
             return $reqId;
         }
+        //set new quote
         public function newQuotedTweet($id_user,$content,$img,$quoted_id){
             $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,true,?,false,0,NOW())');
             $req->execute([$id_user,$content,$img,$quoted_id]);
             $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
             return $reqId;
         }
+        //set new comment
         public function newComment($id_user,$content,$img,$commented_id){
             $req = $this->db->prepare('INSERT INTO tweets(id_user,content,img,quote,quoted_id,comment,commentof_id,date_hour_creation) VALUES(?,?,?,false,0,true,?,NOW())');
             $req->execute([$id_user,$content,$img,$commented_id]);
             $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
             return $reqId;
         }
+
 
         // get all the tweets of the followed people
         public function getFollowedTweets($id_user){
@@ -75,6 +77,7 @@
             return $req;
         }
 
+        //delete tweet
         public function deleteTweet($id){
             $req = $this->db->prepare('DELETE FROM tweets WHERE id = ?');
             $req2 = $this->db->prepare('DELETE FROM likes WHERE id_tweet = ? ');

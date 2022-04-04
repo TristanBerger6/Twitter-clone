@@ -381,7 +381,7 @@ body {
   }
   .modal__content {
     border-radius: 0;
-    margin: 0 0;
+    margin: 0 5px;
     padding: 0;
     width: 100%;
   }
@@ -455,6 +455,9 @@ body {
   flex: 1 1 auto;
   max-width: 92%;
 }
+.tweet__right p {
+  word-break: break-all;
+}
 .tweet__right__header {
   --gap: 0.5rem;
   justify-content: space-between;
@@ -523,6 +526,7 @@ body {
   z-index: 3;
 }
 .tweet__opt__btn {
+  min-width: 25px;
   width: 25px;
   height: 25px;
   display: grid;
@@ -613,6 +617,12 @@ body {
   box-shadow: 0 0 5px hsl(var(--clr-white), 0.5);
   border-radius: 5px;
   width: 25ch;
+}
+@media (max-width: 500px) {
+  .tweet__reacts__content {
+    --gap: 0.5rem;
+    width: 17ch;
+  }
 }
 .tweet__reacts__content div {
   align-items: center;
@@ -893,8 +903,17 @@ body {
 .post-tweet__container {
   border-bottom: 1px solid hsl(var(--clr-grey-light));
 }
+.post-tweet__left {
+  flex: 0 0 auto;
+}
 .post-tweet__right {
-  width: 90%;
+  flex: 1 1 auto;
+  max-width: calc(95% - 50px);
+}
+@media (max-width: 500px) {
+  .post-tweet__right {
+    max-width: calc(90% - 50px);
+  }
 }
 .post-tweet__right__top {
   border-bottom: 1px solid hsl(var(--clr-grey-light));
@@ -1068,6 +1087,20 @@ body {
   }
 }
 
+.error {
+  color: red;
+  margin-block: 10px;
+}
+
+.success {
+  color: hsl(var(--clr-green));
+  margin-block: 10px;
+}
+.success a {
+  text-decoration: underline;
+  color: hsl(var(--clr-green));
+}
+
 .reload-page {
   display: grid;
   justify-content: center;
@@ -1176,7 +1209,7 @@ body {
 .profile-modal__inputs {
   flex-direction: column;
 }
-.profile-modal__inputs input {
+.profile-modal__inputs input, .profile-modal__inputs textarea {
   color: hsl(var(--clr-white), 0.9);
   border: 1px solid hsl(var(--clr-grey-light), 0.5);
   background-color: hsl(var(--clr-dark));
@@ -1184,9 +1217,13 @@ body {
   height: 56px;
   padding-inline: 8px;
 }
-.profile-modal__inputs input:focus {
+.profile-modal__inputs input:focus, .profile-modal__inputs textarea:focus {
   border: 1px solid hsl(var(--clr-blue), 0.8);
   outline: solid 2px hsl(var(--clr-blue), 0.8);
+}
+.profile-modal__inputs .bio {
+  height: 150px;
+  padding-block: 8px;
 }
 
 .follow-page-title {
@@ -1353,6 +1390,9 @@ body {
     padding-top: 0;
   }
 }
+.sign-page a:hover {
+  text-decoration: underline;
+}
 
 .sign-card {
   max-width: 600px;
@@ -1457,6 +1497,9 @@ body {
 
 .tweet-status {
   flex-direction: column;
+}
+.tweet-status p {
+  word-break: break-all;
 }
 .tweet-status__header {
   justify-content: space-between;

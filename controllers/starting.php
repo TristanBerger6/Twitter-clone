@@ -1,3 +1,3 @@
 <?php 
 
-    require_once(ROOT.'views/startingView.php');
+    require_once('views/startingView.php');

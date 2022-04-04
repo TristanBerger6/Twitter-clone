@@ -16,7 +16,7 @@ if (isset($_POST['formConnect'])) {
         $_SESSION['id'] = $userInfo['id'];
         $_SESSION['username'] = $userInfo['username'];
         $_SESSION['mail'] = $userInfo['mail'];
-        header('Location: index.php?page=home');
+        header('Location: '.$baseURI.'home');
       } else {
         $error = 'Email et/ou mot de passe incorrect(s).';
       }
@@ -25,4 +25,4 @@ if (isset($_POST['formConnect'])) {
     }
   }
 
-  require_once(ROOT.'views/signinView.php');
+  require_once('views/signinView.php');

@@ -55,7 +55,7 @@ if (isset($_SESSION['id'])){
     $reqUser = $usersManager->getUser($_SESSION['id']);
     $reqUser = $reqUser->fetch();
 
-    require_once(ROOT.'views/settingsView.php');
+    require_once('views/settingsView.php');
 }else{
     die("Erreur : La page recherchée n'existe pas");
 }

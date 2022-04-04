@@ -24,8 +24,15 @@
     &__container{
         border-bottom : 1px solid hsl(var(--clr-grey-light));
     }
+    &__left{
+        flex: 0 0 auto;
+    }
     &__right{
-        width : 90%;
+        flex :1 1 auto;
+        max-width: calc(95% - 50px);
+        @media(max-width:500px){
+            max-width: calc(90% - 50px);
+        }
         &__top{
             border-bottom : 1px solid hsl(var(--clr-grey-light));
             width : 100%;

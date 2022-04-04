@@ -65,8 +65,8 @@
                         <span class="count-text text-blue" id="count-text9">140</span>
                         <input type="text" class="sr-only" aria-hidden="true" name="commented_id" id="commentedTweet__id" value="">
                         <input class="tweet-btn bg-blue text-white fw-700" type="submit" name="postComment" value="Répondre" id="postComment">
-                        <div id="postComment-error"></div>
                     </div>
+                    <div class="error" id="postComment-error"></div>
                 </div>
             </form>
         </div>

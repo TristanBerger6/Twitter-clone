@@ -10,7 +10,8 @@
         public function __construct(){
             $this->getConnection();
         }
-        
+
+        // gets
         public function getMail($mail){
             $req = $this->db->prepare('SELECT * FROM users WHERE mail = ?');
             $req->execute([$mail]);
@@ -74,7 +75,7 @@
        
 
 
-
+        //updates
         public function updateBio($bio,$id){
             $insert = $this->db->prepare(
                 'UPDATE users SET bio = ? WHERE id = ?'
@@ -126,13 +127,14 @@
         }
 
 
-
+        // new user
         public function setAll($name,$username,$mail,$pass){
             $insert = $this->db->prepare(
                 'INSERT INTO users(name,username, mail, password, img, imgcover, bio, date_hour_creation) VALUES(?,?,?,?,?,?,"",NOW())'
               );
             $insert->execute([$name,$username,$mail,$pass,$this->defaultProfile,$this->defaultCover]); 
-            return $insert;
+            $reqId = $this->db->query('SELECT LAST_INSERT_ID() AS NewID');
+            return $reqId;
         }
       
 

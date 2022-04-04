@@ -101,7 +101,7 @@
     }
     &__inputs{
         flex-direction: column;
-        input{
+        input,textarea{
             color: hsl(var(--clr-white),0.9);
             border : 1px solid hsl(var(--clr-grey-light),0.5);
             background-color: hsl(var(--clr-dark));
@@ -112,6 +112,10 @@
                 border : 1px solid hsl(var(--clr-blue),0.8);
                 outline: solid 2px hsl(var(--clr-blue),0.8);;
             }
+        }
+        .bio{
+            height : 150px;
+            padding-block: 8px;
         }
     }
 }

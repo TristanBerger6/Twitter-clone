@@ -1,11 +1,11 @@
 <div class="tweet__container" style="position:relative">
-            <a href="index.php?page=status&id=<?=$tweet['id']?><?= $tweet['retweeter'] ? '&retweeter='.$tweet["retweeter_id"] : ''?>">
+            <a href="status/<?=$tweet['id']?><?= $tweet['retweeter'] ? '/'.$tweet["retweeter_id"] : ''?>">
                 <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:1"></span>
                 </a>
             <div class="tweet">
                 <?php if($tweet['retweeter']){  ?>
                     <div style="position:relative" class="tweet__retweet text-light">
-                        <a href="index.php?page=profile&id=<?=$tweet['retweeter_id']?>">
+                        <a href="profile/<?=$tweet['retweeter_id']?>">
                             <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                         </a>
                         <p><i class="fas fa-retweet" aria-hidden="true"></i><?= $tweet['retweeter']?></p> 
@@ -15,7 +15,7 @@
                     <div class="tweet-status__header flex">
                         <div class="flex">
                             <div style="position:relative">
-                                <a href="index.php?page=profile&id=<?=$tweet['id_user']?>">
+                                <a href="profile/<?=$tweet['id_user']?>">
                                     <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                                 </a>
                                 <div class="tweet-profile__container">
@@ -23,8 +23,8 @@
                                 </div>
                             </div> 
                             <div class="tweet-status__header__names" style="position:relative">
-                                <a style="position:relative;z-index2" href="index.php?page=profile&id=<?=$tweet['id_user']?>"><p class="fw-700" id="tweet__name<?= $i ?>"> <?= $tweet['name'] ?></p></a>
-                                <a style="position:relative;z-index2" href="index.php?page=profile&id=<?=$tweet['id_user']?>"><p class="text-light" id="tweet__username<?= $i ?>"> @<?= $tweet['username'] ?></p></a>
+                                <a style="position:relative;z-index2" href="profile/<?=$tweet['id_user']?>"><p class="fw-700" id="tweet__name<?= $i ?>"> <?= $tweet['name'] ?></p></a>
+                                <a style="position:relative;z-index2" href="profile/<?=$tweet['id_user']?>"><p class="text-light" id="tweet__username<?= $i ?>"> @<?= $tweet['username'] ?></p></a>
                             </div> 
                         </div>
                         <div class="tweet__opt__btn" id="tweet__opt__btn<?= $i ?>">
@@ -32,12 +32,12 @@
                             <div class="tweet__opt" id="tweet__opt<?= $i ?>">
                                 <div class="tweet__opt-back" style="position:fixed;width:100vw;height:100vh;top:0;left:0;z-index:-1"></div>
                                 <?php if($tweet['id_user'] == $_SESSION['id']) { ?>
-                                <p id_tweet=<?= $tweet['id']?> class="tweet__delete">supprimer</p>
+                                <p id_tweet=<?= $tweet['id']?> class="tweet__delete">Supprimer</p>
                                 <?php }else{
                                     if($tweet['followed']){ ?>
-                                    <p class="tweet_abo" user_id='<?=$tweet['id_user'] ?>'>Se désabonner de @<?= $tweet['username'] ?></p>
+                                    <p class="tweet_abo" user_id='<?=$tweet['id_user'] ?>' username='<?= $tweet['username'] ?>'>Se désabonner de @<?= $tweet['username'] ?></p>
                                     <?php }else{ ?>
-                                    <p class="tweet_noabo" user_id='<?=$tweet['id_user']?>' username='<?php $tweet['username'] ?>'>Suivre @<?= $tweet['username'] ?></p>
+                                    <p class="tweet_noabo" user_id='<?=$tweet['id_user']?>' username='<?= $tweet['username'] ?>'>Suivre @<?= $tweet['username'] ?></p>
                                     <?php } ?>
                                 <?php } ?>
 
@@ -47,7 +47,7 @@
                     <div class="tweet-status__core">
                         <?php if($tweet['responseTo']){  ?>
                         <p class="text-light tweet__response-to">En réponse à <?php foreach($tweet['responseTo'] as $response){?>
-                            <a href="index.php?page=profile&id=<?=$response['id']?>" style="position:relative">
+                            <a href="profile/<?=$response['id']?>" style="position:relative">
                                 <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                                 @<?= $response['username']?>
                             </a>
@@ -61,7 +61,7 @@
                         if($tweet['quote']){?>
                         <div class="quoted" style="position:relative">
                             <div class="quoted__container">
-                                <a href="index.php?page=status&id=<?=$tweet['quotedId']?>">
+                                <a href="status/<?=$tweet['quotedId']?>">
                                     <span class="quoted__link" style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                                 </a>
                                 <div class="quoted__top flex">
@@ -76,7 +76,7 @@
                                 </div>
                                 <?php if($tweet['quotedResponseTo']){  ?>
                                     <p class="text-light tweet__response-to">En réponse à <?php foreach($tweet['quotedResponseTo'] as $response){?>
-                                        <a href="index.php?page=profile&id=<?=$response['id']?>" style="position:relative">
+                                        <a href="profile/<?=$response['id']?>" style="position:relative">
                                             <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
                                             @<?= $response['username']?>
                                         </a>

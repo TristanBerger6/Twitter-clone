@@ -49,7 +49,7 @@ export function useUpdateProfile(){
         postForm(`index.php?handle=profile&updateProfile=1`,formdata)
         .then(res => {
             if(res.data == 'updated'){
-                location.replace("");
+                location.reload();
             }else{
                 EltError.innerHTML = res.data.error;
             }

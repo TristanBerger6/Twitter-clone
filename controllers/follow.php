@@ -34,10 +34,7 @@ if (isset($_SESSION['id'])){
             $u['followed']= $isFollowed;
             array_push($usersToDisplay,$u);
         }
-
-       
-
-        require_once(ROOT.'views/followView.php');
+        require_once('views/followView.php');
     }else{
         die("Erreur : La page recherchée n'existe pas");
     }

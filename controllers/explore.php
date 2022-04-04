@@ -42,9 +42,7 @@ if (isset($_SESSION['id'])){
             return ($a['date_hour_creation']> $b['date_hour_creation']) ? -1: 1;
         });
     }
-
-
-    require_once(ROOT.'views/exploreView.php');
+    require_once('views/exploreView.php');
 }else{
     die("Erreur : La page recherchée n'existe pas");
 }
