@@ -16,24 +16,26 @@ $retweetsManager = new RetweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 if (isset($_SESSION['id'])){
-    if (isset($_GET['id']) && !empty($_GET['id'])){
-        $reqUser = $usersManager->getUser($_GET['id']);
+        $reqUser = $usersManager->getUser($_SESSION['id']);
         $reqUser = $reqUser->fetch();
+    if (isset($_GET['id']) && !empty($_GET['id'])){
+        $reqUserProfile = $usersManager->getUser($_GET['id']);
+        $reqUserProfile = $reqUserProfile->fetch();
         // if a user exists at this id
-        if($reqUser){
-            $month = utf8_encode(strftime('%B', strtotime($reqUser['date_hour_creation'])));
-            $year = strftime('%Y', strtotime($reqUser['date_hour_creation']));
-            $reqUser['date_hour_creation'] = $month. ' ' . $year;
+        if($reqUserProfile){
+            $month = utf8_encode(strftime('%B', strtotime($reqUserProfile['date_hour_creation'])));
+            $year = strftime('%Y', strtotime($reqUserProfile['date_hour_creation']));
+            $reqUserProfile['date_hour_creation'] = $month. ' ' . $year;
     
-            $reqTweets = $tweetsManager->getTweets($reqUser['id']);
-            $reqFollowers = $followsManager->getFollowers($reqUser['id']);
-            $reqFollowed = $followsManager->getFollowed($reqUser['id']);
+            $reqTweets = $tweetsManager->getTweets($reqUserProfile['id']);
+            $reqFollowers = $followsManager->getFollowers($reqUserProfile['id']);
+            $reqFollowed = $followsManager->getFollowed($reqUserProfile['id']);
     
             $nbFollowers = $reqFollowers->rowCount();
             $nbFollowed = $reqFollowed->rowCount(); 
             $nbTweets = $reqTweets->rowCount();
     
-            $isFollowed = $followsManager->isFollowed($_SESSION['id'],$reqUser['id']);
+            $isFollowed = $followsManager->isFollowed($_SESSION['id'],$reqUserProfile['id']);
             $isFollowed = $isFollowed->rowCount();
 
             /************************************
@@ -43,8 +45,8 @@ if (isset($_SESSION['id'])){
             $allTweets=[];  
 
             if(isset($_GET['type']) && $_GET['type']=="with_replies"){
-                $reqUserTweets = $tweetsManager->getTweets($reqUser['id']);
-                $reqUserRetweets = $retweetsManager->getUserRetweets($reqUser['id']);
+                $reqUserTweets = $tweetsManager->getTweets($reqUserProfile['id']);
+                $reqUserRetweets = $retweetsManager->getUserRetweets($reqUserProfile['id']);
             
                 foreach($reqUserTweets as $t){
                     // get tweet of the user, including comments
@@ -59,14 +61,14 @@ if (isset($_SESSION['id'])){
                         $reqOriginalTweet['retweeter'] = 'Vous avez retweeté';
                         $reqOriginalTweet['retweeter_id'] = $SESSION['id'];
                     }else{
-                        $reqOriginalTweet['retweeter'] = $reqUser['name'].' a retweeté';
+                        $reqOriginalTweet['retweeter'] = $reqUserProfile['name'].' a retweeté';
                         $reqOriginalTweet['retweeter_id'] = $_GET['id'];
                     }
                     $reqOriginalTweet['date'] = $rt['date_hour_creation'];
                     array_push($allTweets, $reqOriginalTweet);
                 }
             }else if(isset($_GET['type']) && $_GET['type']=="medias"){
-                $reqUserTweets = $tweetsManager->getTweets($reqUser['id']);
+                $reqUserTweets = $tweetsManager->getTweets($reqUserProfile['id']);
                 foreach($reqUserTweets as $t){
                     if($t['img']){
                         $t['retweeter'] = '';
@@ -76,7 +78,7 @@ if (isset($_SESSION['id'])){
                 }
 
             }else if(isset($_GET['type']) && $_GET['type']=="likes"){
-                $reqUserLikes = $likesManager->getUserLikes($reqUser['id']);
+                $reqUserLikes = $likesManager->getUserLikes($reqUserProfile['id']);
                 foreach($reqUserLikes as $t){
                     $reqTweetLiked = $tweetsManager->getTweet($t['id_tweet'])->fetch();
                     $reqTweetLiked['retweeter'] = '';
@@ -84,8 +86,8 @@ if (isset($_SESSION['id'])){
                     array_push($allTweets, $reqTweetLiked);
                 }
             }else{ // default page, user tweets displayed
-                $reqUserTweets = $tweetsManager->getTweets($reqUser['id']);
-                $reqUserRetweets = $retweetsManager->getUserRetweets($reqUser['id']);
+                $reqUserTweets = $tweetsManager->getTweets($reqUserProfile['id']);
+                $reqUserRetweets = $retweetsManager->getUserRetweets($reqUserProfile['id']);
             
                 foreach($reqUserTweets as $t){
                     // get tweet of the user, but not the comments
@@ -102,7 +104,7 @@ if (isset($_SESSION['id'])){
                         $reqOriginalTweet['retweeter'] = 'Vous avez retweeté';
                         $reqOriginalTweet['retweeter_id'] = $_SESSION['id'];
                     }else{
-                        $reqOriginalTweet['retweeter'] = $reqUser['name'].' a retweeté';
+                        $reqOriginalTweet['retweeter'] = $reqUserProfile['name'].' a retweeté';
                         $reqOriginalTweet['retweeter_id'] = $_GET['id'];
                     }
                     $reqOriginalTweet['date'] = $rt['date_hour_creation'];
