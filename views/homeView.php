@@ -28,7 +28,7 @@
                 <div class="post-tweet__right">
                     <div class="post-tweet__right__top">
                         <div style="position : relative">
-                            <textarea name="tweet-text" class="tweet-text sr-only" id="tweet-text2" rows="8" cols="80" placeholder="Quoi de neuf ?"></textarea>
+                            <textarea name="tweet-text" class="tweet-text sr-only" id="tweet-text2" rows="8" cols="80" placeholder="Quoi de neuf ?" tabindex="-1"></textarea>
                             <div class="contenteditable" id="contenteditable2" contenteditable data-placeholder="Quoi de neuf ?" > </div>
                             <div class="text-mentions__container" >
                                 <ul class="text-mentions" id="text-mentions2" style="z-index:99;position:absolute;bottom:0;left:0;transform:translateY(100%);"></ul>
@@ -42,9 +42,9 @@
                     </div>
                     <div class="post-tweet__right__bot post-botom">
                         <label class="img-icon text-blue" for="input-img2">
-                            <i class="fa fa-image" aria-hidden="true"></i>
+                            <i tabindex="0" class="fa fa-image" aria-hidden="true"></i>
                         </label>
-                        <input id="input-img2" class="input-img" aria-hidden="true" type="file" name="tweet-img">
+                        <input  id="input-img2" class="input-img" aria-hidden="true" type="file" name="tweet-img">
                         <span class="count-text text-blue" id="count-text2">140</span>
                         <input class='tweet-btn bg-blue text-white fw-700' type="submit" name="postTweet" value="Tweeter">
                     </div>

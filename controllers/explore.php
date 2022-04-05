@@ -9,12 +9,12 @@ require_once("models/MentionsManager.php");
 
 
 
-$tweetsManager = new TweetsManager();
-$usersManager = new UsersManager();
-$followsManager = new FollowsManager();
-$likesManager = new LikesManager();
-$retweetsManager = new RetweetsManager();
-$mentionsManager = new MentionsManager();
+$tweetsManager = new TweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$followsManager = new FollowsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$likesManager = new LikesManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$retweetsManager = new RetweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$mentionsManager = new MentionsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 

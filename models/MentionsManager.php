@@ -4,8 +4,8 @@
 
     class MentionsManager extends Model{
 
-        public function __construct(){
-            $this->getConnection();
+        public function __construct($host,$db_name,$username,$password){
+            $this->getConnection($host,$db_name,$username,$password);
         }
         
        

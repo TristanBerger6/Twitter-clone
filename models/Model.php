@@ -1,12 +1,6 @@
 <?php 
 
     abstract class Model{
-
-        private $host = "localhost:3307";
-        private $db_name = "twitter_clone";
-        private $username = "root";
-        private $password ="root";
-
         // Propriété qui contiendra l'instance de la connexion
         protected $db;
 
@@ -14,13 +8,12 @@
          * Fonction d'initialisation de la base de données
          * @return void
          */
-        public function getConnection(){
+        public function getConnection($host,$db_name,$username,$password){
             // On supprime la connexion précédente
             $this->db = null;
-
             // On essaie de se connecter à la base
             try{
-                $this->db = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
+                $this->db = new PDO("mysql:host=" . $host . ";dbname=" . $db_name, $username, $password);
                 $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                
             }catch(PDOException $exception){

@@ -7,12 +7,12 @@ require_once("models/RetweetsManager.php");
 require_once("models/LikesManager.php");
 require_once("models/MentionsManager.php");
 
-$usersManager = new UsersManager();
-$followsManager = new FollowsManager();
-$tweetsManager = new TweetsManager();
-$retweetsManager = new RetweetsManager();
-$likesManager = new LikesManager();
-$mentionsManager = new MentionsManager();
+$usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$followsManager = new FollowsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$tweetsManager = new TweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$retweetsManager = new RetweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$likesManager = new LikesManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$mentionsManager = new MentionsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 if (isset($_SESSION['id'])){
     $reqUser = $usersManager->getUser($_SESSION['id']);

@@ -6,12 +6,16 @@ require_once("models/TweetsManager.php");
 require_once("models/LikesManager.php");
 require_once("models/RetweetsManager.php");
 
+
+
 function get_tweet_infos($t){
-    $tweetsManager = new TweetsManager();
-    $usersManager = new UsersManager();
-    $followsManager = new FollowsManager();
-    $likesManager = new LikesManager();
-    $retweetsManager = new RetweetsManager();
+    global $HOST,$DB_NAME,$USERNAME,$PASSWORD;
+    $tweetsManager = new TweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+    $usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+    $followsManager = new FollowsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+    $likesManager = new LikesManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+    $retweetsManager = new RetweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+   
 
     $mentionedUsernames = get_mentions_from_string( $t['content'], true);
     foreach($mentionedUsernames as $mentionUsername){

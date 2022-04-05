@@ -7,8 +7,8 @@
         public $defaultCover = 'default_cover_500x200.png';
         public $defaultProfile = 'default_profile_400x400.png';
 
-        public function __construct(){
-            $this->getConnection();
+        public function __construct($host,$db_name,$username,$password){
+            $this->getConnection($host,$db_name,$username,$password);
         }
 
         // gets

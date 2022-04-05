@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    $baseURI = '/Twitter_clone/';
     setlocale(LC_TIME,'fr');
+    require_once('php/config.php');
     require_once('php/functions.php');
     require_once("php/utils.php");
 
@@ -11,7 +11,7 @@
             $page = htmlspecialchars($_GET['page']);
             switch($page){
                 case 'signin':
-                    require_once('controllers/signin.php');
+                    require_once('controllers/signIn.php');
                     break; 
                 case 'signup':
                     require_once('controllers/signup.php');

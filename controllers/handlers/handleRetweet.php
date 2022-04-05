@@ -5,7 +5,7 @@
 
  require_once("models/RetweetsManager.php");
  
- $retweetsManager = new RetweetsManager();
+ $retweetsManager = new RetweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
  
  if (isset($_SESSION['id'])){
      if (isset($_GET['unretweet'])){

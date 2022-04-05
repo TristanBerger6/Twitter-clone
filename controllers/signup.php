@@ -2,8 +2,8 @@
 
 require_once("models/UsersManager.php");
 require_once("models/FollowsManager.php");
-$usersManager = new UsersManager();
-$followsManager = new FollowsManager();
+$usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$followsManager = new FollowsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 

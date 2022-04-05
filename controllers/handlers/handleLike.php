@@ -5,7 +5,7 @@
  
  require_once("models/LikesManager.php");
  
- $likesManager = new LikesManager();
+ $likesManager = new LikesManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
  
  if (isset($_SESSION['id'])){
      if (isset($_GET['unlike'])){

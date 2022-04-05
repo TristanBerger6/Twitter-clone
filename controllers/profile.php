@@ -7,11 +7,11 @@ require_once("models/LikesManager.php");
 require_once("models/RetweetsManager.php");
 
 
-$tweetsManager = new TweetsManager();
-$usersManager = new UsersManager();
-$followsManager = new FollowsManager();
-$likesManager = new LikesManager();
-$retweetsManager = new RetweetsManager();
+$tweetsManager = new TweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$followsManager = new FollowsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$likesManager = new LikesManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$retweetsManager = new RetweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 

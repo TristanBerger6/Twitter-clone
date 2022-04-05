@@ -5,7 +5,7 @@
 
 require_once("models/FollowsManager.php");
 
-$followsManager = new FollowsManager();
+$followsManager = new FollowsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 if (isset($_SESSION['id'])){

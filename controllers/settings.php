@@ -2,7 +2,7 @@
 
 require_once("models/UsersManager.php");
 
-$usersManager = new UsersManager();
+$usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 

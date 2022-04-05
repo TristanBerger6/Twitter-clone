@@ -296,10 +296,11 @@
             position: absolute;
             content: '';
             top:0px;
-            right:15px;
-            left:-15px;
+            right:100px;
+            left:0px;
             bottom:0px;
             background-color: hsl(var(--clr-grey-light),.1);
+            transform: translateX(-15px);
         }
     }
 }

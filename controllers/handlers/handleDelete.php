@@ -4,7 +4,7 @@
  */
 require_once("models/TweetsManager.php");
 
-$tweetsManager = new TweetsManager();
+$tweetsManager = new TweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 if (isset($_SESSION['id'])){
 

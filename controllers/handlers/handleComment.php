@@ -7,9 +7,9 @@ require_once("models/UsersManager.php");
 require_once("models/TweetsManager.php");
 require_once("models/MentionsManager.php");
 
-$usersManager = new UsersManager();
-$tweetsManager = new TweetsManager();
-$mentionsManager = new MentionsManager();
+$usersManager = new UsersManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$tweetsManager = new TweetsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
+$mentionsManager = new MentionsManager($HOST,$DB_NAME,$USERNAME,$PASSWORD);
 
 
 if (isset($_SESSION['id'])){
