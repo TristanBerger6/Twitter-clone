@@ -1,6 +1,6 @@
 <?php 
 
-$type='prod';
+$type='dev';
 
 if($type == 'dev'){
     $baseURI = '/Twitter_clone/';

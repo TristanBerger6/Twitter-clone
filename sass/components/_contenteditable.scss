@@ -36,10 +36,17 @@
     .mention-prop{
         padding : 1rem 1rem;
         cursor: pointer;
-        img{
-            height :40px;
-            width :40px;
-            border-radius: 20px;
+        .mention-img{
+            &__container{
+                height :40px;
+                width :40px;
+                border-radius: 20px;
+                overflow: hidden;
+            }
+            width : 100%;
+            height : 100%;
+            object-fit: cover;
+            
         }
         &:hover{
             background: hsl(var(--clr-grey-dark));

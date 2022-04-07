@@ -18,6 +18,7 @@
     .tweet__link:hover{
         &::after{
             right:-15px; 
+            left:-15px; 
         }
     }
     
@@ -54,7 +55,9 @@
         padding-bottom: 1rem;
     }
     &__nbreacts{
-        p{
+        button{
+            background: none;
+            border: none;
             z-index:2;
             cursor: pointer;
             &:hover{

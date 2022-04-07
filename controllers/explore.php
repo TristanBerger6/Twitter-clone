@@ -44,6 +44,6 @@ if (isset($_SESSION['id'])){
     }
     require_once('views/exploreView.php');
 }else{
-    die("Erreur : La page recherchée n'existe pas");
+    header('Location: '.$baseURI.'home');;
 }
     

@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    setlocale(LC_TIME,'fr');
+    setlocale(LC_TIME,'fr_FR',"French");
     require_once('php/config.php');
     require_once('php/functions.php');
     require_once("php/utils.php");
@@ -76,6 +76,9 @@
                 case 'mention':
                     require_once('controllers/handlers/handleMention.php');
                     break; 
+                case 'tweetinfos':
+                    require_once('controllers/handlers/handleTweetInfos.php');
+                    break;  
                 default :
                     http_response_code(404);
                     die("Erreur : La page recherchée n'existe pas");

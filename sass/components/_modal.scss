@@ -38,8 +38,8 @@
         background-color: hsl(var(--clr-dark),1);
         &__content{
             border-radius: 0;
-            margin : 0 5px;
-            padding: 0;
+            padding : 0 15px;
+            margin: 0;
             width : 100%;
         }
 
@@ -89,4 +89,25 @@
         word-break: break-word;
     }
     
+}
+
+.modal-infos{
+    &__container{
+        padding-block: 15px;
+        &__link:hover{
+            &::after{
+                position: absolute;
+                content: '';
+                top:0px;
+                right:-20px;
+                left:-20px;
+                bottom:0px;
+                background-color: hsl(var(--clr-grey-light),.1);
+                @media(max-width: $screen-md-min){
+                    right:-15px;
+                    left:-15px;
+                }
+            }
+        }
+    }
 }

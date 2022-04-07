@@ -14,7 +14,7 @@ export function useDeleteTweet(){
             let idTweet = e.currentTarget.getAttribute('id_tweet');
             postData('index.php?handle=delete&tweet=1',{'id_tweet' : idTweet})
             .then(data => {
-                location.reload();
+                window.location.href = window.location.href;
             });
         })
     }

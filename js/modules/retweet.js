@@ -24,9 +24,9 @@
         let idEltRetweetBtn = e.currentTarget.id.replace('tweet__retweet-btn','');
         for (let i =0; i<EltsRetweet.length; i++){ // look for the correpsonding Retweet element and save it
         let idEltRetweet = EltsRetweet[i].id.replace('tweet__retweet','');
-        if(idEltRetweet == idEltRetweetBtn){
-                EltRetweet = EltsRetweet[i];
-            } 
+            if(idEltRetweet == idEltRetweetBtn){
+                    EltRetweet = EltsRetweet[i];
+                } 
         }
         for (let i =0; i<EltsNb.length; i++){ // look for the corresponding nb element and save it
             let idEltNb = EltsNb[i].id.replace('tweet__retweet-nb','');

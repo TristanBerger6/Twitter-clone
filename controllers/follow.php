@@ -36,10 +36,10 @@ if (isset($_SESSION['id'])){
         }
         require_once('views/followView.php');
     }else{
-        die("Erreur : La page recherchée n'existe pas");
+        header('Location: '.$baseURI.'home');
     }
 }else{
-    die("Erreur : La page recherchée n'existe pas");
+    header('Location: '.$baseURI.'home');
 }
 
 

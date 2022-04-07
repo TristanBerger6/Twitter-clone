@@ -34,7 +34,7 @@
                 <?php foreach($usersToDisplay as $u){?>
                     <div class="follow__container" style="position:relative">
                         <a href="profile/<?=$u['user_id']?>">
-                            <span class="follow__container__link" style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:1"></span>
+                            <span class="follow__container__link" style="position:absolute;width:100%;height:100%;top:0;left:0;z-index:1"></span>
                         </a>
                         <div class="follow flex">
                             <a href='profile/<?= $u['user_id']?>'>

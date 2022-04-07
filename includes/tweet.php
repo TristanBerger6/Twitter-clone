@@ -1,12 +1,12 @@
 <div class="tweet__container" style="position:relative">
     <a href="status/<?=$tweet['id']?><?= $tweet['retweeter'] ? '/'.$tweet["retweeter_id"] : ''?>">
-        <span class="tweet__link" style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:1"></span>
+        <span class="tweet__link" style="position:absolute;width:100%;height:100%;top:0;left:0px;z-index:1"></span>
     </a>
     <div class="tweet">
         <?php if($tweet['retweeter']){  ?>
             <div style="position:relative" class="tweet__retweet text-light">
                 <a href="profile/<?=$tweet['retweeter_id']?>">
-                    <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
+                    <span style="position:absolute;width:100%;height:100%;top:0;left:0;z-index:2"></span>
                 </a>
                 <p><i class="fas fa-retweet" aria-hidden="true"></i><?= $tweet['retweeter']?></p> 
             </div>
@@ -14,7 +14,7 @@
         <div class="flex">
             <div style="position:relative" class="tweet__left">
                 <a href="profile/<?=$tweet['id_user']?>">
-                    <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
+                    <span style="position:absolute;width:100%;height:100%;top:0;left:0;z-index:2"></span>
                 </a>
                 <div class="tweet-profile__container">
                     <img id="tweet__profile<?= $i?>" src='./public/img/profile/<?= $tweet['profile']?>' alt="profile image of <?= $tweet['name'] ?>" class="tweet-profile">
@@ -24,8 +24,8 @@
                 <div class="tweet__right__header flex">
                     <div class="flex">
                             <div class="flex tweet__right__header__names">
-                                <a style="position:relative;z-index2" href="profile/<?=$tweet['id_user']?>"><p id="tweet__name<?= $i?>" class="fw-700"> <?= $tweet['name'] ?></p></a>
-                                <a style="position:relative;z-index2" href="profile/<?=$tweet['id_user']?>"><p id="tweet__username<?= $i?>" class="text-light"> @<?= $tweet['username']." ·" ?></p></a>
+                                <a style="position:relative;z-index:2" href="profile/<?=$tweet['id_user']?>"><p id="tweet__name<?= $i?>" class="fw-700"> <?= $tweet['name'] ?></p></a>
+                                <a style="position:relative;z-index:2" href="profile/<?=$tweet['id_user']?>"><p id="tweet__username<?= $i?>" class="text-light"> @<?= $tweet['username']." ·" ?></p></a>
                             </div>
                         <p id="tweet__date<?= $i?>" class="text-light tweet__right__header__date"> <?= $tweet['date_hour_creation'] ?></p>
                     </div>
@@ -48,7 +48,7 @@
                 <?php if($tweet['responseTo']){  ?>
                     <p class="text-light tweet__response-to">En réponse à <?php foreach($tweet['responseTo'] as $response){?>
                         <a href="profile/<?=$response['id']?>" style="position:relative">
-                            <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
+                            <span style="position:absolute;width:100%;height:100%;top:0;left:0;z-index:2"></span>
                             @<?= $response['username']?>
                         </a>
                         <?php } ?>
@@ -62,7 +62,7 @@
                 <div class="quoted" style="position:relative">
                             <div class="quoted__container">
                                 <a href="status/<?=$tweet['quotedId']?>">
-                                    <span class="quoted__link" style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
+                                    <span class="quoted__link" style="position:absolute;width:100%;height:100%;top:0;left:0;z-index:2"></span>
                                 </a>
                                 <div class="quoted__top flex">
                                     <div class="quoted-profile__container">
@@ -77,7 +77,7 @@
                                 <?php if($tweet['quotedResponseTo']){  ?>
                                     <p class="text-light tweet__response-to">En réponse à <?php foreach($tweet['quotedResponseTo'] as $response){?>
                                         <a href="profile/<?=$response['id']?>" style="position:relative">
-                                            <span style="position:absolute;width:100%;height:100%;top:0;left:0,z-index:2"></span>
+                                            <span style="position:absolute;width:100%;height:100%;top:0;left:0;z-index:2"></span>
                                             @<?= $response['username']?>
                                         </a>
                                         <?php } ?>
@@ -108,9 +108,9 @@
                             </div>
                         </div>
                     </div>
-                    <div id_tweet=<?= $tweet['id']?> class="tweet__like flex text-light" liked="<?= $tweet['liked']?>" > 
+                    <div id_tweet=<?= $tweet['id']?> class="tweet__like flex text-light" liked="<?= $tweet['liked']?>" retweet=<?= $tweet['retweeter'] ? '1':'0'?> > 
                         <div><i class="fa-heart <?= $tweet['liked'] ? 'fas' : 'far' ?> " aria-hidden="true"></i></div>
-                        <p class="tweet__like-nb" id="tweet__like-nb<?=$tweet['id'] ?>"><?= $tweet['nbLikes'] ?></p>
+                        <p class="tweet__like-nb tweet__like-nb<?=$tweet['id'] ?>"><?= $tweet['nbLikes'] ?></p>
                     </div>
                 </div>
             </div>

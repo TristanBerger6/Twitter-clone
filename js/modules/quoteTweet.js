@@ -51,11 +51,14 @@ export function useQuoteTweet(){
             EltTweetDate = document.getElementById(`tweet__date${iQuoted}`);
             EltTweetContent = document.getElementById(`tweet__content${iQuoted}`);
             EltTweetImg = document.getElementById(`tweet__img${iQuoted}`);
-            EltQuotedProfile.src = EltTweetProfile.src;
-            EltQuotedName.innerHTML = EltTweetName.innerHTML;
-            EltQuotedUsername.innerHTML = EltTweetUsername.innerHTML;
-            EltQuotedDate.innerHTML = EltTweetDate.innerHTML;
-            EltQuotedContent.innerHTML = EltTweetContent.innerHTML;
+            if(EltTweetProfile){
+                EltQuotedProfile.src = EltTweetProfile.src;
+                EltQuotedName.innerHTML = EltTweetName.innerHTML;
+                EltQuotedUsername.innerHTML = EltTweetUsername.innerHTML;
+                EltQuotedDate.innerHTML = EltTweetDate.innerHTML;
+                EltQuotedContent.innerHTML = EltTweetContent.innerHTML;
+            }
+           
             if(EltTweetImg){
                 EltQuotedImg.src = EltTweetImg.src;
             }else{

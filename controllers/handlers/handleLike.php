@@ -12,13 +12,19 @@
              
          $res= receive_fetch_body();
          $idTweet = $res['id_tweet']; 
-         $reqUnlike = $likesManager->unlikeTweet($_SESSION['id'],$idTweet);
-         send_fetch_response($idTweet);  
+         $isLiked = $likesManager->isLiked($_SESSION['id'], $idTweet)->rowCount();
+         if( $isLiked == 0){
+            $reqUnlike = $likesManager->unlikeTweet($_SESSION['id'],$idTweet);
+         } 
+         send_fetch_response($idTweet); 
      }
      if (isset($_GET['like'])){
         $res= receive_fetch_body();
         $idTweet = $res['id_tweet']; 
-        $reqLike = $likesManager->likeTweet($_SESSION['id'],$idTweet);
+        $isLiked = $likesManager->isLiked($_SESSION['id'], $idTweet)->rowCount();
+        if( $isLiked == 0){
+            $reqLike = $likesManager->likeTweet($_SESSION['id'],$idTweet);
+        }
         send_fetch_response($idTweet); 
      }
  }

@@ -17,9 +17,6 @@
     }else{
         $reqPossibleUsers = [];
     }
-    send_fetch_response($reqPossibleUsers);  
-
-         
-     
+    send_fetch_response($reqPossibleUsers);   
      
  }

@@ -1,14 +1,20 @@
 .start{
     --gap : 0;
-    width : 100vw;
     flex-direction: column-reverse;
+    min-width : 100vw;
+    min-height : 100vh;
+    max-width: 100vw;
     @media(min-width:$screen-lg-min){
         flex-direction: row;
-        height : 100vh;
+       
     }
     .content{
+        display : flex;
+        flex-direction: column;
         flex : 1 1 0%;
-        min-width : 792px;
+        @media(min-width:$screen-lg-min){
+            min-width : 792px;
+        }
         
         background : hsl(var(--clr-dark));
         padding : min(3%,5rem);
@@ -19,7 +25,11 @@
             max-width: 15ch;
         }
         p{
-            margin-block : 2rem;
+            @media(max-width:$screen-md-min){
+                text-align : center;
+                align-self: center;
+            }
+            margin-block : 1rem;
         }
     }
     .cover{
@@ -30,14 +40,24 @@
         background : url('../img/lohp_1302x955.png');
         background-size: cover;
         svg{
-            max-width : 360px;
+            max-width : 90%;
+            width : 360px;
+            @media(max-width:$screen-md-min){
+                max-width : 70%;
+            }
         }   
     } 
 }
 
 .start-buton{
     display : grid;
-    width : 300px;
+    width : 200px;
+    margin-bottom: 1rem;
+    align-self: center;
+    @media(min-width:$screen-md-min){
+        width : 300px;
+        align-self: auto;
+    }
     height : 40px;
     justify-items: center;
     align-items: center;

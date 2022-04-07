@@ -50,7 +50,9 @@ export function useTextTweet(){
                                         EltMentionsContainer[l].style.display = 'block';
                                         data.data.forEach((element)=>{
                                             EltMentions[l].innerHTML += `<li class="mention-prop flex">
-                                            <img src='./public/img/profile/${element['img']}' alt="profile image" class="profile-img mention-img"> 
+                                            <div class="mention-img__container"> 
+                                                <img src='./public/img/profile/${element['img']}' alt="profile image" class="mention-img"> 
+                                            </div>
                                             <div class="mention-prop__right"> 
                                             <p class="mention-name fw-700">${element['name']}</p>
                                             <p class="mention-username text-light">@${element['username']}</p>

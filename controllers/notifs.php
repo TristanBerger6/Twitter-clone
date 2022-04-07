@@ -72,7 +72,7 @@ if (isset($_SESSION['id'])){
         }
 
         // get all the likes of this tweet
-        $reqLikes = $likesManager->getUserTweetLikes($_SESSION['id']);
+        $reqLikes = $likesManager->getUserTweetLikes($t['id']);
         foreach($reqLikes as $like){
             if($like['id_user'] !== $_SESSION['id']){
                 $tmp = null;
@@ -135,7 +135,7 @@ if (isset($_SESSION['id'])){
     require_once('views/notifsView.php');
 
 }else{
-    die("Erreur : La page recherchée n'existe pas");
+    header('Location: '.$baseURI.'home');
 }
 
 

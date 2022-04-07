@@ -57,5 +57,5 @@ if (isset($_SESSION['id'])){
 
     require_once('views/settingsView.php');
 }else{
-    die("Erreur : La page recherchée n'existe pas");
+    header('Location: '.$baseURI.'home');
 }

@@ -128,6 +128,6 @@ if (isset($_SESSION['id'])){
     }
     require_once('views/homeView.php');
 }else{
-    die("Erreur : La page recherchée n'existe pas");
+    header('Location: '.$baseURI.'');
 }
     

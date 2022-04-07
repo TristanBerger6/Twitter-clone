@@ -61,7 +61,7 @@ if (isset($_SESSION['id'])){
                     $withoutAt = str_replace('@','',$mentionUsername);
                     $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
                     if($reqId){
-                        $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
+                        $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0;z-index:2'></span> ".$mentionUsername." </a> ";
                         if(strpos($t['content'],'id='.$reqId.'"') == false){
                             $t['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $t['content']);
                             $t['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $t['content']);
@@ -96,7 +96,7 @@ if (isset($_SESSION['id'])){
                         $withoutAt = str_replace('@','',$mentionUsername);
                         $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
                         if($reqId){
-                            $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
+                            $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0;z-index:2'></span> ".$mentionUsername." </a> ";
                             if(strpos($reqQuotedTweet['content'],'id='.$reqId.'"') == false){
                                 $reqQuotedTweet['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $reqQuotedTweet['content']);
                                 $reqQuotedTweet['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $reqQuotedTweet['content']);
@@ -175,7 +175,7 @@ if (isset($_SESSION['id'])){
                     $withoutAt = str_replace('@','',$mentionUsername);
                     $reqId = $usersManager->getUserFromUsername($withoutAt)->fetch()['id'];
                     if($reqId){
-                        $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0,z-index:2'></span> ".$mentionUsername." </a> ";
+                        $replace= " <a href='index.php?page=profile&id=".$reqId."' style='position:relative'><span style='position:absolute;width:100%;height:100%;top:0;left:0;z-index:2'></span> ".$mentionUsername." </a> ";
                         if(strpos($t['content'],'id='.$reqId.'"') == false){
                             $t['content']= preg_replace('/\s'.$mentionUsername.'\s/', $replace, $t['content']);
                             $t['content']= preg_replace('/^'.$mentionUsername.'\s/', $replace, $t['content']);
@@ -217,9 +217,9 @@ if (isset($_SESSION['id'])){
             header('Location: '.$baseURI.'home');
         }
     }else{
-        die("Erreur : La page recherchée n'existe pas");
+        header('Location: '.$baseURI.'home');
     }
 }else{
-    die("Erreur : La page recherchée n'existe pas");
+    header('Location: '.$baseURI.'home');
 }
     

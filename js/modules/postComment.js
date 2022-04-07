@@ -69,11 +69,14 @@ export function usePostComment(){
             EltTweetDate = document.getElementById(`tweet__date${iCommented}`);
             EltTweetContent = document.getElementById(`tweet__content${iCommented}`);
             EltTweetImg = document.getElementById(`tweet__img${iCommented}`);
-            EltCommentedProfile.src = EltTweetProfile.src;
-            EltCommentedName.innerHTML = EltTweetName.innerHTML;
-            EltCommentedUsername.innerHTML = EltTweetUsername.innerHTML;
-            EltCommentedDate.innerHTML = EltTweetDate.innerHTML;
-            EltCommentedContent.innerHTML = EltTweetContent.innerHTML;
+            if(EltTweetProfile){
+                EltCommentedProfile.src = EltTweetProfile.src;
+                EltCommentedName.innerHTML = EltTweetName.innerHTML;
+                EltCommentedUsername.innerHTML = EltTweetUsername.innerHTML;
+                EltCommentedDate.innerHTML = EltTweetDate.innerHTML;
+                EltCommentedContent.innerHTML = EltTweetContent.innerHTML;
+            }
+           
 
             EltQuotedProfile = document.getElementById(`quoted__profile${iCommented}`);
             if(EltQuotedProfile){
@@ -83,7 +86,11 @@ export function usePostComment(){
                 EltQuotedDate = document.getElementById(`quoted__date${iCommented}`);
                 EltQuotedContent = document.getElementById(`quoted__content${iCommented}`);
                 EltQuotedImg = document.getElementById(`quoted__img${iCommented}`);
-                EltCommentedQuotedProfile.src = EltQuotedProfile.src;
+                if(EltQuotedProfile){
+                    EltCommentedQuotedProfile.src = EltQuotedProfile.src;
+                }else{
+                    EltCommentedQuotedProfile.src = '';
+                }
                 EltCommentedQuotedName.innerHTML = EltQuotedName.innerHTML;
                 EltCommentedQuotedUsername.innerHTML = EltQuotedUsername.innerHTML;
                 EltCommentedQuotedDate.innerHTML = EltQuotedDate.innerHTML;

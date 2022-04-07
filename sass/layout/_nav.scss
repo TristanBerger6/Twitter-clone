@@ -1,8 +1,15 @@
 .nav{
-    position : fixed;
+    //position : fixed;
     display : flex;
     flex-direction: column;
     max-width: 250px;
+    &__container{
+        top :0; 
+        bottom :0;
+    }
+    .tweet-btn{
+        padding-block: 5px;
+    }
     a{
         height : 50px;
         width : min-content;
@@ -33,14 +40,23 @@
     @media(max-width:500px){
         flex-direction: row;
         padding-block: 3px;
+        &__container{
+            border-top :1px solid hsl(var(--clr-grey-light));
+            bottom: 0;
+            left :0;
+            top : auto;
+            background-color: hsl(var(--clr-dark));
+            max-width: 100%;
+            width: 100%;
+            z-index :3;
+            
+        }
         --gap : 0;
         justify-content: space-evenly;
         align-items: center;
-        bottom: 0;
-        z-index :3;
-        width: 100%;
         max-width: 100%;
-        background-color: hsl(var(--clr-dark));
+        
+        
         a{
             height : 18px;
             --gap : 0;
