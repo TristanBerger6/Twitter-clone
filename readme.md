@@ -32,7 +32,7 @@ twitter_clone.sql also provide the database deployment code.
 
 Possibility to look for a user instead of a tweet, suggestions are displayed after writing @.
 
-![screenshot](./public/img/explore_suggestions.png)
+![screenshot](./public/img/doc/explore_suggestions.png)
 ### Notifications
 ![screenshot](./public/img/doc/notifs.png)
 ### Profile
