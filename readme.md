@@ -30,14 +30,16 @@ twitter_clone.sql also provide the database deployment code.
 ### Explore
 ![screenshot](./public/img/doc/explore.png)
 
-possibility to look for a user instead of a tweet, suggestions are displayed after writing @
+Possibility to look for a user instead of a tweet, suggestions are displayed after writing @.
 
 ![screenshot](./public/img/explore_suggestions.png)
 ### Notifications
 ![screenshot](./public/img/doc/notifs.png)
 ### Profile
 ![screenshot](./public/img/doc/profile.png)
+
 a modal to update your profile
+
 ![screenshot](./public/img/doc/profile_modal.png)
 ### Followers/Followed
 ![screenshot](./public/img/doc/follow.png)
@@ -46,13 +48,13 @@ a modal to update your profile
 ### Status
 ![screenshot](./public/img/doc/status.png)
 
-modal to see who liked or retweeted your tweet
+Modal to see who liked or retweeted your tweet.
 
 ![screenshot](./public/img/doc/status_like.png)
 ### Modal tweet
 ![screenshot](./public/img/doc/modal_tweet.png)
 
-possibility to mention a user, suggestions are displayed after writing a @
+Possibility to mention a user, suggestions are displayed after writing a @.
 
 ![screenshot](./public/img/doc/modal_tweet_mention.png)
 ### Modal comment
