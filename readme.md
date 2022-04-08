@@ -20,7 +20,7 @@ twitter_clone.sql also provide the database deployment code.
 ## Preview
 
 ### Index
-![index](./public/img/doc/index.png){ width=100% }
+![index]<img src="./public/img/doc/index.png" width="100%">
 ### Sign Up
 ![screenshot](./public/img/doc/signup.png)
 ### Sign In
