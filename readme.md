@@ -1,6 +1,7 @@
 # Twitter clone - [Live preview](https://tbtweet.go.yj.fr/)
 
-A Twitter clone built using SASS/JS/PHP/MySQL.
+A Twitter clone built using SASS/JS/PHP/MySQL. 
+
 For more infos about the architecture of the project and database, check the architecture.md file. 
 twitter_clone.sql also provide the database deployment code.
 
