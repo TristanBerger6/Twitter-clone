@@ -20,7 +20,12 @@ export function useExplore(){
     EltSubmit.addEventListener('click',(e)=>{
         e.preventDefault();
         let textValue = EltInput.value;
-        location.replace(`explore/${textValue}`);
+        if( textValue){
+            location.replace(`explore/${textValue}`);
+        }else{
+            location.replace(`explore`);
+        }
+        
     })
 
     // on input, display suggestions with an ajax call to handleMention.php

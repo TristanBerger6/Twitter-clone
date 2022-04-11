@@ -85,6 +85,7 @@ export function useTextTweet(){
             EltContenteditable[i].innerHTML +=  username ;
             EltText[s].value = EltContenteditable[i].innerText;
             EltMentionsContainer[l].style.display = 'none';
+            EltContenteditable[i].dispatchEvent(new Event('input', {bubbles:true}));
             color_mention(EltContenteditable[i]);
            
         }
@@ -106,12 +107,14 @@ export function useTextTweet(){
         let markup = chunks.reduce((acc, chunk) => {
         acc += regex.test(chunk) ?
         `<span class="mentions">${chunk}</span>` :
-        `<span class='other'>${chunk}</span>`
+        `<span class='other'>${chunk}</span>`;
         return acc
         }, '');  
         
 
-        EltCond.innerHTML = markup;
+        EltCond.innerHTML = markup;// chunks are like "hello " "@admin" " how are you "
+        // but spaces are turned into &nbsp; with innerHTML
+      
 
         // Set cursor postion to end of text
         let child = EltCond.children;
