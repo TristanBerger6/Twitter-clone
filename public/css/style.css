@@ -1547,7 +1547,7 @@ body {
   outline: solid 2px hsl(var(--clr-blue), 0.8);
 }
 
-.sign-redirect {
+#visitor {
   margin-bottom: 3rem;
 }
 

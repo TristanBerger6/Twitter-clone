@@ -27,10 +27,14 @@
           <input class="sign-input bg-dark" type="email" name="mailConnect" placeholder="Mail" required/>
           <input class="sign-input bg-dark" type="password" name="passConnect" placeholder="Mot de passe" required/>
           <input class = 'sign-buton fw-700 bg-white text-dark' type="submit" name="formConnect" value="Se connecter" />
+          
           <?php if (isset($error)) {
           echo '<font color="red">' . $error . '</font>';
           } ?>
           <p class="fs-400 sign-redirect">Pas encore de compte ? <a href='signup' class="text-blue"> Inscrivez-vous </a> </p>
+        </form>
+        <form method="POST" action="" class="sign-form fs-500 ">
+          <input id="visitor" class = 'sign-buton fw-700 bg-white text-dark' type="submit" name="visitor" value="Continuer sans s'inscrire" />
         </form>
       </div>
     </div>
