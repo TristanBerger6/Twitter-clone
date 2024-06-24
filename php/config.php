@@ -1,22 +1,17 @@
-<?php 
+<?php
 
-$type='dev';
+$type = 'dev';
 
-if($type == 'dev'){
-    $baseURI = '/Twitter_clone/';
+if ($type == 'dev') {
+    $baseURI = '/';
     $HOST = "localhost:3307";
     $DB_NAME = "twitter_clone";
     $USERNAME = "root";
-    $PASSWORD ="root";
-}else if ($type =='prod'){
+    $PASSWORD = "root";
+} else if ($type == 'prod') {
     $baseURI = '/';
-    $HOST = "127.0.0.1";
-    $DB_NAME = "vsffcwah_twitter_clone";
-    $USERNAME = "vsffcwah_tristan";
-    $PASSWORD ="AyAr22!r2Arr!p;A;G";
+    $HOST = "localhost";
+    $DB_NAME = "id22362506_twclone_tb66";
+    $USERNAME = "id22362506_twclone_tb66";
+    $PASSWORD = "wP2cXq3tMQ@q7TVgdXBK";
 }
-
-
-
-
-?>
